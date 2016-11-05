@@ -26,7 +26,7 @@ boot(app, __dirname, function(err) {
   }
 
   // start the server if `$ node server.js`
-  if (require.main === module)i {
+  if (require.main === module) {
     app.start();
   }
 });
