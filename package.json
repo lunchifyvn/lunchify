@@ -1,0 +1,19 @@
+{
+  "name": "lunchify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunchifyvn/lunchify.git"
+  },
+  "author": "Luchify",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lunchifyvn/lunchify/issues"
+  },
+  "homepage": "https://github.com/lunchifyvn/lunchify#readme"
+}
