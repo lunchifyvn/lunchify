@@ -1,26 +1,3 @@
 {
-  "plugins": [
-    "mocha"
-  ],
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "script",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "rules": {
-    "semi": 2,
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "no-undef": ["error", { "typeof": true }],
-    "default-case": ["error", { "commentPattern": "^skip\\sdefault" }],
-    "eqeqeq": ["error", "always"],
-    "no-new": "error",
-    "comma-dangle": ["error", "only-multiline"],
-    "mocha/no-exclusive-tests": "error"
-  },
-  "env": {
-      "node": true,
-      "mocha": true
-  }
+  "extends": "loopback"
 }
