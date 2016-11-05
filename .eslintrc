@@ -1,5 +1,5 @@
 {
-  "extends": "loopback"
+  "extends": "loopback",
   "env": {
     "node": true
   },
