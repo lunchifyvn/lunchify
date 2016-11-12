@@ -1,0 +1,17 @@
+{
+  "name": "field",
+  "plural": "fields",
+  "base": "PersistedModel",
+  "properties": {
+    "name": {
+      "type": "String",
+      "required": "true"
+    }
+  },
+  "relations": {
+    "topics": {
+      "type": "hasMany",
+      "model": "topic"
+    }
+  }
+}

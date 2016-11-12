@@ -40,5 +40,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "field": {
+    "dataSource": "db",
+    "public": true
+  },
+  "topic": {
+    "dataSource": "db",
+    "public": true
   }
 }
