@@ -5,14 +5,15 @@
   "properties": {
     "name": {
       "type": "String",
-      "required": "true"
+      "required": "true",
+      "unique": "true"
     }
   },
   "relations": {
     "topics": {
       "type": "belongsTo",
       "model": "field",
-      "foreignKey": "id"
+      "foreignKey": "fieldId"
     }
   },
   "acls": [{

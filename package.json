@@ -8,6 +8,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "async": "^2.1.2",
     "body-parser": "^1.15.2",
     "compression": "^1.0.3",
     "connect-ensure-login": "^0.1.1",
