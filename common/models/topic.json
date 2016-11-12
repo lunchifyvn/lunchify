@@ -14,5 +14,11 @@
       "model": "field",
       "foreignKey": "id"
     }
-  }
+  },
+  "acls": [{
+    "accessType": "READ",
+    "principalType": "ROLE",
+    "principalId": "$authenticated",
+    "permission": "ALLOW"
+  }]
 }

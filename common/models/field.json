@@ -13,5 +13,11 @@
       "type": "hasMany",
       "model": "topic"
     }
-  }
+  },
+  "acls": [{
+    "accessType": "READ",
+    "principalType": "ROLE",
+    "principalId": "$authenticated",
+    "permission": "ALLOW"
+  }]
 }
