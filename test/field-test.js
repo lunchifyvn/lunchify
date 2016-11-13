@@ -1,5 +1,5 @@
 var app = require('../server/server');
-var assert = require('assert');
+var should = require('should');
 
 function req(verb, url) {
   return require('supertest')(app)[verb](url)
@@ -12,7 +12,16 @@ describe('Field API', () => {
   it('should not allow annonymous user to get fields', done => {
     req('get', '/api/fields')
     .expect(401, (err, _res) => {
-      assert.ifError(err);
+      should.ifError(err);
+      done();
+    });
+  });
+
+  it('should allow registered user to get fields', done => {
+    req('get', '/api/fields')
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      res.should.be.an.Array();
       done();
     });
   });
