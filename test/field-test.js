@@ -9,4 +9,11 @@ function req(verb, url) {
 };
 
 describe('Field API', () => {
+  it('should not allow annonymous user to get fields', done => {
+    req('get', '/api/fields')
+    .expect(401, (err, _res) => {
+      assert.ifError(err);
+      done();
+    });
+  });
 });
