@@ -1,5 +1,3 @@
-'use strict';
-
 var async = require('async');
 
 module.exports = function(app) {
@@ -8,20 +6,20 @@ module.exports = function(app) {
   var topicModel = app.models.topic;
   console.log(data);
 
-  async.each(data, function(datum) {
+  async.each(data, datum => {
     console.log(datum);
     fieldModel.updateOrCreate({
       name: datum.field,
-    }, function(err, fieldInstance, created) {
+    }, (err, fieldInstance) => {
       if (err) {
         console.log('field error: ' + err.message);
       }
       var topics = datum.topics;
-      async.each(topics, function(topic) {
+      async.each(topics, topic => {
         topicModel.updateOrCreate({
           name: topic,
           fieldId: fieldInstance.id,
-        }, function(err, topicInstance, created) {
+        }, (err, topicInstance) => {
           if (err) {
             console.log('topic error: ' + err.message);
           }
