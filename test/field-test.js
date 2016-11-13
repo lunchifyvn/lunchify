@@ -9,7 +9,7 @@ function req(verb, url) {
 };
 
 describe('Field API', () => {
-  it('should not allow annonymous user to get fields', done => {
+  it.skip('should not allow annonymous user to get fields', done => {
     req('get', '/api/fields')
     .expect(401, (err, _res) => {
       should.ifError(err);
@@ -17,7 +17,7 @@ describe('Field API', () => {
     });
   });
 
-  it('should allow registered user to get fields', done => {
+  it.skip('should allow registered user to get fields', done => {
     req('get', '/api/fields')
     .expect(200, (err, res) => {
       should.ifError(err);

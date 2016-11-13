@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
+    "watch": "gulp watch",
     "lint": "eslint .",
     "start": "node .",
     "test": "mocha test/*-test.js",
@@ -34,6 +35,8 @@
     "babel-eslint": "^7.1.0",
     "eslint": "^2.13.1",
     "eslint-config-loopback": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^3.0.1",
     "mocha": "^3.1.2",
     "nsp": "^2.1.0",
     "should": "^11.1.1",
