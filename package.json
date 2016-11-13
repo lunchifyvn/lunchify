@@ -29,6 +29,7 @@
     "strong-error-handler": "^1.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.0",
     "eslint": "^2.13.1",
     "eslint-config-loopback": "^4.0.0",
     "nsp": "^2.1.0"
