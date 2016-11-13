@@ -3,6 +3,7 @@
   "env": {
     "node": true
   },
+  "parser": "babel-eslint",
   "rules": {
     "array-bracket-spacing": [2, "never"],
     "block-scoped-var": 2,
