@@ -15,10 +15,12 @@
       "model": "topic"
     }
   },
-  "acls": [{
-    "accessType": "READ",
-    "principalType": "ROLE",
-    "principalId": "$authenticated",
-    "permission": "ALLOW"
-  }]
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }
