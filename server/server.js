@@ -17,7 +17,6 @@ var bodyParser = require('body-parser');
 
 // attempt to build the providers/passport config
 var config = require('./providers');
-console.log(config);
 
 // -- Add your pre-processing middleware here --
 
