@@ -1,0 +1,20 @@
+[
+  {
+    "field": "Arts & Entertainment",
+    "topics": [
+      "Art",
+      "Dancing",
+      "Fiction",
+      "Music",
+      "Literature"
+    ]
+  },
+  {
+    "field": "Business & Career",
+    "topics": [
+      "Marketing",
+      "Real Estate",
+      "Small Business"
+    ]
+  }
+]
