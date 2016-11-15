@@ -1,0 +1,146 @@
+$mainBlue: #2196F3;
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  a {
+    color: #333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .nav {
+    li > a:focus, li > a:hover {
+      background-color: transparent;
+    }
+  }
+  .navbar {
+    margin-bottom: 5px;
+    padding-top: 5px;
+    .navbar-brand {
+      &.logo {
+        height: auto;
+        padding: 5px 15px;
+        width: 120px;
+      }
+    }
+    .main-menu {
+      .page-scroll {
+        a {
+          &:hover {
+            background: transparent;
+            color: $mainBlue;
+          }
+        }
+      }
+      .last {
+        a {
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+  //  begin body
+  .wrapper {
+    .banner {
+      position: relative;
+      img.banner-bg {
+        border-radius: 15px;
+      }
+      .cta-content {
+        position: absolute;
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        top: 15%;
+        left: 50%;
+        margin-left: -175px;
+        .inner {
+          padding: 25px 15px;
+          .logo {
+            padding-top: 20px;
+            width: 140px;
+          }
+          h1 {
+            font-size: 24px;
+            margin: 30px auto;
+          }
+          .cta-btn {
+            background: $mainBlue;
+            color: #fff;
+            padding: 10px;
+            display: block;
+            max-width: 65%;
+            margin: auto;
+            border-radius: 20px;
+            margin-top: 20px;
+            &:hover {
+              background: #1E88E5;
+            }
+          }
+        }
+      }
+    }
+  }
+  //  footer
+  .page-footer {
+    padding: 30px 15px;
+  }
+  //  modal
+  .modal {
+
+  }
+  .login-modal {
+    .modal-dialog {
+      width: 500px;
+      .modal-content {
+        padding: 15px;
+        .modal-header {
+          border-bottom: 0px;
+          .modal-logo {
+            padding: 15px;
+            img {
+              max-width: 120px;
+              margin: auto;
+            }
+          }
+        }
+        .modal-body {
+          .btn-login {
+            margin: 40px 0px;
+            .social-btn {
+              color: #fff;
+              background: #e5e5e5;
+              display: block;
+              padding: 17px;
+              border-radius: 10px;
+              position: relative;
+              .icon {
+                position: absolute;
+                left: 20px;
+                top: 10px;
+                width: 35px;
+              }
+              &.fb-btn {
+                background: #3b5998;
+              }
+            }
+          }
+        }
+        .modal-footer {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1024px;
+  }
+}
