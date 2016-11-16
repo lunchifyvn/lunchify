@@ -9,16 +9,32 @@
       "unique": "true"
     }
   },
+  "validations": [],
   "relations": {
     "topics": {
       "type": "hasMany",
       "model": "topic"
     }
   },
-  "acls": [{
-    "accessType": "READ",
-    "principalType": "ROLE",
-    "principalId": "$authenticated",
-    "permission": "ALLOW"
-  }]
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "find"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "findById"
+    }
+  ],
+  "methods": {}
 }

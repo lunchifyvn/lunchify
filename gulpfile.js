@@ -20,8 +20,8 @@ gulp.task('test', () => {
 
 gulp.task('watch', () => {
   gulp.watch([
-    './test/*test.js',
-    './server/*.js',
+    './test/*-test.js',
+    './server/*',
     './common/*',
   ], ['test']);
 });
