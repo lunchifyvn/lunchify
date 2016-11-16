@@ -9,6 +9,7 @@
       "unique": "true"
     }
   },
+  "validations": [],
   "relations": {
     "topics": {
       "type": "belongsTo",
@@ -16,10 +17,13 @@
       "foreignKey": "fieldId"
     }
   },
-  "acls": [{
-    "accessType": "READ",
-    "principalType": "ROLE",
-    "principalId": "$authenticated",
-    "permission": "ALLOW"
-  }]
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

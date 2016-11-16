@@ -3,6 +3,9 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
+let cookieParser = require('cookie-parser');
+let expressSession = require('express-session');
+
 // Passport configurators..
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
@@ -40,12 +43,15 @@ app.middleware('auth', loopback.token({
 }));
 
 app.middleware('session:before',
-  loopback.cookieParser(app.get('cookieSecret')));
-app.middleware('session', loopback.session({
-  secret: 'kitty',
-  saveUninitialized: true,
-  resave: true,
-}));
+  cookieParser(app.get('cookieSecret')));
+app.middleware('session',
+  expressSession({
+    secret: 'kitty',
+    saveUninitialized: true,
+    resave: true,
+  }
+));
+
 passportConfigurator.init();
 
 passportConfigurator.setupModels({
