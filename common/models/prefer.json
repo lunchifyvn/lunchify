@@ -1,0 +1,25 @@
+{
+  "name": "prefer",
+  "plural": "prefers",
+  "base": "PersistedModel",
+  "properties": {
+    "topic": {
+      "type": "String",
+      "required": "true"
+    },
+    "id": {
+      "type": "object",
+      "required": "true"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKye": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
