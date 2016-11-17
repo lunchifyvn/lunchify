@@ -6,7 +6,8 @@
       "Dancing",
       "Fiction",
       "Music",
-      "Literature"
+      "Literature",
+      "Film"
     ]
   },
   {
@@ -14,7 +15,54 @@
     "topics": [
       "Marketing",
       "Real Estate",
-      "Small Business"
+      "Small Business",
+      "Start-up",
+      "Software Development",
+      "Public Speaking"
+    ]
+  },
+  {
+    "field": "Pets & Animals",
+    "topics": [
+      "Cats",
+      "Dogs",
+      "Birds",
+      "Horses",
+      "Lizards",
+      "Fish"
+    ]
+  },
+  {
+    "field": "Internet & Technology",
+    "topics": [
+      "Android Development",
+      "Web Development",
+      "Web Design",
+      "Social Media",
+      "Operating Systems",
+      "Hacking"
+    ]
+  },
+  {
+    "field": "Sports & Recreation",
+    "topics": [
+      "Climbing",
+      "Cycling",
+      "Soccer",
+      "Tennis",
+      "Badminton",
+      "Running"
+    ]
+  },
+  {
+    "field": "Parenting & Family",
+    "topics": [
+      "Single Dads",
+      "Single Moms",
+      "Married Couples",
+      "Playdates",
+      "Toddlers",
+      "Working Moms"
     ]
   }
 ]
