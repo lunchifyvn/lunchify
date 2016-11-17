@@ -71,7 +71,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(530);
+	__webpack_require__(531);
 
 	(0, _reactDom.render)(_react2.default.createElement(
 	    _reactRedux.Provider,
@@ -6153,7 +6153,6 @@
 
 
 	    switch (action.type) {
-
 	        case types.GET_HOME_TITLE:
 	            return Object.assign({}, state, { title: action.title });
 
@@ -6256,7 +6255,7 @@
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _Container = __webpack_require__(523);
+	var _Container = __webpack_require__(524);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -11104,7 +11103,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _Footer = __webpack_require__(522);
+	var _Footer = __webpack_require__(523);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -47264,7 +47263,6 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.checkLogin = checkLogin;
 	exports.login = login;
 	exports.hasFollow = hasFollow;
 	exports.getMatching = getMatching;
@@ -47281,19 +47279,15 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _parameters = __webpack_require__(535);
+	var _parameters = __webpack_require__(521);
 
 	var _parameters2 = _interopRequireDefault(_parameters);
 
-	var _jquery = __webpack_require__(521);
+	var _jquery = __webpack_require__(522);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function checkLogin() {
-	  return;
-	}
 
 	function login() {
 	  return;
@@ -47316,6 +47310,13 @@
 	}
 
 	function viewUserDetail(userId) {
+	  _jquery2.default.ajax({
+	    url: _parameters2.default.base_url + _parameters2.default.user_profile,
+	    beforeSend: function beforeSend() {},
+	    success: function success(response) {
+	      console.log(response);
+	    }
+	  });
 	  return;
 	}
 
@@ -47341,6 +47342,23 @@
 
 /***/ },
 /* 521 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var Parameters = exports.Parameters = {
+	  base_url: 'http://localhost:3000',
+	  root_path: '/',
+	  topic_uri: '/topic',
+	  login_uri: '/auth/facebook',
+	  user_profile: '/users/{id}'
+	};
+
+/***/ },
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -57566,7 +57584,7 @@
 
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57626,12 +57644,12 @@
 	exports.default = Footer;
 
 /***/ },
-/* 523 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _HomeContainer = __webpack_require__(524);
+	var _HomeContainer = __webpack_require__(525);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
@@ -57639,7 +57657,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _TopicListContainer = __webpack_require__(526);
+	var _TopicListContainer = __webpack_require__(527);
 
 	var _TopicListContainer2 = _interopRequireDefault(_TopicListContainer);
 
@@ -57652,7 +57670,7 @@
 	};
 
 /***/ },
-/* 524 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57667,7 +57685,7 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Home = __webpack_require__(525);
+	var _Home = __webpack_require__(526);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -57677,6 +57695,8 @@
 
 	var _HeaderActions = __webpack_require__(519);
 
+	var _User = __webpack_require__(520);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var HomeContainer = _react2.default.createClass({
@@ -57684,6 +57704,8 @@
 
 
 	    componentDidMount: function componentDidMount() {},
+
+	    getProfile: function getProfile() {},
 
 	    openLoginModal: function openLoginModal() {
 	        _store2.default.dispatch((0, _HeaderActions.openLoginModal)());
@@ -57704,7 +57726,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 525 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57753,7 +57775,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 526 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57768,11 +57790,11 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Topics = __webpack_require__(527);
+	var _Topics = __webpack_require__(528);
 
 	var _Topics2 = _interopRequireDefault(_Topics);
 
-	var _Topics3 = __webpack_require__(528);
+	var _Topics3 = __webpack_require__(529);
 
 	var topicsApi = _interopRequireWildcard(_Topics3);
 
@@ -57804,7 +57826,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 527 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57834,7 +57856,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57848,7 +57870,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _HomeActions = __webpack_require__(529);
+	var _HomeActions = __webpack_require__(530);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57863,7 +57885,7 @@
 	}
 
 /***/ },
-/* 529 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57889,16 +57911,16 @@
 	}
 
 /***/ },
-/* 530 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(531);
+	var content = __webpack_require__(532);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(533)(content, {});
+	var update = __webpack_require__(534)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -57915,10 +57937,10 @@
 	}
 
 /***/ },
-/* 531 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(532)();
+	exports = module.exports = __webpack_require__(533)();
 	// imports
 
 
@@ -57929,7 +57951,7 @@
 
 
 /***/ },
-/* 532 */
+/* 533 */
 /***/ function(module, exports) {
 
 	/*
@@ -57985,7 +58007,7 @@
 
 
 /***/ },
-/* 533 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -58235,23 +58257,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 534 */,
-/* 535 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var Parameters = exports.Parameters = {
-	  base_url: 'http://localhost:3000',
-	  root_path: '/',
-	  topic_uri: '/topic',
-	  login_uri: '/auth/facebook'
-	};
 
 /***/ }
 /******/ ]);
