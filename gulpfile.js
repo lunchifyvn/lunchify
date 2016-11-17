@@ -22,6 +22,7 @@ gulp.task('watch', () => {
   gulp.watch([
     './test/*-test.js',
     './server/*',
-    './common/*',
+    './server/*/*',
+    './common/*/*',
   ], ['test']);
 });

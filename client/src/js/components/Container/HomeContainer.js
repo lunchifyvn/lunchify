@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Home from '../Pages/Home';
 import Store from '../../store';
 import {openLoginModal} from '../../actions/HeaderActions';
-import {viewUserDetail} from '../../api/User'
 
 const HomeContainer = React.createClass({
 

@@ -5,3 +5,4 @@ export const Parameters = {
   login_uri: '/auth/facebook',
   user_profile: '/users/{id}'
 };
+

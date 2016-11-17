@@ -11,6 +11,7 @@ export default function (props) {
                         <img className="logo" src="assets/img/logo.png"/>
                         <h1>Kết nối những người có chung sở thích</h1>
                         <a onClick={props.openLoginModal} href="#" className="cta-btn">Tìm hiểu thêm</a>
+
                     </div>
                 </div>
             </div>

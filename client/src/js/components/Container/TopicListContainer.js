@@ -7,7 +7,6 @@ const HomeContainer = React.createClass({
 
     componentDidMount: function() {
         topicsApi.getTopics();
-        //store.dispatch(loadSearchLayout('users', 'User Results'));
     },
 
     render: function() {

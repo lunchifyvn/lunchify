@@ -6134,7 +6134,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _Types = __webpack_require__(68);
@@ -6144,21 +6144,19 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = {
-	    title: "Hello home reducer"
+	  title: "Hello home reducer"
 	};
 
 	var homeReducer = function homeReducer() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	    var action = arguments[1];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
 
 
-	    switch (action.type) {
-	        case types.GET_HOME_TITLE:
-	            return Object.assign({}, state, { title: action.title });
-
-	    }
-
-	    return state;
+	  switch (action.type) {
+	    case types.GET_HOME_TITLE:
+	      return Object.assign({}, state, { title: action.title });
+	  }
+	  return state;
 	};
 
 	exports.default = homeReducer;
@@ -47310,13 +47308,6 @@
 	}
 
 	function viewUserDetail(userId) {
-	  _jquery2.default.ajax({
-	    url: _parameters2.default.base_url + _parameters2.default.user_profile,
-	    beforeSend: function beforeSend() {},
-	    success: function success(response) {
-	      console.log(response);
-	    }
-	  });
 	  return;
 	}
 
@@ -57695,8 +57686,6 @@
 
 	var _HeaderActions = __webpack_require__(519);
 
-	var _User = __webpack_require__(520);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var HomeContainer = _react2.default.createClass({
@@ -57808,7 +57797,6 @@
 
 	    componentDidMount: function componentDidMount() {
 	        topicsApi.getTopics();
-	        //store.dispatch(loadSearchLayout('users', 'User Results'));
 	    },
 
 	    render: function render() {
