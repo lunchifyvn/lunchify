@@ -71,7 +71,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(529);
+	__webpack_require__(531);
 
 	(0, _reactDom.render)(_react2.default.createElement(
 	    _reactRedux.Provider,
@@ -6134,7 +6134,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 
 	var _Types = __webpack_require__(68);
@@ -6144,22 +6144,19 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	var initialState = {
-	    title: "Hello home reducer"
+	  title: "Hello home reducer"
 	};
 
 	var homeReducer = function homeReducer() {
-	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-	    var action = arguments[1];
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
 
 
-	    switch (action.type) {
-
-	        case types.GET_HOME_TITLE:
-	            return Object.assign({}, state, { title: action.title });
-
-	    }
-
-	    return state;
+	  switch (action.type) {
+	    case types.GET_HOME_TITLE:
+	      return Object.assign({}, state, { title: action.title });
+	  }
+	  return state;
 	};
 
 	exports.default = homeReducer;
@@ -6256,7 +6253,7 @@
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _Container = __webpack_require__(522);
+	var _Container = __webpack_require__(524);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -11104,7 +11101,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _Footer = __webpack_require__(521);
+	var _Footer = __webpack_require__(523);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -11137,8 +11134,6 @@
 	var _HeaderActions = __webpack_require__(519);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var $ = __webpack_require__(520);
 
 	var HeaderContainer = _react2.default.createClass({
 	    displayName: 'HeaderContainer',
@@ -28462,6 +28457,8 @@
 
 	var _HeaderActions = __webpack_require__(519);
 
+	var _User = __webpack_require__(520);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var LoginModalContainer = _react2.default.createClass({
@@ -28473,11 +28470,11 @@
 	    },
 
 	    login: function login() {
-	        _store2.default.dispatch((0, _HeaderActions.openLoginModal)());
+	        console.log("send login");
+	        (0, _User.login)();
 	    },
 
 	    render: function render() {
-	        console.log(this.props.isOpenLogin);
 	        return _react2.default.createElement(_LoginModal2.default, { isOpenLogin: this.props.isOpenLogin, closeLogin: this.closeLogin, login: this.login });
 	    }
 
@@ -28527,7 +28524,7 @@
 	                { className: 'btn-login' },
 	                _react2.default.createElement(
 	                    'a',
-	                    { onClick: props.login, className: 'social-btn fb-btn text-center', href: '#' },
+	                    { className: 'social-btn fb-btn text-center', href: 'http://socialauthenticator.com:3000/auth/facebook' },
 	                    _react2.default.createElement('img', { className: 'icon', src: 'assets/img/icon/fb.png' }),
 	                    '\u0110\u0103ng nh\u1EADp b\u1EB1ng Facebook'
 	                )
@@ -47259,6 +47256,102 @@
 /* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.login = login;
+	exports.hasFollow = hasFollow;
+	exports.getMatching = getMatching;
+	exports.follow = follow;
+	exports.updateProfile = updateProfile;
+	exports.viewUserDetail = viewUserDetail;
+	exports.sendInvite = sendInvite;
+	exports.receiveInvitation = receiveInvitation;
+	exports.rejectInvitation = rejectInvitation;
+	exports.sendChat = sendChat;
+	exports.receiveChat = receiveChat;
+
+	var _store = __webpack_require__(65);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _parameters = __webpack_require__(521);
+
+	var _parameters2 = _interopRequireDefault(_parameters);
+
+	var _jquery = __webpack_require__(522);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function login() {
+	  return;
+	}
+
+	function hasFollow() {
+	  return;
+	}
+
+	function getMatching() {
+	  return;
+	}
+
+	function follow(userId) {
+	  return;
+	}
+
+	function updateProfile() {
+	  return;
+	}
+
+	function viewUserDetail(userId) {
+	  return;
+	}
+
+	function sendInvite(userId) {
+	  return;
+	}
+
+	function receiveInvitation() {
+	  return;
+	}
+
+	function rejectInvitation() {
+	  return;
+	}
+
+	function sendChat(userID, message) {
+	  return;
+	}
+
+	function receiveChat() {
+	  return;
+	}
+
+/***/ },
+/* 521 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var Parameters = exports.Parameters = {
+	  base_url: 'http://localhost:3000',
+	  root_path: '/',
+	  topic_uri: '/topic',
+	  login_uri: '/auth/facebook',
+	  user_profile: '/users/{id}'
+	};
+
+/***/ },
+/* 522 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jQuery JavaScript Library v3.1.1
 	 * https://jquery.com/
@@ -57482,7 +57575,7 @@
 
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57542,12 +57635,12 @@
 	exports.default = Footer;
 
 /***/ },
-/* 522 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _HomeContainer = __webpack_require__(523);
+	var _HomeContainer = __webpack_require__(525);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
@@ -57555,7 +57648,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _TopicListContainer = __webpack_require__(526);
+	var _TopicListContainer = __webpack_require__(527);
 
 	var _TopicListContainer2 = _interopRequireDefault(_TopicListContainer);
 
@@ -57568,7 +57661,7 @@
 	};
 
 /***/ },
-/* 523 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57583,11 +57676,15 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Home = __webpack_require__(524);
+	var _Home = __webpack_require__(526);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _HomeActions = __webpack_require__(525);
+	var _store = __webpack_require__(65);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _HeaderActions = __webpack_require__(519);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57595,12 +57692,16 @@
 	    displayName: 'HomeContainer',
 
 
-	    componentDidMount: function componentDidMount() {
-	        store.dispatch((0, _HomeActions.getHomeTitle)("home page"));
+	    componentDidMount: function componentDidMount() {},
+
+	    getProfile: function getProfile() {},
+
+	    openLoginModal: function openLoginModal() {
+	        _store2.default.dispatch((0, _HeaderActions.openLoginModal)());
 	    },
 
 	    render: function render() {
-	        return _react2.default.createElement(_Home2.default, { title: this.props.title });
+	        return _react2.default.createElement(_Home2.default, { openLoginModal: this.openLoginModal, title: this.props.title });
 	    }
 
 	});
@@ -57614,7 +57715,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57645,7 +57746,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        "a",
-	                        { href: "#", className: "cta-btn" },
+	                        { onClick: props.openLoginModal, href: "#", className: "cta-btn" },
 	                        "T\xECm hi\u1EC3u th\xEAm"
 	                    )
 	                )
@@ -57663,31 +57764,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 525 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getHomeTitle = getHomeTitle;
-
-	var _Types = __webpack_require__(68);
-
-	var types = _interopRequireWildcard(_Types);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function getHomeTitle(title) {
-	    return {
-	        type: types.GET_HOME_TITLE,
-	        title: title
-	    };
-	}
-
-/***/ },
-/* 526 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57702,11 +57779,11 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Topics = __webpack_require__(527);
+	var _Topics = __webpack_require__(528);
 
 	var _Topics2 = _interopRequireDefault(_Topics);
 
-	var _Topics3 = __webpack_require__(528);
+	var _Topics3 = __webpack_require__(529);
 
 	var topicsApi = _interopRequireWildcard(_Topics3);
 
@@ -57737,7 +57814,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 527 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57767,7 +57844,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 528 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57781,7 +57858,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _HomeActions = __webpack_require__(525);
+	var _HomeActions = __webpack_require__(530);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57796,16 +57873,42 @@
 	}
 
 /***/ },
-/* 529 */
+/* 530 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getHomeTitle = getHomeTitle;
+
+	var _Types = __webpack_require__(68);
+
+	var types = _interopRequireWildcard(_Types);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function getHomeTitle() {
+	    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Homepage";
+
+	    return {
+	        type: types.GET_HOME_TITLE,
+	        title: title
+	    };
+	}
+
+/***/ },
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(530);
+	var content = __webpack_require__(532);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(532)(content, {});
+	var update = __webpack_require__(534)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -57822,10 +57925,10 @@
 	}
 
 /***/ },
-/* 530 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(531)();
+	exports = module.exports = __webpack_require__(533)();
 	// imports
 
 
@@ -57836,7 +57939,7 @@
 
 
 /***/ },
-/* 531 */
+/* 533 */
 /***/ function(module, exports) {
 
 	/*
@@ -57892,7 +57995,7 @@
 
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

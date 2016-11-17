@@ -23,7 +23,6 @@ var config = require('./providers');
 
 // -- Add your pre-processing middleware here --
 
-
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
@@ -67,17 +66,15 @@ for (var s in config) {
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 app.get('/', function(req, res) {
-  res.render('pages/index', {user:
-    req.user,
+  res.render('pages/index', {
+    user: req.user,
     url: req.url,
   });
 });
 
 app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
-  res.render('pages/loginProfiles', {
-    user: req.user,
-    url: req.url,
-  });
+  console.log('user', req.user);
+  res.redirect('/');
 });
 
 app.get('/local', function(req, res) {

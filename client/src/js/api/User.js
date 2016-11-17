@@ -1,50 +1,48 @@
 import store from '../store';
+import paremeters from '../parameters';
 import $ from 'jquery';
 
-export function checkLogin() {
-    return;
+
+export function login() {
+  return;
 }
 
-export function login(){
-    return;
+export function hasFollow() {
+  return;
 }
 
-export function hasFollow(){
-    return;
+export function getMatching() {
+  return;
 }
 
-export function getMatching(){
-    return;
+export function follow(userId) {
+  return;
 }
 
-export function follow(userId){
-    return;
-}
-
-export function updateProfile(){
-    return;
+export function updateProfile() {
+  return;
 }
 
 export function viewUserDetail(userId) {
-    return;
+  return;
 }
 
-export function sendInvite(userId){
-    return;
+export function sendInvite(userId) {
+  return;
 }
 
-export function receiveInvitation(){
-    return;
+export function receiveInvitation() {
+  return;
 }
 
-export function rejectInvitation(){
-    return;
+export function rejectInvitation() {
+  return;
 }
 
 export function sendChat(userID, message) {
-    return;
+  return;
 }
 
 export function receiveChat() {
-    return;
+  return;
 }

@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LoginModal from '../LoginModal';
 import Store from '../../store';
-import {closeLoginModal, openLoginModal} from '../../actions/HeaderActions';
+import {closeLoginModal} from '../../actions/HeaderActions';
+import {login} from '../../api/User';
 
 const LoginModalContainer = React.createClass({
 
@@ -11,11 +12,11 @@ const LoginModalContainer = React.createClass({
     },
 
     login: function(){
-      Store.dispatch(openLoginModal())
+        console.log("send login");
+        login();
     },
 
     render: function() {
-        console.log(this.props.isOpenLogin);
         return (
             <LoginModal isOpenLogin={this.props.isOpenLogin} closeLogin={this.closeLogin} login={this.login}/>
         );

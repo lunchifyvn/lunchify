@@ -1,16 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Home from '../Pages/Home';
-import {getHomeTitle} from '../../actions/HomeActions';
+import Store from '../../store';
+import {openLoginModal} from '../../actions/HeaderActions';
+
 const HomeContainer = React.createClass({
 
     componentDidMount: function() {
-        store.dispatch(getHomeTitle("home page"));
+    },
+
+    getProfile: function(){
+
+    },
+
+    openLoginModal: function(){
+      Store.dispatch(openLoginModal())
     },
 
     render: function() {
         return (
-            <Home title={this.props.title} />
+            <Home openLoginModal={this.openLoginModal} title={this.props.title} />
         );
     }
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Header from '../Header';
 import Store from '../../store';
 import {openLoginModal} from '../../actions/HeaderActions';
-var $ = require('jquery');
 
 const HeaderContainer = React.createClass({
 
