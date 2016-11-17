@@ -11138,8 +11138,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var $ = __webpack_require__(520);
-
 	var HeaderContainer = _react2.default.createClass({
 	    displayName: 'HeaderContainer',
 
@@ -28462,6 +28460,8 @@
 
 	var _HeaderActions = __webpack_require__(519);
 
+	var _User = __webpack_require__(534);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var LoginModalContainer = _react2.default.createClass({
@@ -28473,12 +28473,11 @@
 	    },
 
 	    login: function login() {
-	        console.log("login");
-	        _store2.default.dispatch();
+	        console.log("send login");
+	        (0, _User.login)();
 	    },
 
 	    render: function render() {
-	        console.log(this.props.isOpenLogin);
 	        return _react2.default.createElement(_LoginModal2.default, { isOpenLogin: this.props.isOpenLogin, closeLogin: this.closeLogin, login: this.login });
 	    }
 
@@ -57588,11 +57587,11 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Home3 = __webpack_require__(525);
+	var _store = __webpack_require__(65);
 
-	var homeApi = _interopRequireWildcard(_Home3);
+	var _store2 = _interopRequireDefault(_store);
 
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	var _HeaderActions = __webpack_require__(519);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57600,13 +57599,14 @@
 	    displayName: 'HomeContainer',
 
 
-	    componentDidMount: function componentDidMount() {
-	        homeApi.getTitle();
-	        //store.dispatch(loadSearchLayout('users', 'User Results'));
+	    componentDidMount: function componentDidMount() {},
+
+	    openLoginModal: function openLoginModal() {
+	        _store2.default.dispatch((0, _HeaderActions.openLoginModal)());
 	    },
 
 	    render: function render() {
-	        return _react2.default.createElement(_Home2.default, { title: this.props.title });
+	        return _react2.default.createElement(_Home2.default, { openLoginModal: this.openLoginModal, title: this.props.title });
 	    }
 
 	});
@@ -57651,7 +57651,7 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        "a",
-	                        { href: "#", className: "cta-btn" },
+	                        { onClick: props.openLoginModal, href: "#", className: "cta-btn" },
 	                        "T\xECm hi\u1EC3u th\xEAm"
 	                    )
 	                )
@@ -57669,39 +57669,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 525 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getTitle = getTitle;
-
-	var _store = __webpack_require__(65);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _HomeActions = __webpack_require__(526);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 * Get all users
-	 */
-	function getTitle() {
-	    //  call ajax here
-	    var response = "Home title sample";
-	    _store2.default.dispatch((0, _HomeActions.getHomeTitle)(response));
-	    return response;
-	}
-
-/***/ },
+/* 525 */,
 /* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -57714,7 +57686,9 @@
 
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-	function getHomeTitle(title) {
+	function getHomeTitle() {
+	    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Homepage";
+
 	    return {
 	        type: types.GET_HOME_TITLE,
 	        title: title
@@ -58178,6 +58152,87 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 534 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.checkLogin = checkLogin;
+	exports.login = login;
+	exports.hasFollow = hasFollow;
+	exports.getMatching = getMatching;
+	exports.follow = follow;
+	exports.updateProfile = updateProfile;
+	exports.viewUserDetail = viewUserDetail;
+	exports.sendInvite = sendInvite;
+	exports.receiveInvitation = receiveInvitation;
+	exports.rejectInvitation = rejectInvitation;
+	exports.sendChat = sendChat;
+	exports.receiveChat = receiveChat;
+
+	var _store = __webpack_require__(65);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _jquery = __webpack_require__(520);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function checkLogin() {
+	  return;
+	}
+
+	function login() {
+	  console.log("call login api");
+	  return;
+	}
+
+	function hasFollow() {
+	  return;
+	}
+
+	function getMatching() {
+	  return;
+	}
+
+	function follow(userId) {
+	  return;
+	}
+
+	function updateProfile() {
+	  return;
+	}
+
+	function viewUserDetail(userId) {
+	  return;
+	}
+
+	function sendInvite(userId) {
+	  return;
+	}
+
+	function receiveInvitation() {
+	  return;
+	}
+
+	function rejectInvitation() {
+	  return;
+	}
+
+	function sendChat(userID, message) {
+	  return;
+	}
+
+	function receiveChat() {
+	  return;
+	}
 
 /***/ }
 /******/ ]);

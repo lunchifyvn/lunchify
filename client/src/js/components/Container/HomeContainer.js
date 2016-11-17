@@ -1,18 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Home from '../Pages/Home';
-import * as homeApi from '../../api/Home';
+import Store from '../../store';
+import {openLoginModal} from '../../actions/HeaderActions';
 
 const HomeContainer = React.createClass({
 
     componentDidMount: function() {
-        homeApi.getTitle();
-        //store.dispatch(loadSearchLayout('users', 'User Results'));
+    },
+
+    openLoginModal: function(){
+      Store.dispatch(openLoginModal())
     },
 
     render: function() {
         return (
-            <Home title={this.props.title} />
+            <Home openLoginModal={this.openLoginModal} title={this.props.title} />
         );
     }
 
