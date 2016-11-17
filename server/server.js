@@ -3,6 +3,9 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 var app = module.exports = loopback();
 
+let cookieParser = require('cookie-parser');
+let expressSession = require('express-session');
+
 // Passport configurators..
 var loopbackPassport = require('loopback-component-passport');
 var PassportConfigurator = loopbackPassport.PassportConfigurator;
@@ -20,10 +23,6 @@ var config = require('./providers');
 
 // -- Add your pre-processing middleware here --
 
-// Setup the view engine (jade)
-var path = require('path');
-app.set('views', path.join(__dirname, '../client'));
-app.set('view engine', 'jade');
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
@@ -35,18 +34,24 @@ app.middleware('parse', bodyParser.urlencoded({
   extended: true,
 }));
 
+var path = require('path');
+app.use(loopback.static(path.resolve(__dirname, '../client')));
+
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
   model: app.models.accessToken,
 }));
 
 app.middleware('session:before',
-  loopback.cookieParser(app.get('cookieSecret')));
-app.middleware('session', loopback.session({
-  secret: 'kitty',
-  saveUninitialized: true,
-  resave: true,
-}));
+  cookieParser(app.get('cookieSecret')));
+app.middleware('session',
+  expressSession({
+    secret: 'kitty',
+    saveUninitialized: true,
+    resave: true,
+  }
+));
+
 passportConfigurator.init();
 
 passportConfigurator.setupModels({
