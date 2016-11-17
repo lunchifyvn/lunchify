@@ -9,7 +9,7 @@ function req(verb, url) {
     .expect('Content-Type', /json/);
 };
 
-describe('Field API', () => {
+describe('Topic API', () => {
   var user1 = {
     email: 'user1@dev.dev',
     username: 'user1',
