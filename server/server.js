@@ -23,11 +23,6 @@ var config = require('./providers');
 
 // -- Add your pre-processing middleware here --
 
-// Setup the view engine (jade)
-var path = require('path');
-app.set('views', path.join(__dirname, '../client'));
-app.set('view engine', 'jade');
-
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
@@ -37,6 +32,9 @@ app.middleware('parse', bodyParser.json());
 app.middleware('parse', bodyParser.urlencoded({
   extended: true,
 }));
+
+var path = require('path');
+app.use(loopback.static(path.resolve(__dirname, '../client')));
 
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
@@ -50,8 +48,8 @@ app.middleware('session',
     secret: 'kitty',
     saveUninitialized: true,
     resave: true,
-  }
-));
+  })
+);
 
 passportConfigurator.init();
 
@@ -68,8 +66,8 @@ for (var s in config) {
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 app.get('/', function(req, res) {
-  res.render('pages/index', {user:
-    req.user,
+  res.render('pages/index', {
+    user: req.user,
     url: req.url,
   });
 });
