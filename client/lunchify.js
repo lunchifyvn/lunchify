@@ -28527,7 +28527,7 @@
 	                { className: 'btn-login' },
 	                _react2.default.createElement(
 	                    'a',
-	                    { onClick: props.login, className: 'social-btn fb-btn text-center', href: '#' },
+	                    { className: 'social-btn fb-btn text-center', href: 'http://socialauthenticator.com:3000/auth/facebook' },
 	                    _react2.default.createElement('img', { className: 'icon', src: 'assets/img/icon/fb.png' }),
 	                    '\u0110\u0103ng nh\u1EADp b\u1EB1ng Facebook'
 	                )
@@ -47281,6 +47281,10 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
+	var _parameters = __webpack_require__(535);
+
+	var _parameters2 = _interopRequireDefault(_parameters);
+
 	var _jquery = __webpack_require__(521);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
@@ -47292,14 +47296,6 @@
 	}
 
 	function login() {
-	  console.log("call login api");
-	  _jquery2.default.ajax({
-	    url: "http://localhost:3000/auth/facebook",
-	    beforeSend: function beforeSend() {},
-	    success: function success(response) {
-	      console.log(response);
-	    }
-	  });
 	  return;
 	}
 
@@ -58239,6 +58235,23 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 534 */,
+/* 535 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var Parameters = exports.Parameters = {
+	  base_url: 'http://localhost:3000',
+	  root_path: '/',
+	  topic_uri: '/topic',
+	  login_uri: '/auth/facebook'
+	};
 
 /***/ }
 /******/ ]);

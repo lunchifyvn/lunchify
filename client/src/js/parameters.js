@@ -1,3 +1,6 @@
 export const Parameters = {
-    root_path: '/'
-}
+  base_url: 'http://localhost:3000',
+  root_path: '/',
+  topic_uri: '/topic',
+  login_uri: '/auth/facebook'
+};

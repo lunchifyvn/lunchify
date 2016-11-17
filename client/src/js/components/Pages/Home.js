@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from "react";
 import {render} from 'react-dom';
 
-
 export default function (props) {
     return (
         <div className="container">
