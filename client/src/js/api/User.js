@@ -8,6 +8,15 @@ export function checkLogin() {
 
 export function login() {
   console.log("call login api");
+  $.ajax({
+    url: "http://localhost:3000/auth/facebook",
+    beforeSend: function(){
+
+    },
+    success: function(response){
+      console.log(response);
+    }
+  });
   return;
 }
 

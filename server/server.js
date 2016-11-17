@@ -23,7 +23,6 @@ var config = require('./providers');
 
 // -- Add your pre-processing middleware here --
 
-
 // boot scripts mount components like REST API
 boot(app, __dirname);
 
@@ -46,11 +45,11 @@ app.middleware('session:before',
   cookieParser(app.get('cookieSecret')));
 app.middleware('session',
   expressSession({
-    secret: 'kitty',
-    saveUninitialized: true,
-    resave: true,
-  }
-));
+      secret: 'kitty',
+      saveUninitialized: true,
+      resave: true,
+    }
+  ));
 
 passportConfigurator.init();
 
@@ -66,35 +65,35 @@ for (var s in config) {
 }
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
-app.get('/', function(req, res) {
-  res.render('pages/index', {user:
-    req.user,
+app.get('/', function (req, res) {
+  res.render('pages/index', {
+    user: req.user,
     url: req.url,
   });
 });
 
-app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
+app.get('/auth/account', ensureLoggedIn('/login'), function (req, res) {
   res.render('pages/loginProfiles', {
     user: req.user,
     url: req.url,
   });
 });
 
-app.get('/local', function(req, res) {
+app.get('/local', function (req, res) {
   res.render('pages/local', {
     user: req.user,
     url: req.url,
   });
 });
 
-app.get('/signup', function(req, res) {
+app.get('/signup', function (req, res) {
   res.render('pages/signup', {
     user: req.user,
     url: req.url,
   });
 });
 
-app.post('/signup', function(req, res) {
+app.post('/signup', function (req, res) {
   var User = app.models.user;
 
   var newUser = {};
@@ -102,7 +101,7 @@ app.post('/signup', function(req, res) {
   newUser.username = req.body.username.trim();
   newUser.password = req.body.password;
 
-  User.create(newUser, function(err, user) {
+  User.create(newUser, function (err, user) {
     if (err) {
       return res.redirect('back');
     } else {
@@ -110,7 +109,7 @@ app.post('/signup', function(req, res) {
       // that can be used to establish a login session. This function is
       // primarily used when users sign up, during which req.login() can
       // be invoked to log in the newly registered user.
-      req.login(user, function(err) {
+      req.login(user, function (err) {
         if (err) {
           return res.redirect('back');
         }
@@ -120,21 +119,21 @@ app.post('/signup', function(req, res) {
   });
 });
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
   res.render('pages/login', {
     user: req.user,
     url: req.url,
   });
 });
 
-app.get('/auth/logout', function(req, res) {
+app.get('/auth/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });
 
-app.start = function() {
+app.start = function () {
   // start the web server
-  return app.listen(function() {
+  return app.listen(function () {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);

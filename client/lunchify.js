@@ -6256,7 +6256,7 @@
 
 	var _Layout2 = _interopRequireDefault(_Layout);
 
-	var _Container = __webpack_require__(522);
+	var _Container = __webpack_require__(523);
 
 	var _Container2 = _interopRequireDefault(_Container);
 
@@ -11104,7 +11104,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _Footer = __webpack_require__(521);
+	var _Footer = __webpack_require__(522);
 
 	var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -28460,7 +28460,7 @@
 
 	var _HeaderActions = __webpack_require__(519);
 
-	var _User = __webpack_require__(534);
+	var _User = __webpack_require__(520);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47259,6 +47259,94 @@
 /* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.checkLogin = checkLogin;
+	exports.login = login;
+	exports.hasFollow = hasFollow;
+	exports.getMatching = getMatching;
+	exports.follow = follow;
+	exports.updateProfile = updateProfile;
+	exports.viewUserDetail = viewUserDetail;
+	exports.sendInvite = sendInvite;
+	exports.receiveInvitation = receiveInvitation;
+	exports.rejectInvitation = rejectInvitation;
+	exports.sendChat = sendChat;
+	exports.receiveChat = receiveChat;
+
+	var _store = __webpack_require__(65);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	var _jquery = __webpack_require__(521);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function checkLogin() {
+	  return;
+	}
+
+	function login() {
+	  console.log("call login api");
+	  _jquery2.default.ajax({
+	    url: "http://localhost:3000/auth/facebook",
+	    beforeSend: function beforeSend() {},
+	    success: function success(response) {
+	      console.log(response);
+	    }
+	  });
+	  return;
+	}
+
+	function hasFollow() {
+	  return;
+	}
+
+	function getMatching() {
+	  return;
+	}
+
+	function follow(userId) {
+	  return;
+	}
+
+	function updateProfile() {
+	  return;
+	}
+
+	function viewUserDetail(userId) {
+	  return;
+	}
+
+	function sendInvite(userId) {
+	  return;
+	}
+
+	function receiveInvitation() {
+	  return;
+	}
+
+	function rejectInvitation() {
+	  return;
+	}
+
+	function sendChat(userID, message) {
+	  return;
+	}
+
+	function receiveChat() {
+	  return;
+	}
+
+/***/ },
+/* 521 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jQuery JavaScript Library v3.1.1
 	 * https://jquery.com/
@@ -57482,7 +57570,7 @@
 
 
 /***/ },
-/* 521 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57542,12 +57630,12 @@
 	exports.default = Footer;
 
 /***/ },
-/* 522 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _HomeContainer = __webpack_require__(523);
+	var _HomeContainer = __webpack_require__(524);
 
 	var _HomeContainer2 = _interopRequireDefault(_HomeContainer);
 
@@ -57555,7 +57643,7 @@
 
 	var _HeaderContainer2 = _interopRequireDefault(_HeaderContainer);
 
-	var _TopicListContainer = __webpack_require__(527);
+	var _TopicListContainer = __webpack_require__(526);
 
 	var _TopicListContainer2 = _interopRequireDefault(_TopicListContainer);
 
@@ -57568,7 +57656,7 @@
 	};
 
 /***/ },
-/* 523 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57583,7 +57671,7 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Home = __webpack_require__(524);
+	var _Home = __webpack_require__(525);
 
 	var _Home2 = _interopRequireDefault(_Home);
 
@@ -57620,7 +57708,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 524 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57669,34 +57757,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 525 */,
 /* 526 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.getHomeTitle = getHomeTitle;
-
-	var _Types = __webpack_require__(68);
-
-	var types = _interopRequireWildcard(_Types);
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-	function getHomeTitle() {
-	    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Homepage";
-
-	    return {
-	        type: types.GET_HOME_TITLE,
-	        title: title
-	    };
-	}
-
-/***/ },
-/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57711,11 +57772,11 @@
 
 	var _reactRedux = __webpack_require__(35);
 
-	var _Topics = __webpack_require__(528);
+	var _Topics = __webpack_require__(527);
 
 	var _Topics2 = _interopRequireDefault(_Topics);
 
-	var _Topics3 = __webpack_require__(529);
+	var _Topics3 = __webpack_require__(528);
 
 	var topicsApi = _interopRequireWildcard(_Topics3);
 
@@ -57747,7 +57808,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(HomeContainer);
 
 /***/ },
-/* 528 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -57777,7 +57838,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 529 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57791,7 +57852,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _HomeActions = __webpack_require__(526);
+	var _HomeActions = __webpack_require__(529);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57803,6 +57864,32 @@
 	    var response = "list topics";
 	    _store2.default.dispatch(getTopicList(response));
 	    return response;
+	}
+
+/***/ },
+/* 529 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.getHomeTitle = getHomeTitle;
+
+	var _Types = __webpack_require__(68);
+
+	var types = _interopRequireWildcard(_Types);
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+	function getHomeTitle() {
+	    var title = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "Homepage";
+
+	    return {
+	        type: types.GET_HOME_TITLE,
+	        title: title
+	    };
 	}
 
 /***/ },
@@ -58152,87 +58239,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 534 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.checkLogin = checkLogin;
-	exports.login = login;
-	exports.hasFollow = hasFollow;
-	exports.getMatching = getMatching;
-	exports.follow = follow;
-	exports.updateProfile = updateProfile;
-	exports.viewUserDetail = viewUserDetail;
-	exports.sendInvite = sendInvite;
-	exports.receiveInvitation = receiveInvitation;
-	exports.rejectInvitation = rejectInvitation;
-	exports.sendChat = sendChat;
-	exports.receiveChat = receiveChat;
-
-	var _store = __webpack_require__(65);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	var _jquery = __webpack_require__(520);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function checkLogin() {
-	  return;
-	}
-
-	function login() {
-	  console.log("call login api");
-	  return;
-	}
-
-	function hasFollow() {
-	  return;
-	}
-
-	function getMatching() {
-	  return;
-	}
-
-	function follow(userId) {
-	  return;
-	}
-
-	function updateProfile() {
-	  return;
-	}
-
-	function viewUserDetail(userId) {
-	  return;
-	}
-
-	function sendInvite(userId) {
-	  return;
-	}
-
-	function receiveInvitation() {
-	  return;
-	}
-
-	function rejectInvitation() {
-	  return;
-	}
-
-	function sendChat(userID, message) {
-	  return;
-	}
-
-	function receiveChat() {
-	  return;
-	}
 
 /***/ }
 /******/ ]);
