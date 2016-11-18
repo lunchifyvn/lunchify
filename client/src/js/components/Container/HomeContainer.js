@@ -9,10 +9,6 @@ const HomeContainer = React.createClass({
     componentDidMount: function() {
     },
 
-    getProfile: function(){
-
-    },
-
     openLoginModal: function(){
       Store.dispatch(openLoginModal())
     },

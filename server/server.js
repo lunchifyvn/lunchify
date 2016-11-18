@@ -48,8 +48,8 @@ app.middleware('session',
     secret: 'kitty',
     saveUninitialized: true,
     resave: true,
-  }
-));
+  })
+);
 
 passportConfigurator.init();
 
