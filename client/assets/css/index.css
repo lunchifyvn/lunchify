@@ -1,0 +1,130 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff; }
+  body.grey {
+    background: #f4f4f4; }
+  body a {
+    color: #333; }
+    body a:hover {
+      text-decoration: none; }
+  body .nav li > a:focus, body .nav li > a:hover {
+    background-color: transparent; }
+  body header {
+    background: #ffffff; }
+    body header.with-border {
+      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
+  body .navbar {
+    margin-bottom: 5px;
+    padding-top: 5px; }
+    body .navbar .navbar-brand.logo {
+      height: auto;
+      padding: 5px 15px;
+      width: 120px; }
+    body .navbar .main-menu .page-scroll a:hover {
+      background: transparent;
+      color: #2196F3; }
+    body .navbar .main-menu .last a {
+      padding-right: 0px; }
+  body .wrapper .banner {
+    position: relative; }
+    body .wrapper .banner img.banner-bg {
+      border-radius: 15px; }
+    body .wrapper .banner .cta-content {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      top: 15%;
+      left: 50%;
+      margin-left: -175px; }
+      body .wrapper .banner .cta-content .inner {
+        padding: 25px 15px; }
+        body .wrapper .banner .cta-content .inner .logo {
+          padding-top: 20px;
+          width: 140px; }
+        body .wrapper .banner .cta-content .inner h1 {
+          font-size: 24px;
+          margin: 30px auto; }
+        body .wrapper .banner .cta-content .inner .cta-btn {
+          background: #2196F3;
+          color: #fff;
+          padding: 10px;
+          display: block;
+          max-width: 65%;
+          margin: auto;
+          border-radius: 20px;
+          margin-top: 20px; }
+          body .wrapper .banner .cta-content .inner .cta-btn:hover {
+            background: #1E88E5; }
+  body .wrapper .filter-bar {
+    margin-top: 15px; }
+    body .wrapper .filter-bar .inner {
+      width: 100%;
+      min-height: 65px;
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      padding: 15px; }
+      body .wrapper .filter-bar .inner ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px; }
+        body .wrapper .filter-bar .inner ul li.tag {
+          float: left;
+          margin-right: 10px;
+          background: #e5e5e5;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 15px; }
+          body .wrapper .filter-bar .inner ul li.tag a {
+            padding: 7px 15px;
+            font-size: 13px;
+            color: #ffffff;
+            display: block; }
+  body .wrapper .content-block .content {
+    background: #fff; }
+    body .wrapper .content-block .content .inner {
+      padding: 15px; }
+  body .page-footer {
+    padding: 30px 15px; }
+  body .login-modal .modal-dialog {
+    width: 500px; }
+    body .login-modal .modal-dialog .modal-content {
+      padding: 15px; }
+      body .login-modal .modal-dialog .modal-content .modal-header {
+        border-bottom: 0px; }
+        body .login-modal .modal-dialog .modal-content .modal-header .modal-logo {
+          padding: 15px; }
+          body .login-modal .modal-dialog .modal-content .modal-header .modal-logo img {
+            max-width: 120px;
+            margin: auto; }
+      body .login-modal .modal-dialog .modal-content .modal-body .btn-login {
+        margin: 40px 0px; }
+        body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn {
+          color: #fff;
+          background: #e5e5e5;
+          display: block;
+          padding: 17px;
+          border-radius: 10px;
+          position: relative; }
+          body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn .icon {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            width: 35px; }
+          body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn.fb-btn {
+            background: #3b5998; }
+      body .login-modal .modal-dialog .modal-content .modal-footer {
+        text-align: left; }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1024px; } }
