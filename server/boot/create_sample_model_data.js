@@ -4,7 +4,6 @@ module.exports = function(app) {
   var data = require('./field-topic.json');
   var fieldModel = app.models.field;
   var topicModel = app.models.topic;
-  console.log(data);
 
   async.each(data, datum => {
     console.log(datum);
