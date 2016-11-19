@@ -1,24 +1,6 @@
 import store from '../store';
+import paremeters from '../parameters';
 import $ from 'jquery';
-
-
-export function checkLogin() {
-  return;
-}
-
-export function login() {
-  console.log("call login api");
-  $.ajax({
-    url: "http://localhost:3000/auth/facebook",
-    beforeSend: function(){
-
-    },
-    success: function(response){
-      console.log(response);
-    }
-  });
-  return;
-}
 
 export function hasFollow() {
   return;

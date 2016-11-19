@@ -73,10 +73,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
-  res.render('pages/loginProfiles', {
-    user: req.user,
-    url: req.url,
-  });
+  console.log('user', req.user);
+  res.redirect('/');
 });
 
 app.get('/local', function(req, res) {

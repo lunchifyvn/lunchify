@@ -4,14 +4,14 @@ import {Modal, Button} from 'react-bootstrap';
 
 export default function (props) {
     return (
-        <Modal className="login-modal" show={props.isOpenLogin} onHide={props.closeLogin}>
+        <Modal className="loin-modal" show={props.isOpenLogin} onHide={props.closeLogin}>
             <Modal.Header closeButton>
                 <div className="text-center modal-logo"><img src="assets/img/logo.png"/></div>
             </Modal.Header>
             <Modal.Body>
                 <p>Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn</p>
                 <div className="btn-login">
-                    <a onClick={props.login} className="social-btn fb-btn text-center" href="#">
+                    <a className="social-btn fb-btn text-center" href="http://socialauthenticator.com:3000/auth/facebook">
                         <img className="icon" src="assets/img/icon/fb.png"/>Đăng nhập bằng Facebook
                     </a>
                 </div>
