@@ -2,11 +2,6 @@ import store from '../store';
 import paremeters from '../parameters';
 import $ from 'jquery';
 
-
-export function login() {
-  return;
-}
-
 export function hasFollow() {
   return;
 }

@@ -15,3 +15,4 @@ const homeReducer = function (state = initialState, action) {
 };
 
 export default homeReducer;
+
