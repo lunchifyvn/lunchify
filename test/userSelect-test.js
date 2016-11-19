@@ -41,7 +41,6 @@ describe('User select API', () => {
         ref: fieldInstance.id,
       })
       .expect(200, (err, _res) => {
-        console.log(err);
         should.ifError(err);
         done();
       });
@@ -80,15 +79,36 @@ describe('User select API', () => {
     });
   });
 
+  it('should not allow user to select interesting field ' +
+  'when type is not topic or field',
+  done => {
+    var fieldModel = app.models.field;
+    fieldModel.updateOrCreate({
+      name: faker.lorem.words(),
+    }, (err, fieldInstance) => {
+      should.ifError(err);
+      req('post',
+      `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
+      .send({
+        type: faker.lorem.word(),
+        ref: fieldInstance.id,
+      })
+      .expect(422, (err, _res) => {
+        should.ifError(err);
+        done();
+      });
+    });
+  });
+
   it('should not allow user to select not in the list field',
   done => {
     req('post',
     `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
     .send({
       type: 'topic',
-      // ref: faker.random.uuid(),
+      ref: faker.random.uuid(), // assume the random uuid is not in the list yet
     })
-    .expect(400, (err, _res) => {
+    .expect(422, (err, _res) => {
       should.ifError(err);
       done();
     });
