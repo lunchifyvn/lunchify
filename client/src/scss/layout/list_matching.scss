@@ -1,0 +1,122 @@
+//  filter bar
+.filter-bar{
+  margin-top: 15px;
+  .inner{
+    width:100%;
+    min-height: 65px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    padding:15px;
+    ul{
+      list-style-type: none;
+      padding: 0px;
+      margin:0px;
+      li.tag{
+        float: left;
+        margin-right:10px;
+        background: $mainBlue;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        border-radius:15px;
+        a{
+          padding:7px 15px;
+          font-size: 13px;
+          color: #ffffff;
+          display: block;
+        }
+        &.disable{
+          background: #e5e5e5;
+        }
+      }
+    }
+  }
+}
+//  content block
+.content-block{
+  margin-top: 15px;
+  .content{
+    .inner{
+      background: #fff;
+      .list-item{
+        .item{
+          padding: 0px 15px;
+          .left-side{
+            .title{
+              padding: 10px;
+              background: #e5e5e5;
+              border-radius: 50%;
+              width: 35px;
+              height: 35px;
+              margin: auto;
+              .point{
+                display: block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #2196F3;
+                margin: auto;
+              }
+            }
+            .line{
+              margin-left: 48%;
+              border-left: 5px solid #e5e5e5;
+              height: auto;
+              min-height: 30px;
+            }
+          }
+          .right-side{
+            padding: 15px 80px 15px 0px;
+            .inner{
+              border-bottom: 1px solid #e5e5e5;
+              padding-bottom: 15px;
+              .avatar{
+                display: block;
+                img{
+                  border-radius: 50%;
+                }
+              }
+              .info{
+                margin-top: 5px;
+                .name{
+                  font-size: 18px;
+                }
+                .status{
+                  font-size: 16px;
+                  margin-top: 10px;
+                  color: #757575;
+                }
+              }
+              .action-btn{
+                .inner{
+                  padding: 5px 60px 0 0;
+                  border:0px;
+                  .btn{
+                    margin-bottom: 8px;
+                    border-radius: 15px;
+                    padding: 7px;
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+          }
+          &.first{
+            padding-top:30px;
+            .left-side{
+              .title{
+                padding:10px 15px;
+                border-radius: 5px;
+                width: auto;
+                height: auto;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

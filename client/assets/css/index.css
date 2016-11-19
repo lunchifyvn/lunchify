@@ -17,176 +17,184 @@ body {
   body ul {
     list-style-type: none;
     padding: 0px; }
-  body .nav li > a:focus, body .nav li > a:hover {
-    background-color: transparent; }
-  body header {
-    background: #ffffff; }
-    body header.with-border {
-      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-      -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
-  body .navbar {
-    margin-bottom: 5px;
-    padding-top: 5px; }
-    body .navbar .navbar-brand.logo {
-      height: auto;
-      padding: 5px 15px;
-      width: 120px; }
-    body .navbar .main-menu .page-scroll a:hover {
-      background: transparent;
-      color: #2196F3; }
-    body .navbar .main-menu .last a {
-      padding-right: 0px; }
-  body .wrapper .banner {
-    position: relative; }
-    body .wrapper .banner img.banner-bg {
-      border-radius: 15px; }
-    body .wrapper .banner .cta-content {
-      position: absolute;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      top: 15%;
-      left: 50%;
-      margin-left: -175px; }
-      body .wrapper .banner .cta-content .inner {
-        padding: 25px 15px; }
-        body .wrapper .banner .cta-content .inner .logo {
-          padding-top: 20px;
-          width: 140px; }
-        body .wrapper .banner .cta-content .inner h1 {
-          font-size: 24px;
-          margin: 30px auto; }
-        body .wrapper .banner .cta-content .inner .cta-btn {
-          background: #2196F3;
-          color: #fff;
-          padding: 10px;
-          display: block;
-          max-width: 65%;
-          margin: auto;
-          border-radius: 20px;
-          margin-top: 20px; }
-          body .wrapper .banner .cta-content .inner .cta-btn:hover {
-            background: #1E88E5; }
-  body .wrapper .filter-bar {
-    margin-top: 15px; }
-    body .wrapper .filter-bar .inner {
-      width: 100%;
-      min-height: 65px;
-      background: #ffffff;
-      border: 1px solid #e5e5e5;
-      -webkit-border-radius: 10px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      padding: 15px; }
-      body .wrapper .filter-bar .inner ul {
-        list-style-type: none;
-        padding: 0px;
-        margin: 0px; }
-        body .wrapper .filter-bar .inner ul li.tag {
-          float: left;
-          margin-right: 10px;
-          background: #2196F3;
-          -webkit-border-radius: 5px;
-          -moz-border-radius: 5px;
-          border-radius: 15px; }
-          body .wrapper .filter-bar .inner ul li.tag a {
-            padding: 7px 15px;
-            font-size: 13px;
-            color: #ffffff;
-            display: block; }
-          body .wrapper .filter-bar .inner ul li.tag.disable {
-            background: #e5e5e5; }
-  body .wrapper .content-block {
-    margin-top: 15px; }
-    body .wrapper .content-block .content .inner {
-      background: #fff; }
-      body .wrapper .content-block .content .inner .list-item .item {
-        padding: 0px 15px; }
-        body .wrapper .content-block .content .inner .list-item .item .left-side .title {
-          padding: 10px;
-          background: #e5e5e5;
-          border-radius: 50%;
-          width: 35px;
-          height: 35px;
-          margin: auto; }
-          body .wrapper .content-block .content .inner .list-item .item .left-side .title .point {
-            display: block;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: #2196F3;
-            margin: auto; }
-        body .wrapper .content-block .content .inner .list-item .item .left-side .line {
-          margin-left: 48%;
-          border-left: 5px solid #e5e5e5;
-          height: auto;
-          min-height: 30px; }
-        body .wrapper .content-block .content .inner .list-item .item .right-side {
-          padding: 15px 80px 15px 0px; }
-          body .wrapper .content-block .content .inner .list-item .item .right-side .inner {
-            border-bottom: 1px solid #e5e5e5;
-            padding-bottom: 15px; }
-            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .avatar {
-              display: block; }
-              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .avatar img {
-                border-radius: 50%; }
-            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info {
-              margin-top: 5px; }
-              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info .name {
-                font-size: 18px; }
-              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info .status {
-                font-size: 16px;
-                margin-top: 10px;
-                color: #757575; }
-            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner {
-              padding: 5px 60px 0 0;
-              border: 0px; }
-              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner .btn {
-                margin-bottom: 8px;
-                border-radius: 15px;
-                padding: 7px;
-                font-size: 13px; }
-        body .wrapper .content-block .content .inner .list-item .item.first {
-          padding-top: 30px; }
-          body .wrapper .content-block .content .inner .list-item .item.first .left-side .title {
-            padding: 10px 15px;
-            border-radius: 5px;
-            width: auto;
-            height: auto; }
-  body .page-footer {
-    padding: 30px 15px; }
-  body .login-modal .modal-dialog {
-    width: 500px; }
-    body .login-modal .modal-dialog .modal-content {
-      padding: 15px; }
-      body .login-modal .modal-dialog .modal-content .modal-header {
-        border-bottom: 0px; }
-        body .login-modal .modal-dialog .modal-content .modal-header .modal-logo {
-          padding: 15px; }
-          body .login-modal .modal-dialog .modal-content .modal-header .modal-logo img {
-            max-width: 120px;
-            margin: auto; }
-      body .login-modal .modal-dialog .modal-content .modal-body .btn-login {
-        margin: 40px 0px; }
-        body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn {
-          color: #fff;
-          background: #e5e5e5;
-          display: block;
-          padding: 17px;
-          border-radius: 10px;
-          position: relative; }
-          body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn .icon {
-            position: absolute;
-            left: 20px;
-            top: 10px;
-            width: 35px; }
-          body .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn.fb-btn {
-            background: #3b5998; }
-      body .login-modal .modal-dialog .modal-content .modal-footer {
-        text-align: left; }
 
 @media (min-width: 1200px) {
   .container {
     width: 1024px; } }
+
+body .nav li > a:focus, body .nav li > a:hover {
+  background-color: transparent; }
+
+body header {
+  background: #ffffff; }
+  body header.with-border {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1); }
+
+body .navbar {
+  margin-bottom: 5px;
+  padding-top: 5px; }
+  body .navbar .navbar-brand.logo {
+    height: auto;
+    padding: 5px 15px;
+    width: 120px; }
+  body .navbar .main-menu .page-scroll a:hover {
+    background: transparent;
+    color: #2196F3; }
+  body .navbar .main-menu .last a {
+    padding-right: 0px; }
+
+.login-modal .modal-dialog {
+  width: 500px; }
+  .login-modal .modal-dialog .modal-content {
+    padding: 15px; }
+    .login-modal .modal-dialog .modal-content .modal-header {
+      border-bottom: 0px; }
+      .login-modal .modal-dialog .modal-content .modal-header .modal-logo {
+        padding: 15px; }
+        .login-modal .modal-dialog .modal-content .modal-header .modal-logo img {
+          max-width: 120px;
+          margin: auto; }
+    .login-modal .modal-dialog .modal-content .modal-body .btn-login {
+      margin: 40px 0px; }
+      .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn {
+        color: #fff;
+        background: #e5e5e5;
+        display: block;
+        padding: 17px;
+        border-radius: 10px;
+        position: relative; }
+        .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn .icon {
+          position: absolute;
+          left: 20px;
+          top: 10px;
+          width: 35px; }
+        .login-modal .modal-dialog .modal-content .modal-body .btn-login .social-btn.fb-btn {
+          background: #3b5998; }
+    .login-modal .modal-dialog .modal-content .modal-footer {
+      text-align: left; }
+
+.wrapper .banner {
+  position: relative; }
+  .wrapper .banner img.banner-bg {
+    border-radius: 15px; }
+  .wrapper .banner .cta-content {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    top: 15%;
+    left: 50%;
+    margin-left: -175px; }
+    .wrapper .banner .cta-content .inner {
+      padding: 25px 15px; }
+      .wrapper .banner .cta-content .inner .logo {
+        padding-top: 20px;
+        width: 140px; }
+      .wrapper .banner .cta-content .inner h1 {
+        font-size: 24px;
+        margin: 30px auto; }
+      .wrapper .banner .cta-content .inner .cta-btn {
+        background: #2196F3;
+        color: #fff;
+        padding: 10px;
+        display: block;
+        max-width: 65%;
+        margin: auto;
+        border-radius: 20px;
+        margin-top: 20px; }
+        .wrapper .banner .cta-content .inner .cta-btn:hover {
+          background: #1E88E5; }
+
+.filter-bar {
+  margin-top: 15px; }
+  .filter-bar .inner {
+    width: 100%;
+    min-height: 65px;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 15px; }
+    .filter-bar .inner ul {
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px; }
+      .filter-bar .inner ul li.tag {
+        float: left;
+        margin-right: 10px;
+        background: #2196F3;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 15px; }
+        .filter-bar .inner ul li.tag a {
+          padding: 7px 15px;
+          font-size: 13px;
+          color: #ffffff;
+          display: block; }
+        .filter-bar .inner ul li.tag.disable {
+          background: #e5e5e5; }
+
+.content-block {
+  margin-top: 15px; }
+  .content-block .content .inner {
+    background: #fff; }
+    .content-block .content .inner .list-item .item {
+      padding: 0px 15px; }
+      .content-block .content .inner .list-item .item .left-side .title {
+        padding: 10px;
+        background: #e5e5e5;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        margin: auto; }
+        .content-block .content .inner .list-item .item .left-side .title .point {
+          display: block;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background: #2196F3;
+          margin: auto; }
+      .content-block .content .inner .list-item .item .left-side .line {
+        margin-left: 48%;
+        border-left: 5px solid #e5e5e5;
+        height: auto;
+        min-height: 30px; }
+      .content-block .content .inner .list-item .item .right-side {
+        padding: 15px 80px 15px 0px; }
+        .content-block .content .inner .list-item .item .right-side .inner {
+          border-bottom: 1px solid #e5e5e5;
+          padding-bottom: 15px; }
+          .content-block .content .inner .list-item .item .right-side .inner .avatar {
+            display: block; }
+            .content-block .content .inner .list-item .item .right-side .inner .avatar img {
+              border-radius: 50%; }
+          .content-block .content .inner .list-item .item .right-side .inner .info {
+            margin-top: 5px; }
+            .content-block .content .inner .list-item .item .right-side .inner .info .name {
+              font-size: 18px; }
+            .content-block .content .inner .list-item .item .right-side .inner .info .status {
+              font-size: 16px;
+              margin-top: 10px;
+              color: #757575; }
+          .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner {
+            padding: 5px 60px 0 0;
+            border: 0px; }
+            .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner .btn {
+              margin-bottom: 8px;
+              border-radius: 15px;
+              padding: 7px;
+              font-size: 13px; }
+      .content-block .content .inner .list-item .item.first {
+        padding-top: 30px; }
+        .content-block .content .inner .list-item .item.first .left-side .title {
+          padding: 10px 15px;
+          border-radius: 5px;
+          width: auto;
+          height: auto; }
+
+.page-footer {
+  padding: 30px 15px; }

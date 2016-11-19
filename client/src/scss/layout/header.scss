@@ -1,0 +1,43 @@
+$mainBlue: #2196F3;
+
+body {
+  .nav {
+    li > a:focus, li > a:hover {
+      background-color: transparent;
+    }
+  }
+  header {
+    background: #ffffff;
+    &.with-border {
+      -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .navbar {
+    margin-bottom: 5px;
+    padding-top: 5px;
+    .navbar-brand {
+      &.logo {
+        height: auto;
+        padding: 5px 15px;
+        width: 120px;
+      }
+    }
+    .main-menu {
+      .page-scroll {
+        a {
+          &:hover {
+            background: transparent;
+            color: $mainBlue;
+          }
+        }
+      }
+      .last {
+        a {
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+}
