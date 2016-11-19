@@ -11,7 +11,11 @@ export default function (props) {
             <Modal.Body>
                 <p>Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn</p>
                 <div className="btn-login">
+<<<<<<< HEAD
                     <a className="social-btn fb-btn text-center" href="http://socialauthenticator.com:3000/auth/facebook">
+=======
+                    <a onClick={props.login} className="social-btn fb-btn text-center" href="#">
+>>>>>>> 792bf76f499b7ee50338e628643afd26e9920bf2
                         <img className="icon" src="assets/img/icon/fb.png"/>Đăng nhập bằng Facebook
                     </a>
                 </div>
@@ -22,4 +26,8 @@ export default function (props) {
             </Modal.Footer>
         </Modal>
     );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 792bf76f499b7ee50338e628643afd26e9920bf2
