@@ -1,0 +1,33 @@
+$mainBlue: #2196F3;
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  &.grey{
+    background: #f4f4f4;
+  }
+  a {
+    color: #333;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: $mainBlue;
+    border-color: $mainBlue;
+  }
+  ul{
+    list-style-type: none;
+    padding: 0px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1024px;
+  }
+}
