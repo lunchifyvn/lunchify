@@ -1,0 +1,43 @@
+.login-modal {
+  .modal-dialog {
+    width: 500px;
+    .modal-content {
+      padding: 15px;
+      .modal-header {
+        border-bottom: 0px;
+        .modal-logo {
+          padding: 15px;
+          img {
+            max-width: 120px;
+            margin: auto;
+          }
+        }
+      }
+      .modal-body {
+        .btn-login {
+          margin: 40px 0px;
+          .social-btn {
+            color: #fff;
+            background: #e5e5e5;
+            display: block;
+            padding: 17px;
+            border-radius: 10px;
+            position: relative;
+            .icon {
+              position: absolute;
+              left: 20px;
+              top: 10px;
+              width: 35px;
+            }
+            &.fb-btn {
+              background: #3b5998;
+            }
+          }
+        }
+      }
+      .modal-footer {
+        text-align: left;
+      }
+    }
+  }
+}
