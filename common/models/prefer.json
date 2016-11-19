@@ -3,11 +3,11 @@
   "plural": "prefers",
   "base": "PersistedModel",
   "properties": {
-    "topic": {
+    "type": {
       "type": "String",
       "required": "true"
     },
-    "id": {
+    "ref": {
       "type": "object",
       "required": "true"
     }
@@ -20,6 +20,13 @@
       "foreignKey": "userId"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

@@ -26,6 +26,13 @@
       "foreignKey": "userId"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "__create__prefers"
+    }
+  ],
   "methods": {}
 }

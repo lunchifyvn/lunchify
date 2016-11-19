@@ -48,5 +48,9 @@
   "topic": {
     "dataSource": "db",
     "public": true
+  },
+  "prefer": {
+    "dataSource": "db",
+    "public": false
   }
 }
