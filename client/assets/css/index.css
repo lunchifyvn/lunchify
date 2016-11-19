@@ -10,6 +10,13 @@ body {
     color: #333; }
     body a:hover {
       text-decoration: none; }
+  body .btn-primary {
+    color: #fff;
+    background-color: #2196F3;
+    border-color: #2196F3; }
+  body ul {
+    list-style-type: none;
+    padding: 0px; }
   body .nav li > a:focus, body .nav li > a:hover {
     background-color: transparent; }
   body header {
@@ -80,7 +87,7 @@ body {
         body .wrapper .filter-bar .inner ul li.tag {
           float: left;
           margin-right: 10px;
-          background: #e5e5e5;
+          background: #2196F3;
           -webkit-border-radius: 5px;
           -moz-border-radius: 5px;
           border-radius: 15px; }
@@ -89,10 +96,65 @@ body {
             font-size: 13px;
             color: #ffffff;
             display: block; }
-  body .wrapper .content-block .content {
-    background: #fff; }
+          body .wrapper .filter-bar .inner ul li.tag.disable {
+            background: #e5e5e5; }
+  body .wrapper .content-block {
+    margin-top: 15px; }
     body .wrapper .content-block .content .inner {
-      padding: 15px; }
+      background: #fff; }
+      body .wrapper .content-block .content .inner .list-item .item {
+        padding: 0px 15px; }
+        body .wrapper .content-block .content .inner .list-item .item .left-side .title {
+          padding: 10px;
+          background: #e5e5e5;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          margin: auto; }
+          body .wrapper .content-block .content .inner .list-item .item .left-side .title .point {
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2196F3;
+            margin: auto; }
+        body .wrapper .content-block .content .inner .list-item .item .left-side .line {
+          margin-left: 48%;
+          border-left: 5px solid #e5e5e5;
+          height: auto;
+          min-height: 30px; }
+        body .wrapper .content-block .content .inner .list-item .item .right-side {
+          padding: 15px 80px 15px 0px; }
+          body .wrapper .content-block .content .inner .list-item .item .right-side .inner {
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 15px; }
+            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .avatar {
+              display: block; }
+              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .avatar img {
+                border-radius: 50%; }
+            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info {
+              margin-top: 5px; }
+              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info .name {
+                font-size: 18px; }
+              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .info .status {
+                font-size: 16px;
+                margin-top: 10px;
+                color: #757575; }
+            body .wrapper .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner {
+              padding: 5px 60px 0 0;
+              border: 0px; }
+              body .wrapper .content-block .content .inner .list-item .item .right-side .inner .action-btn .inner .btn {
+                margin-bottom: 8px;
+                border-radius: 15px;
+                padding: 7px;
+                font-size: 13px; }
+        body .wrapper .content-block .content .inner .list-item .item.first {
+          padding-top: 30px; }
+          body .wrapper .content-block .content .inner .list-item .item.first .left-side .title {
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: auto;
+            height: auto; }
   body .page-footer {
     padding: 30px 15px; }
   body .login-modal .modal-dialog {
