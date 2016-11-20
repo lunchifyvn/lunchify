@@ -4,7 +4,7 @@ import {Modal, Button} from 'react-bootstrap';
 
 export default function (props) {
     return (
-        <Modal className="loin-modal" show={props.isOpenLogin} onHide={props.closeLogin}>
+        <Modal className="login-modal" show={props.isOpenLogin} onHide={props.closeLogin}>
             <Modal.Header closeButton>
                 <div className="text-center modal-logo"><img src="assets/img/logo.png"/></div>
             </Modal.Header>

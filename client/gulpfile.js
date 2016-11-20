@@ -12,7 +12,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
   var newDate = new Date();
   console.log(newDate+" -- Content change");
-  gulp.watch('./src/scss/*.scss', ['sass']);
+  gulp.watch('./src/scss/layout/*.scss', ['sass']);
 });
 
 gulp.task('default', ['sass', 'watch']);
