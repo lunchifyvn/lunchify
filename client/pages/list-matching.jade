@@ -81,3 +81,10 @@ block content
                 .inner
                   a.btn.btn-primary.btn-block(href='#') Gửi lời mời
                   a.btn.btn-default.btn-block(href='#') Xem thông tin
+block scripts
+  script.
+    $(document).ready(function(){
+      //  add class to body and header
+      $("body").addClass("grey");
+      $("header").addClass("with-border")
+    })
