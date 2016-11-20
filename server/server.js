@@ -79,8 +79,8 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
   res.redirect('/');
 });
 
-app.get('/local', function(req, res) {
-  res.render('pages/local', {
+app.get('/select-topics', function(req, res) {
+  res.render('pages/select-topics', {
     user: req.user,
     url: req.url,
   });
