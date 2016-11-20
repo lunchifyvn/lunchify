@@ -86,6 +86,13 @@ app.get('/local', function(req, res) {
   });
 });
 
+app.get('/list-matching', function(req, res) {
+  res.render('pages/list-matching', {
+    user: req.user,
+    url: req.url,
+  });
+});
+
 app.get('/signup', function(req, res) {
   res.render('pages/signup', {
     user: req.user,
