@@ -120,7 +120,6 @@ describe('User select API', () => {
     `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
     .expect(200, (err, res) => {
       should.ifError(err);
-      console.log(res.body);
       res.should.have.property('body').which.is.an.Array();
       done();
     });

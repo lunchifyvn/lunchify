@@ -31,7 +31,6 @@ describe('User select API', () => {
     req('get',
     `/api/users/${user1User.userId}/suggestion?access_token=${user1User.id}`)
     .expect(200, (err, _res) => {
-      console.log(_res.body);
       should.ifError(err);
       done();
     });
