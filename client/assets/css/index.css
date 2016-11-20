@@ -210,3 +210,6 @@ body .navbar {
   .topic-label:hover {
     background: palegoldenrod;
     color: black !important; }
+
+.topic-selected {
+  background: palegoldenrod; }
