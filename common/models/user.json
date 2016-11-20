@@ -32,6 +32,12 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "__create__prefers"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "__get__prefers"
     }
   ],
   "methods": {}

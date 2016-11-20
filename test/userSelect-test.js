@@ -113,4 +113,16 @@ describe('User select API', () => {
       done();
     });
   });
+
+  it('should allow user the get list of her interesting topic/field',
+  done => {
+    req('get',
+    `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      console.log(res.body);
+      res.should.have.property('body').which.is.an.Array();
+      done();
+    });
+  });
 });
