@@ -76,10 +76,11 @@ app.get('/', function(req, res) {
 
 app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
   console.log('user', req.user);
-  res.redirect('/');
+  res.redirect('/select-topics');
 });
 
 app.get('/select-topics', function(req, res) {
+  console.log(req.user);
   res.render('pages/select-topics', {
     user: req.user,
     url: req.url,

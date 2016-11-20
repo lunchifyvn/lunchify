@@ -1,55 +1,75 @@
-.container
-  .row
-    .col-lg-12
-      h1.page-header Select your favorite topics
-br
-.container
-  .flex-row.row
-    div
-      h3 Arts & Entertainment
-      a.badge.topic-label Art
-      a.badge.topic-label Fiction
-      a.badge.topic-label Dancing
-      a.badge.topic-label Music
-      a.badge.topic-label Literature
-      a.badge.topic-label Film
-    div
-      h3 Business & Career
-      a.badge.topic-label Marketing
-      a.badge.topic-label Real Estate
-      a.badge.topic-label Small Business
-      a.badge.topic-label Startups
-      a.badge.topic-label Software Development
-      a.badge.topic-label Public Speaking
-    div
-      h3 Parenting & Family
-      a.badge.topic-label Single Dads
-      a.badge.topic-label Single Moms
-      a.badge.topic-label Married Couples
-      a.badge.topic-label Playdates
-      a.badge.topic-label Toddlers
-      a.badge.topic-label Working Moms
-    div
-      h3 Pets & Animals
-      a.badge.topic-label Fish
-      a.badge.topic-label Cats
-      a.badge.topic-label Dogs
-      a.badge.topic-label Birds
-      a.badge.topic-label Horses
-      a.badge.topic-label Lizards
-    div
-      h3 Internet & Technology
-      a.badge.topic-label Android Development
-      a.badge.topic-label Web Development
-      a.badge.topic-label Web Design
-      a.badge.topic-label Social Media
-      a.badge.topic-label Operating Systems
-      a.badge.topic-label Hacking
-    div
-      h3 Sports & Recreation
-      a.badge.topic-label Climbing
-      a.badge.topic-label Cycling
-      a.badge.topic-label Dancing
-      a.badge.topic-label Soccer
-      a.badge.topic-label Badminton
-      a.badge.topic-label Running
+extends ../layouts/layout
+
+block content
+  .container
+    .row
+      .col-lg-12
+        h1.page-header Select your favorite topics
+  br
+  .container
+    .flex-row.row
+      div
+        h3 Arts & Entertainment
+        a.badge.topic-label Art
+        a.badge.topic-label Fiction
+        a.badge.topic-label Dancing
+        a.badge.topic-label Music
+        a.badge.topic-label Literature
+        a.badge.topic-label Film
+      div
+        h3 Business & Career
+        a.badge.topic-label Marketing
+        a.badge.topic-label Real Estate
+        a.badge.topic-label Small Business
+        a.badge.topic-label Startups
+        a.badge.topic-label Software Development
+        a.badge.topic-label Public Speaking
+      div
+        h3 Parenting & Family
+        a.badge.topic-label Single Dads
+        a.badge.topic-label Single Moms
+        a.badge.topic-label Married Couples
+        a.badge.topic-label Playdates
+        a.badge.topic-label Toddlers
+        a.badge.topic-label Working Moms
+      div
+        h3 Pets & Animals
+        a.badge.topic-label Fish
+        a.badge.topic-label Cats
+        a.badge.topic-label Dogs
+        a.badge.topic-label Birds
+        a.badge.topic-label Horses
+        a.badge.topic-label Lizards
+      div
+        h3 Internet & Technology
+        a.badge.topic-label Android Development
+        a.badge.topic-label Web Development
+        a.badge.topic-label Web Design
+        a.badge.topic-label Social Media
+        a.badge.topic-label Operating Systems
+        a.badge.topic-label Hacking
+      div
+        h3 Sports & Recreation
+        a.badge.topic-label Climbing
+        a.badge.topic-label Cycling
+        a.badge.topic-label Dancing
+        a.badge.topic-label Soccer
+        a.badge.topic-label Badminton
+        a.badge.topic-label Running
+
+block scripts
+  script.
+    $.ajax({
+      url: base_url + 'api/fields',
+      data: {
+        'X-Access-Token': $.cookie('access_token'),
+        'filter[include]': 'topics'
+      },
+      method: "GET",
+      beforeSend: function() {
+        
+      },
+      success: function(response) {
+          console.log(response);
+      }
+    })
