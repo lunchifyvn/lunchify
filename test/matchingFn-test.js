@@ -37,7 +37,6 @@ describe('Matching Profile Fn', () => {
     }];
 
     var matchedProfile = matchingFn.matchProfile(origin, group);
-    console.log('matchedProfile', matchedProfile);
     matchedProfile.should.be.an.Array();
     matchedProfile.should.deepEqual(group);
   });
@@ -76,7 +75,6 @@ describe('Matching Profile Fn', () => {
     }];
 
     var matchedProfile = matchingFn.matchProfile(origin, group);
-    console.log('matchedProfile', matchedProfile);
     matchedProfile.should.be.an.Array();
     matchedProfile.should.deepEqual([group[1]]);
   });
