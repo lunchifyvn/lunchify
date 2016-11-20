@@ -1,0 +1,32 @@
+{
+  "name": "prefer",
+  "plural": "prefers",
+  "base": "PersistedModel",
+  "properties": {
+    "type": {
+      "type": "String",
+      "required": "true"
+    },
+    "ref": {
+      "type": "object",
+      "required": "true"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}
