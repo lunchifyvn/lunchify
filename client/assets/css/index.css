@@ -209,4 +209,4 @@ body .navbar {
   border-radius: 15px; }
   .topic-label:hover {
     background: palegoldenrod;
-    color: black; }
+    color: black !important; }

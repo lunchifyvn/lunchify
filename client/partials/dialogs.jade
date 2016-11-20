@@ -1,0 +1,21 @@
+#loginDialog.login-modal.fade.modal(role='dialog', tabindex='-1')
+  .modal-dialog
+    .modal-content(role='document')
+      .modal-header
+        button.close(type='button', aria-label='Close', data-dismiss='modal')
+          span(aria-hidden='true') x
+        .text-center.modal-logo
+          img(src='img/logo.png')
+      .modal-body
+        p
+          | Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn
+        .btn-login
+          a.social-btn.fb-btn.text-center(href='http://socialauthenticator.com:3000/auth/facebook')
+            img.icon(src='img/icon/fb.png')
+            // react-text: 16
+            | Đăng nhập bằng Facebook
+            // /react-text
+      .modal-footer
+        p
+          | Khi click vào đăng nhập nghĩa là bạn đã đồng ý với các điều khoản và chình sách của Lunchify
+        p Nếu bạn có câu hỏi, hãy tìm câu trả lời trong phần FAQ
