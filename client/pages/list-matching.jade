@@ -5,22 +5,30 @@ block content
     .filter-bar
       .inner
         ul.list-tag.row
-          li.tag.disable
+          li.tag
             a.text-center(href='#') Phượt
+              i.ion-android-close
           li.tag
             a.text-center(href='#') Ăn nhậu
+              i.ion-android-close
           li.tag
             a.text-center(href='#') Chém gió
+              i.ion-android-close
           li.tag
             a.text-center(href='#') Thể thao
-          li.tag.disable
+              i.ion-android-close
+          li.tag
             a.text-center(href='#') Phượt
+              i.ion-android-close
           li.tag
             a.text-center(href='#') Ăn nhậu
-          li.tag.disable
+              i.ion-android-close
+          li.tag
             a.text-center(href='#') Chém gió
+              i.ion-android-close
           li.tag
             a.text-center(href='#') Thể thao
+              i.ion-android-close
     .row.content-block
       .content.col-sm-12
         .inner
@@ -86,5 +94,18 @@ block scripts
     $(document).ready(function(){
       //  add class to body and header
       $("body").addClass("grey");
-      $("header").addClass("with-border")
+      $("header").addClass("with-border");
+      $(".tag").click(function(event){
+        event.preventDefault();
+        var _this = $(this);
+        var content = _this.text();
+        console.debug(content);
+        if(_this.hasClass("disable")){
+          _this.removeClass("disable");
+          _this.find('a').empty().append(content + '<i class="ion-android-close"></i>')
+        }else{
+          _this.addClass("disable");
+          _this.find('a').empty().append(content + '<i class="ion-checkmark-round"></i>')
+        }
+      })
     })
