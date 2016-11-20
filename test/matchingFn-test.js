@@ -1,5 +1,5 @@
 var matchingFn = require('../lib/matching');
-var should = require('should');
+require('should');
 
 describe('Matching Profile Fn', () => {
   it('should provide basic matching for field with all users', () => {
@@ -65,7 +65,6 @@ describe('Matching Profile Fn', () => {
     }, {
       prefers: [
         {type: 'field', ref: 7, userId: 3, id: 13},
-        {type: 'field', ref: 112, userId: 3, id: 363},
       ],
       userId: 3,
       location: {
