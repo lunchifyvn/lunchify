@@ -135,13 +135,17 @@ body .navbar {
           font-size: 13px;
           color: #ffffff;
           display: block; }
+          .filter-bar .inner ul li.tag a i {
+            margin-left: 7px; }
         .filter-bar .inner ul li.tag.disable {
-          background: #e5e5e5; }
+          background: #bdbdbd; }
 
 .content-block {
   margin-top: 15px; }
   .content-block .content .inner {
-    background: #fff; }
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    border-radius: 10px; }
     .content-block .content .inner .list-item .item {
       padding: 15px; }
       .content-block .content .inner .list-item .item .item-info {

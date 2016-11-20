@@ -26,9 +26,12 @@
           font-size: 13px;
           color: #ffffff;
           display: block;
+          i{
+            margin-left:7px;
+          }
         }
         &.disable{
-          background: #e5e5e5;
+          background: #bdbdbd;
         }
       }
     }
@@ -39,7 +42,9 @@
   margin-top: 15px;
   .content{
     .inner{
+      border: 1px solid #e5e5e5;
       background: #fff;
+      border-radius: 10px;
       .list-item{
         .item{
           padding: 15px;
