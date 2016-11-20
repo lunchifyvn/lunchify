@@ -34,7 +34,9 @@ app.middleware('parse', bodyParser.urlencoded({
 }));
 
 var path = require('path');
-app.use(loopback.static(path.resolve(__dirname, '../client')));
+app.use(loopback.static(path.resolve(__dirname, '../client/assets')));
+app.set('views', path.resolve(__dirname, '../client'));
+app.set('view engine', 'jade');
 
 // The access token is only available after boot
 app.middleware('auth', loopback.token({
