@@ -1,0 +1,90 @@
+extends ../layouts/layout
+
+block content
+  .container
+    .filter-bar
+      .inner
+        ul.list-tag.row
+          li.tag.disable
+            a.text-center(href='#') Phượt
+          li.tag
+            a.text-center(href='#') Ăn nhậu
+          li.tag
+            a.text-center(href='#') Chém gió
+          li.tag
+            a.text-center(href='#') Thể thao
+          li.tag.disable
+            a.text-center(href='#') Phượt
+          li.tag
+            a.text-center(href='#') Ăn nhậu
+          li.tag.disable
+            a.text-center(href='#') Chém gió
+          li.tag
+            a.text-center(href='#') Thể thao
+    .row.content-block
+      .content.col-sm-12
+        .inner
+          ul.list-item
+            li.row.item.first
+              .col-sm-12.item-info
+                .mark-point
+                  .title Khoảng cách
+                  .line
+            li.row.item
+              .col-sm-9.item-info
+                .mark-point
+                  .title
+                    .point
+                  .line
+                .row
+                  .col-sm-4.col-md-3.col-lg-2
+                    a.avatar(href='#')
+                      img.img-responsive(src='https://graph.facebook.com/10154258944779528/picture?width=100&height=100')
+                  .info.col-sm-8.col-md-9.col-lg-10
+                    strong.name Thảo Nguyễn
+                    p.status Bàn về chính trị là đam mê của tui
+              .action-btn.col-sm-3
+                .inner
+                  a.btn.btn-primary.btn-block(href='#') Gửi lời mời
+                  a.btn.btn-default.btn-block(href='#') Xem thông tin
+            li.row.item
+              .col-sm-9.item-info
+                .mark-point
+                  .title
+                    .point
+                  .line
+                .row
+                  .col-sm-4.col-md-3.col-lg-2
+                    a.avatar(href='#')
+                      img.img-responsive(src='https://graph.facebook.com/10200810826468752/picture?width=100&height=100')
+                  .info.col-sm-8.col-md-9.col-lg-10
+                    strong.name Thảo Nguyễn
+                    p.status Bàn về chính trị là đam mê của tui
+              .action-btn.col-sm-3
+                .inner
+                  a.btn.btn-primary.btn-block(href='#') Gửi lời mời
+                  a.btn.btn-default.btn-block(href='#') Xem thông tin
+            li.row.item.last
+              .col-sm-9.item-info
+                .mark-point
+                  .title
+                    .point
+                  .line
+                .row
+                  .col-sm-4.col-md-3.col-lg-2
+                    a.avatar(href='#')
+                      img.img-responsive(src='https://graph.facebook.com/1153050578042470/picture?width=100&height=100')
+                  .info.col-sm-8.col-md-9.col-lg-10
+                    strong.name Thảo Nguyễn
+                    p.status Bàn về chính trị là đam mê của tui
+              .action-btn.col-sm-3
+                .inner
+                  a.btn.btn-primary.btn-block(href='#') Gửi lời mời
+                  a.btn.btn-default.btn-block(href='#') Xem thông tin
+block scripts
+  script.
+    $(document).ready(function(){
+      //  add class to body and header
+      $("body").addClass("grey");
+      $("header").addClass("with-border")
+    })
