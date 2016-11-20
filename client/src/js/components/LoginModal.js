@@ -11,7 +11,7 @@ export default function (props) {
             <Modal.Body>
                 <p>Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn</p>
                 <div className="btn-login">
-                    <a className="social-btn fb-btn text-center" href="http://socialauthenticator.com:3000/auth/facebook">
+                    <a className="social-btn fb-btn text-center" href="/auth/facebook">
                         <img className="icon" src="assets/img/icon/fb.png"/>Đăng nhập bằng Facebook
                     </a>
                 </div>
