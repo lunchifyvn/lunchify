@@ -7,7 +7,7 @@
     "lint": "eslint .",
     "start": "node .",
     "test": "mocha test/*-test.js",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint"
   },
   "dependencies": {
     "async": "^2.1.2",
