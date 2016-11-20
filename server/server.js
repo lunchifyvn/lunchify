@@ -80,10 +80,18 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
 });
 
 app.get('/select-topics', function(req, res) {
-  console.log(req.user);
-  res.render('pages/select-topics', {
-    user: req.user,
-    url: req.url,
+  var User = app.models.user;
+  User.findById(req.user.id, {
+    include: 'prefers',
+  }, (err, user) => {
+    console.log('user', user);
+    if (user.prefers.length > 0) {
+      return res.redirect('/list-matching');
+    }
+    res.render('pages/select-topics', {
+      user: req.user,
+      url: req.url,
+    });
   });
 });
 
