@@ -9,7 +9,9 @@
  *
  * returns an array of user: [user]
  */
-function suggestion(origin, group) {
+function matchProfile(origin, group) {
+  console.log('origin', origin);
+  console.log('group', group);
   return group;
 }
 
@@ -28,13 +30,12 @@ module.exports = function(User) {
         where: {id: {inq: userProfile.id}}, // except the user himself
         include: 'prefers', // include the prefers
         fields: {id: true, prefers: true}, // select id and prefer and location
-      }, (err, instances) => {
+      }, (err, users) => {
         if (err) {
           return cb(err);
         }
-        console.log('userProfile', userProfile);
-        console.log('instances', instances);
-        cb(null, []);
+        var suggestion = matchProfile(userProfile, users);
+        cb(null, suggestion);
       });
     });
   };
