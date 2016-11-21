@@ -84,8 +84,7 @@ app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   User.findById(req.user.id, {
     include: 'prefers',
   }, (err, user) => {
-    console.log('user', user);
-    if (user.prefers.length > 0) {
+    if (user.prefers().length > 0) {
       return res.redirect('/list-matching');
     }
     res.render('pages/select-topics', {
