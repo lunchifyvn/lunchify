@@ -55,6 +55,12 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "__create__locations"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW",
+      "property": "__get__identities"
     }
   ],
   "methods": {}
