@@ -1,14 +1,10 @@
 {
-  "name": "prefer",
-  "plural": "prefers",
+  "name": "location",
+  "plural": "locations",
   "base": "PersistedModel",
   "properties": {
-    "type": {
-      "type": "String",
-      "required": "true"
-    },
-    "ref": {
-      "type": "object",
+    "geo": {
+      "type": "GeoPoint",
       "required": "true"
     },
     "createdAt": {
@@ -21,19 +17,12 @@
   },
   "validations": [],
   "relations": {
-    "user": {
+    "users": {
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "userId"
     }
   },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    }
-  ],
+  "acls": [],
   "methods": {}
 }
