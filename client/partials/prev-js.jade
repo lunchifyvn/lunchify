@@ -1,5 +1,66 @@
-script.
-  var base_url = '/';
 script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+script.
+  var base_url = '/';
+  var userInfoUri = '/users/{id}/identities';
+  var userInfo = {
+    id:"",
+    access_token:"",
+    name: "",
+    avatar: "",
+    location : {lat: "", lng: ""}
+  };
+
+  /**
+   * user location
+   */
+  //  get from local sotrage
+  if (typeof(Storage) !== "undefined") {
+    userInfo.location.lat = $.cookie('userLat');
+    userInfo.location.lng = $.cookie('userLng');
+  }
+  //  get location
+  navigator.geolocation.getCurrentPosition(function (location) {
+    if (location.coords.latitude && location.coords.longitude) {
+      $.cookie('userLat', location.coords.latitude, {expires: 7});
+      $.cookie('userLng', location.coords.longitude, {expires: 7});
+    }
+  });
+  /**
+   * end user location
+   */
+
+  /**
+   * Check login
+   */
+    if(typeof $.cookie("access_token") != "undefined"){
+      userInfo.access_token = $.cookie("access_token");
+    }
+    if (typeof $.cookie("user_id") != "undefined") {
+      userInfo.id = $.cookie("user_id");
+    }
+    if (typeof $.cookie("user_name") != "undefined") {
+      userInfo.name = $.cookie("user_name");
+    }
+    if (typeof $.cookie("avatar") != "undefined") {
+      userInfo.avatar = $.cookie("avatar");
+    }
+    //  get user info
+    if(userInfo.name == "" || userInfo.avatar == ""){
+      var requestUri = userInfoUri.replace()
+      $.ajax({
+        url:"",
+        beforeSend: function(){
+
+        },
+        success: function(response){
+
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+
+        }
+      })
+    }
+
+    console.log(userInfo);
