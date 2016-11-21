@@ -17,7 +17,7 @@
   },
   "validations": [],
   "relations": {
-    "topics": {
+    "users": {
       "type": "belongsTo",
       "model": "user",
       "foreignKey": "userId"

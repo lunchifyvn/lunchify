@@ -30,11 +30,11 @@ describe('Location API', () => {
 
   it('should not allow annonymous user to update user1 location', done => {
     req('post',
-    `/api/users/${user1User.userId}/location?access_token=faketoken`)
+    `/api/users/${user1User.userId}/locations?access_token=faketoken`)
     .send({
       geo: {
-        lat: faker.address.latitude,
-        lng: faker.address.longitude,
+        lat: faker.address.latitude(),
+        lng: faker.address.longitude(),
       },
     })
     .expect(401, (err, _res) => {
@@ -45,11 +45,11 @@ describe('Location API', () => {
 
   it('should allow user to update user1 location', done => {
     req('post',
-    `/api/users/${user1User.userId}/location?access_token=${user1User.id}`)
+    `/api/users/${user1User.userId}/locations?access_token=${user1User.id}`)
     .send({
       geo: {
-        lat: faker.address.latitude,
-        lng: faker.address.longitude,
+        lat: faker.address.latitude(),
+        lng: faker.address.longitude(),
       },
     })
     .expect(200, (err, _res) => {

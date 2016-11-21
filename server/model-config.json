@@ -52,5 +52,9 @@
   "prefer": {
     "dataSource": "db",
     "public": false
+  },
+  "location": {
+    "dataSource": "db",
+    "public": false
   }
 }
