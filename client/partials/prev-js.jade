@@ -3,10 +3,10 @@ script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
 script.
   var base_url = '/';
-  var userInfoUri = '/users/{id}/identities';
+  var userInfoUri = '/api/users/{id}/identities';
   var userInfo = {
-    id:"",
-    access_token:"",
+    id: #{user ? user.id : ""},
+    access_token: $.cookie("access_token"),
     name: "",
     avatar: "",
     location : {lat: "", lng: ""}
@@ -48,19 +48,24 @@ script.
     }
     //  get user info
     if(userInfo.name == "" || userInfo.avatar == ""){
-      var requestUri = userInfoUri.replace()
-      $.ajax({
-        url:"",
-        beforeSend: function(){
+      if(userInfo.id != "" && userInfo.access_token != ""){
+        var requestUri = userInfoUri.replace("{id}", userInfo.id);
+        $.ajax({
+          url: requestUri,
+          headers: {
+            'X-Access-Token': userInfo.access_token
+          },
+          beforeSend: function () {
 
-        },
-        success: function(response){
+          },
+          success: function (response) {
+            console.log(response);
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
 
-        },
-        error: function(jqXHR, textStatus, errorThrown){
-
-        }
-      })
+          }
+        })
+      }
     }
 
     console.log(userInfo);
