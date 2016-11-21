@@ -3,7 +3,7 @@
   "plural": "locations",
   "base": "PersistedModel",
   "properties": {
-    "position": {
+    "geo": {
       "type": "GeoPoint",
       "required": "true"
     },
