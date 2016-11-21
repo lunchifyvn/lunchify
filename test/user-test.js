@@ -1,6 +1,5 @@
 var app = require('../server/server');
 var should = require('should');
-var faker = require('faker');
 var User = app.models.user;
 
 function req(verb, url) {
@@ -32,7 +31,6 @@ describe('User select API', () => {
     req('get',
     `/api/users/${user1User.userId}/identities?access_token=${user1User.id}`)
     .expect(200, (err, _res) => {
-      console.log(_res.body);
       should.ifError(err);
       done();
     });
