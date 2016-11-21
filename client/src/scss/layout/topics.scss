@@ -1,14 +1,17 @@
 .topic-label {
-  color: black;
-  background: white;
-  border: 1px solid black;
-  padding: 10px 15px;
-  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 9px;
+  background: #bdbdbd;
+  -webkit-border-radius:5px;
+  -moz-border-radius:5px;
+  border-radius:15px;
+  padding:7px 15px;
+  font-size: 13px;
+  color: #ffffff;
   &:hover {
-    background: palegoldenrod;
-    color: black !important;
+    background: $mainBlue;
   }
 }
 .topic-selected {
-  background: palegoldenrod;
+  background: $mainBlue;
 }

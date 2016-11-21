@@ -75,6 +75,8 @@ app.get('/', function(req, res) {
 });
 
 app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
+  console.log('user', req.user);
+  console.log(req.signedCookies);
   res.cookie('access-token', req.signedCookies.access_token);
   res.cookie('userId', req.user.id);
   res.redirect('/select-topics');

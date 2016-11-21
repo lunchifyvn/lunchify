@@ -11,21 +11,56 @@ block content
 
 block scripts
   script.
+    var user_id = #{user ? user.id : ""}
+
     function topicClicked(event) {
-      if ($(event.target).hasClass('topic-selected')) {
-        $(event.target).removeClass('topic-selected')
+      var target = $(event.target)
+      if (target.hasClass('topic-selected')) {
+        target.removeClass('topic-selected')
+        $.ajax({
+          url: base_url + 'api/users/' + user_id + '/prefers',
+          headers: {
+            'X-Access-Token': $.cookie('access-token'),
+          },
+          contentType: 'application/json',
+          dataType: 'json',
+          data: JSON.stringify({
+            type: 'topic',
+            ref: target.attr('data-id')
+          }),
+          method: 'DELETE',
+          success: function(response) {
+            console.log(response)
+          }
+        })
       }
       else {
         $(event.target).addClass('topic-selected')
+        $.ajax({
+          url: base_url + 'api/users/' + user_id + '/prefers',
+          headers: {
+            'X-Access-Token': $.cookie('access-token'),
+          },
+          contentType: 'application/json',
+          dataType: 'json',
+          data: JSON.stringify({
+            type: 'topic',
+            ref: target.attr('data-id')
+          }),
+          method: 'POST',
+          success: function(response) {
+            console.log(response)
+          }
+        })
       }
     }
+
     $.ajax({
       url: base_url + 'api/fields',
       data: {
         'X-Access-Token': $.cookie('access_token'),
         'filter[include]': 'topics'
       },
-      method: "GET",
       beforeSend: function() {
       },
       success: function(response) {
