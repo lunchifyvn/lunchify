@@ -4,6 +4,10 @@ require('should');
 describe('Matching Profile Fn', () => {
   it('should check distance between 2 users', () => {
     var origin = {
+      prefers: [
+        {type: 'field', ref: 7, userId: 1, id: 1},
+        {type: 'field', ref: 112, userId: 1, id: 36},
+      ],
       userId: 1,
       location: {
         lat: 0,
@@ -12,6 +16,10 @@ describe('Matching Profile Fn', () => {
     };
 
     var group = [{
+      prefers: [
+        {type: 'field', ref: 7, userId: 1, id: 1},
+        {type: 'field', ref: 112, userId: 1, id: 36},
+      ],
       userId: 2,
       location: {
         lat: 10.4,
