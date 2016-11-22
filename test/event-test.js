@@ -42,7 +42,20 @@ describe('Event API', () => {
     });
   });
 
-  it('should allow user1 to create event with user2', () => {
+  it.skip('should not allow annonymous user to create event', done => {
+    req('post',
+    '/api/events?access_token=faketoken')
+    .send({
+      from: user1User.userId,
+      to: user2User.userId,
+    })
+    .expect(401, (err, _body) => {
+      should.ifError(err);
+      done();
+    });
+  });
+
+  it('should allow user1 to create event with user2', done => {
     req('post',
     `/api/events?access_token=${user1User.id}`)
     .send({
@@ -51,8 +64,61 @@ describe('Event API', () => {
     })
     .expect(200, (err, res) => {
       should.ifError(err);
-      console.log(res.body);
       res.body.should.have.property('status').equal('pending');
+      done();
+    });
+  });
+
+  it('should allow user2 to get the list of pending event', done => {
+    req('get',
+    `/api/events?access_token=${user1User.id}`)
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      res.body.should.be.an.Array();
+      done();
+    });
+  });
+
+  it.skip('should allow user2 to get the list of ' +
+  'pending event related to user2', done => {
+    req('get',
+    `/api/events?filter[where][status]=pending&access_token=${user1User.id}`)
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      res.body.should.be.an.Array();
+      done();
+    });
+  });
+
+  it('should allow user2 to accept one invitation', done => {
+    // user1 invite
+    req('post',
+    `/api/events?access_token=${user1User.id}`)
+    .send({
+      from: user1User.userId,
+      to: user2User.userId,
+    })
+    .expect(200, (err, _res) => {
+      should.ifError(err);
+      // user2 get the list of inviate
+      req('get',
+      `/api/events?filter[where][status]=pending&access_token=${user1User.id}`)
+      .expect(200, (err, res) => {
+        should.ifError(err);
+
+        // get the latest invite
+        var event = res.body[res.body.length - 1];
+        event.status = 'accept';
+
+        // update the inviate
+        req('put',
+        `/api/events/${event.id}?access_token=${user1User.id}`)
+        .send(event)
+        .expect(200, (err, _res) => {
+          should.ifError(err);
+          done();
+        });
+      });
     });
   });
 });
