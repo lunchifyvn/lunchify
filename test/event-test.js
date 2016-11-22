@@ -51,7 +51,6 @@ describe('Event API', () => {
     })
     .expect(200, (err, res) => {
       should.ifError(err);
-      console.log('******************');
       console.log(res.body);
       res.body.should.have.property('status').equal('pending');
     });
