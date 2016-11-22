@@ -1,0 +1,28 @@
+{
+  "name": "permission",
+  "plural": "permissions",
+  "base": "PersistedModel",
+  "properties": {
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

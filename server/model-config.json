@@ -56,5 +56,9 @@
   "location": {
     "dataSource": "db",
     "public": false
+  },
+  "permission": {
+    "dataSource": "db",
+    "public": false
   }
 }
