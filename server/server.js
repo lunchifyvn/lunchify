@@ -98,7 +98,7 @@ app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   });
 });
 
-app.get('/list-matching', function(req, res) {
+app.get('/list-matching', ensureLoggedIn('/login'), function(req, res) {
   res.render('pages/list-matching', {
     user: req.user,
     url: req.url,

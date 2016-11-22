@@ -1,0 +1,32 @@
+block scripts
+  script.
+    var topicsRequest = userTopicsUri.replace("{id}", userId);
+    api(topicsRequest, {
+      success: function (response) {
+        $listTag.empty();
+
+        //  loop to append to filter and get topic detail
+        for (var i = 0, l = response.length; i < l; i++) {
+
+          //  create and append first
+            let topicTag = $(document.createElement("li")).addClass("tag");
+            let tagLink = $(document.createElement('a'))
+              .attr("data-id", response[i].id)
+              .addClass('text-center');
+
+          topicTag.append(tagLink)
+          $listTag.append(topicTag);
+
+          //  get topic detail
+          var topicRequestUri = '/api/topics/' + response[i].id;
+          api(topicRequestUri, {
+            beforeSend: function () {
+              tagLink.empty().append('<img src="img/icon/tag_loading.svg"/>');
+            },
+            success: function (response) {
+              tagLink.empty().append(response.name + '<i class="ion-android-close"></i>');
+            }
+          }).get();
+        }
+      }
+    }).get();

@@ -1,0 +1,36 @@
+script.
+  var sugRequest = userSuggestionUri.replace("{id}", userId);
+  api(sugRequest, {
+    data: {
+      lat: userInfo.location.lat,
+      lng: userInfo.location.lng
+    },
+    success: function (response) {
+      console.log(response);
+      /*
+       * [
+       {
+       prefers: [
+       {type: 'field', ref: 7, userId: 3, id: 13},
+       ],
+       userId: 2,
+       location: {
+       lat: 10.830795,
+       long: 106.680532,
+       }
+       }
+       ]
+       * */
+
+      for (var i = 0; i < 5; i++) {
+        //  get each user detail
+        api('/api/users/'+i+'/identities', {
+          success: function (response) {
+            console.log(response);
+            //  append to list
+
+          }
+        }).get();
+      }
+    }
+  }).get();
