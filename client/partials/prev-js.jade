@@ -1,5 +1,152 @@
-script.
-  var base_url = '/';
 script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
 script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+script.
+  var base_url = '/';
+  var userInfoUri = '/api/users/{id}/identities';
+  var userTopicsUri = '/api/users/{id}/prefers';
+  var userSuggestionUri = '/api/users/{id}/suggestion';
+
+  var userInfo = {
+    id: "#{user ? user.id: ''}",
+    access_token: $.cookie("access-token"),
+    name: "",
+    avatar: "",
+    location : {lat: "", lng: ""}
+  };
+
+  /**
+   * user location
+   */
+  //  get location
+  navigator.geolocation.getCurrentPosition(function (location) {
+    if (location.coords.latitude && location.coords.longitude) {
+      $.cookie('userLat', location.coords.latitude, {expires: 7});
+      $.cookie('userLng', location.coords.longitude, {expires: 7});
+      //  update user location
+      if(userInfo.id != ""){
+        $.ajax({
+          method: 'POST',
+          url: '/api/users/'+userInfo.id+'/locations',
+          contentType: 'application/json',
+          dataType: 'json',
+          headers: {
+            'X-Access-Token': userInfo.access_token
+          },
+          data: JSON.stringify({
+            geo:{
+              lat: userInfo.location.lat,
+              lng: userInfo.location.lng
+            }
+          }),
+          success: function (response) {
+
+          }
+        })
+      }
+
+    }
+  });
+  //  get from cookie
+  if (typeof $.cookie('userLat') !== "undefined" && typeof $.cookie('userLng') !== "undefined") {
+    userInfo.location.lat = $.cookie('userLat');
+    userInfo.location.lng = $.cookie('userLng');
+  }
+  /**
+   * end user location
+   */
+
+  /**
+   * Check login
+   */
+    if (typeof $.cookie("user_name") != "undefined") {
+      userInfo.name = $.cookie("user_name");
+    }
+    if (typeof $.cookie("avatar") != "undefined") {
+      userInfo.avatar = $.cookie("avatar");
+    }
+    //  get user info
+    if(userInfo.name == "" || userInfo.avatar == ""){
+      if(userInfo.id != "" && userInfo.access_token != ""){
+        var requestUri = userInfoUri.replace("{id}", userInfo.id);
+        $.ajax({
+          url: requestUri,
+          headers: {
+            'X-Access-Token': userInfo.access_token
+          },
+          success: function (response) {
+            var userProfile = response[0].profile;
+            //  assign to userInfo variable
+            userInfo.avatar = 'https://graph.facebook.com/'+userProfile.id+'/picture?width=60&height=60';
+            userInfo.name = userProfile.name.familyName+' '+userProfile.name.givenName;
+
+            //  remove login button on header
+            $("#accountLink").empty();
+            var html = '<a href="#"><img class="avatar" src="'+userInfo.avatar+'"/>'+userInfo.name+'</a>' +
+              '<div class="dropdown-content">' +
+              '<a href="#">Thông tin</a><a href="/auth/logout">Đăng xuất</a></div>';
+
+            $("#accountLink").append(html);
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+
+          }
+        })
+      }
+    }
+    /**
+     * End check login
+     */
+
+    /**
+     * Api object
+     */
+    var api = function(url, options){
+      //  set header
+      var dataRequest = {
+        url: url,
+        data: typeof options.data != "undefined" ? options.data : {},
+        contentType: 'application/json',
+        dataType: 'json',
+        beforeSend: typeof options.beforeSend != "undefined" ? options.beforeSend : function(){},
+        success: options.success,
+        error: error
+      };
+
+      if(userInfo.access_token){
+        dataRequest.headers = {
+          'X-Access-Token': userInfo.access_token
+        };
+      }
+
+      var Post = function(){
+        dataRequest.method = "POST";
+        $.ajax(dataRequest)
+      }
+
+      var Get = function () {
+        dataRequest.method = "GET";
+        $.ajax(dataRequest)
+      }
+
+      var Put = function () {
+        dataRequest.method = "PUT";
+        $.ajax(dataRequest)
+      }
+
+      var Delete = function () {
+        dataRequest.method = "DELETE";
+        $.ajax(dataRequest)
+      }
+
+      function error(jqXHR, textStatus, errorThrown){
+        console.log(jqXHR);
+      }
+
+      return {
+        post: Post,
+        get:  Get,
+        put: Put,
+        delete: Delete
+      };
+    };

@@ -65,6 +65,7 @@ for (var s in config) {
   c.session = c.session !== false;
   passportConfigurator.configureProvider(s, c);
 }
+
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 app.get('/', function(req, res) {
@@ -85,7 +86,7 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
 app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   var User = app.models.user;
   User.findById(req.user.id, {
-    include: 'prefers',
+    include: ['prefers', 'identities'],
   }, (err, user) => {
     if (user.prefers().length > 0) {
       return res.redirect('/list-matching');

@@ -1,19 +1,19 @@
 extends ../layouts/layout
 
 block content
-  .row
-    .col-md-12
-      h1 Login:
-      ul.list-inline.list-unstyled
-        li
-          a.btn.btn-primary(href='/local') Login with local account
-        li
-          a.btn.btn-primary(href="/auth/facebook") Login with Facebook
-        li
-          a.btn.btn-primary(href="/auth/google") Login with Google
-        li
-          a.btn.btn-primary(href="/auth/twitter") Login with Twitter
-      br
-      if (messages && messages.error)
-        p
-          span(style="color:red")= messages.error
+  .container
+    .row
+      .col-md-12
+        .login-block.text-center
+          .block-header
+            h1 Đăng ký / Đăng nhập
+          .block-body
+            p Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn
+            .btn-login
+              a.social-btn.fb-btn.text-center(href='/auth/facebook')
+                img.icon(src='img/icon/fb.png')
+                Đăng nhập bằng Facebook
+          .block-footer
+            p
+              Khi click vào đăng nhập nghĩa là bạn đã đồng ý với các điều khoản và chình sách của Lunchify
+            p Nếu bạn có câu hỏi, hãy tìm câu trả lời trong phần FAQ

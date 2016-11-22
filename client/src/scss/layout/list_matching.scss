@@ -21,6 +21,7 @@
         -webkit-border-radius:5px;
         -moz-border-radius:5px;
         border-radius:15px;
+        margin-bottom: 5px;
         a{
           padding:7px 15px;
           font-size: 13px;
@@ -28,6 +29,9 @@
           display: block;
           i{
             margin-left:7px;
+          }
+          img{
+            width:30px;
           }
         }
         &.disable{
