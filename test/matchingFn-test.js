@@ -148,4 +148,53 @@ describe('Matching Profile Fn', () => {
     matchedProfile.should.be.an.Array();
     matchedProfile.should.deepEqual([group[0]]);
   });
+
+  it('should have metadata in result', () => {
+    var origin = {
+      prefers: [
+        {type: 'field', ref: 7, userId: 1, id: 1},
+        {type: 'field', ref: 112, userId: 1, id: 36},
+      ],
+      userId: 1,
+      location: {
+        lat: 10.830876,
+        long: 106.680333,
+      },
+    };
+
+    var group = [
+      {
+        prefers: [
+          {type: 'field', ref: 7, userId: 3, id: 13},
+        ],
+        userId: 2,
+        location: {
+          lat: 10.830795,
+          long: 106.680532,
+        },
+      },
+      {
+        prefers: [
+          {type: 'field', ref: 7, userId: 3, id: 13},
+        ],
+        userId: 3,
+        location: {
+          lat: 10.4,
+          long: 108.4,
+        },
+      },
+    ];
+
+    var matchedProfile = matchingFn.matchProfile(origin, group, 1000);
+    matchedProfile.should.be.an.Array();
+    matchedProfile.length.should.equal(1);
+    var metadata = matchedProfile[0].metadata;
+    metadata.should.not.undefined();
+    metadata.distance.should.not.undefined();
+    metadata.prefers.should.be.an.Array();
+    metadata.distance.should.belowOrEqual(500);
+    metadata.distance.should.deepEqual(23.525988391724074);
+    metadata.prefers.length.should.deepEqual(1);
+    metadata.prefers[0].should.deepEqual({type: 'field', ref: 7});
+  });
 });
