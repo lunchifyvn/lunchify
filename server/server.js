@@ -88,13 +88,15 @@ app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   User.findById(req.user.id, {
     include: ['prefers', 'identities'],
   }, (err, user) => {
-    if (user.prefers().length > 0) {
+    if (!req.query.isEditing) {
+      console.log('HAVE');
       return res.redirect('/list-matching');
+    } else {
+      res.render('pages/select-topics', {
+        user: req.user,
+        url: req.url,
+      });
     }
-    res.render('pages/select-topics', {
-      user: req.user,
-      url: req.url,
-    });
   });
 });
 
