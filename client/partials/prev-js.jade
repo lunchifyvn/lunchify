@@ -18,18 +18,40 @@ script.
   /**
    * user location
    */
-  //  get from local sotrage
-  if (typeof(Storage) !== "undefined") {
-    userInfo.location.lat = $.cookie('userLat');
-    userInfo.location.lng = $.cookie('userLng');
-  }
   //  get location
   navigator.geolocation.getCurrentPosition(function (location) {
     if (location.coords.latitude && location.coords.longitude) {
       $.cookie('userLat', location.coords.latitude, {expires: 7});
       $.cookie('userLng', location.coords.longitude, {expires: 7});
+      //  update user location
+      if(userInfo.id != ""){
+        $.ajax({
+          method: 'POST',
+          url: '/api/users/'+userInfo.id+'/locations',
+          contentType: 'application/json',
+          dataType: 'json',
+          headers: {
+            'X-Access-Token': userInfo.access_token
+          },
+          data: JSON.stringify({
+            geo:{
+              lat: userInfo.location.lat,
+              lng: userInfo.location.lng
+            }
+          }),
+          success: function (response) {
+
+          }
+        })
+      }
+
     }
   });
+  //  get from cookie
+  if (typeof $.cookie('userLat') !== "undefined" && typeof $.cookie('userLng') !== "undefined") {
+    userInfo.location.lat = $.cookie('userLat');
+    userInfo.location.lng = $.cookie('userLng');
+  }
   /**
    * end user location
    */
@@ -79,7 +101,7 @@ script.
     /**
      * Api object
      */
-    var Api = function(url, options){
+    var api = function(url, options){
       //  set header
       var dataRequest = {
         url: url,
@@ -91,7 +113,6 @@ script.
         error: error
       };
 
-      console.log(userInfo);
       if(userInfo.access_token){
         dataRequest.headers = {
           'X-Access-Token': userInfo.access_token
@@ -119,7 +140,6 @@ script.
       }
 
       function error(jqXHR, textStatus, errorThrown){
-        console.log("error");
         console.log(jqXHR);
       }
 
