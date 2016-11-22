@@ -85,8 +85,10 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
 app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   var User = app.models.user;
   User.findById(req.user.id, {
-    include: 'prefers',
+    include: ['prefers', 'identities']
   }, (err, user) => {
+    console.log(user.identities())
+    var userIdentity = user.identities()[0].profile.name.familyName + user.identities()[0].profile.name.givenName
     if (user.prefers().length > 0) {
       return res.redirect('/list-matching');
     }

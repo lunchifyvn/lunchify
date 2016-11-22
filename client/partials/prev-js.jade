@@ -4,6 +4,7 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.co
 script.
   var base_url = '/';
   var userInfoUri = '/api/users/{id}/identities';
+  var userSuggestionUri = '/api/users/{id}/suggestion';
   var userInfo = {
     id: #{user ? user.id : ""},
     access_token: $.cookie("access_token"),

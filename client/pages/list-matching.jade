@@ -4,7 +4,7 @@ block content
   .container
     .filter-bar
       .inner
-        ul.list-tag.row
+        ul#listTag.list-tag.row
           li.tag
             a.text-center(href='#') Phượt
               i.ion-android-close
@@ -32,7 +32,7 @@ block content
     .row.content-block
       .content.col-sm-12
         .inner
-          ul.list-item
+          ul#listMatching.list-item
             li.row.item.first
               .col-sm-12.item-info
                 .mark-point
@@ -106,6 +106,21 @@ block scripts
         }else{
           _this.addClass("disable");
           _this.find('a').empty().append(content + '<i class="ion-checkmark-round"></i>')
+        }
+      });
+
+      //  get list matching
+      var sugRequest = userSuggestionUri.replace("{id}", 1);
+      $.ajax({
+        url: sugRequest,
+        data: {
+
+        },
+        beforeSend: function () {
+
+        },
+        success: function(response){
+          console.log(response);
         }
       })
     })
