@@ -1,0 +1,42 @@
+.chat-content{
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #bdbdbd;
+  .chat-box{
+    border: 1px solid #bdbdbd;
+    border-radius: 15px;
+    min-height: 250px;
+    .item{
+      margin-top: 15px;
+      .avatar{
+        width: 55px;
+        display: inline-block;
+        img{
+          border-radius: 50%;
+        }
+      }
+      .text-info{
+        display: inline-block;
+        color: #333;
+      }
+    }
+
+    .send{
+      text-align: left;
+    }
+    .receive{
+      text-align: right;
+    }
+  }
+  .chat-input{
+    margin-top: 20px;
+    padding:0px;
+    border-radius: 15px;
+    textarea{
+      padding:15px;
+      width:100%;
+      border-radius: 15px;
+    }
+  }
+}
