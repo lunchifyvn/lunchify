@@ -78,4 +78,47 @@ describe('Event API', () => {
       done();
     });
   });
+
+  it.skip('should allow user2 to get the list of ' +
+  'pending event related to user2', done => {
+    req('get',
+    `/api/events?filter[where][status]=pending&access_token=${user1User.id}`)
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      res.body.should.be.an.Array();
+      done();
+    });
+  });
+
+  it('should allow user2 to accept one invitation', done => {
+    // user1 invite
+    req('post',
+    `/api/events?access_token=${user1User.id}`)
+    .send({
+      from: user1User.userId,
+      to: user2User.userId,
+    })
+    .expect(200, (err, _res) => {
+      should.ifError(err);
+      // user2 get the list of inviate
+      req('get',
+      `/api/events?filter[where][status]=pending&access_token=${user1User.id}`)
+      .expect(200, (err, res) => {
+        should.ifError(err);
+
+        // get the latest invite
+        var event = res.body[res.body.length - 1];
+        event.status = 'accept';
+
+        // update the inviate
+        req('put',
+        `/api/events/${event.id}?access_token=${user1User.id}`)
+        .send(event)
+        .expect(200, (err, _res) => {
+          should.ifError(err);
+          done();
+        });
+      });
+    });
+  });
 });
