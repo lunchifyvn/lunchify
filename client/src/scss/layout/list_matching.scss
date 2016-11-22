@@ -50,6 +50,8 @@
       background: #fff;
       border-radius: 10px;
       .list-item{
+        overflow: hidden;
+        margin-bottom: 15px;
         .item{
           padding: 15px;
           .item-info{

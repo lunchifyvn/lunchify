@@ -170,61 +170,64 @@ body .navbar {
     border: 1px solid #e5e5e5;
     background: #fff;
     border-radius: 10px; }
-    .content-block .content .inner .list-item .item {
-      padding: 15px; }
-      .content-block .content .inner .list-item .item .item-info {
-        position: relative;
-        padding-left: 160px;
-        min-height: 100px; }
-        .content-block .content .inner .list-item .item .item-info .mark-point {
-          position: absolute;
-          left: 35px;
-          top: 0px;
-          height: 100%;
-          width: 130px; }
-          .content-block .content .inner .list-item .item .item-info .mark-point .title {
-            padding: 10px;
-            background: #e5e5e5;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            margin: auto;
-            margin-top: 15px; }
-            .content-block .content .inner .list-item .item .item-info .mark-point .title .point {
-              display: block;
-              width: 15px;
-              height: 15px;
-              border-radius: 50%;
-              background: #2196F3;
-              margin: auto; }
-          .content-block .content .inner .list-item .item .item-info .mark-point .line {
+    .content-block .content .inner .list-item {
+      overflow: hidden;
+      margin-bottom: 15px; }
+      .content-block .content .inner .list-item .item {
+        padding: 15px; }
+        .content-block .content .inner .list-item .item .item-info {
+          position: relative;
+          padding-left: 160px;
+          min-height: 100px; }
+          .content-block .content .inner .list-item .item .item-info .mark-point {
+            position: absolute;
+            left: 35px;
+            top: 0px;
             height: 100%;
-            border-left: 5px solid #e5e5e5;
-            min-height: 30px;
-            margin-left: 62px; }
-        .content-block .content .inner .list-item .item .item-info .avatar img {
-          border-radius: 50%; }
-        .content-block .content .inner .list-item .item .item-info .name {
-          font-size: 18px; }
-        .content-block .content .inner .list-item .item .item-info .status {
-          font-size: 16px;
-          margin-top: 10px;
-          color: #757575; }
-      .content-block .content .inner .list-item .item.first {
-        padding-top: 30px; }
-        .content-block .content .inner .list-item .item.first .mark-point .title {
-          padding: 10px 15px;
-          border-radius: 5px;
-          width: auto;
-          height: auto; }
-    .content-block .content .inner .list-item .action-btn .inner {
-      padding: 5px 60px 0 0;
-      border: 0px; }
-      .content-block .content .inner .list-item .action-btn .inner .btn {
-        margin-bottom: 8px;
-        border-radius: 15px;
-        padding: 7px;
-        font-size: 13px; }
+            width: 130px; }
+            .content-block .content .inner .list-item .item .item-info .mark-point .title {
+              padding: 10px;
+              background: #e5e5e5;
+              border-radius: 50%;
+              width: 35px;
+              height: 35px;
+              margin: auto;
+              margin-top: 15px; }
+              .content-block .content .inner .list-item .item .item-info .mark-point .title .point {
+                display: block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                background: #2196F3;
+                margin: auto; }
+            .content-block .content .inner .list-item .item .item-info .mark-point .line {
+              height: 100%;
+              border-left: 5px solid #e5e5e5;
+              min-height: 30px;
+              margin-left: 62px; }
+          .content-block .content .inner .list-item .item .item-info .avatar img {
+            border-radius: 50%; }
+          .content-block .content .inner .list-item .item .item-info .name {
+            font-size: 18px; }
+          .content-block .content .inner .list-item .item .item-info .status {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #757575; }
+        .content-block .content .inner .list-item .item.first {
+          padding-top: 30px; }
+          .content-block .content .inner .list-item .item.first .mark-point .title {
+            padding: 10px 15px;
+            border-radius: 5px;
+            width: auto;
+            height: auto; }
+      .content-block .content .inner .list-item .action-btn .inner {
+        padding: 5px 60px 0 0;
+        border: 0px; }
+        .content-block .content .inner .list-item .action-btn .inner .btn {
+          margin-bottom: 8px;
+          border-radius: 15px;
+          padding: 7px;
+          font-size: 13px; }
 
 .page-footer {
   padding: 30px 15px; }
@@ -270,3 +273,35 @@ body .navbar {
       left: 20px;
       top: 10px;
       width: 35px; }
+
+.chat-content {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 1px solid #bdbdbd; }
+  .chat-content .chat-box {
+    border: 1px solid #bdbdbd;
+    border-radius: 15px;
+    min-height: 250px; }
+    .chat-content .chat-box .item {
+      margin-top: 15px; }
+      .chat-content .chat-box .item .avatar {
+        width: 55px;
+        display: inline-block; }
+        .chat-content .chat-box .item .avatar img {
+          border-radius: 50%; }
+      .chat-content .chat-box .item .text-info {
+        display: inline-block;
+        color: #333; }
+    .chat-content .chat-box .send {
+      text-align: left; }
+    .chat-content .chat-box .receive {
+      text-align: right; }
+  .chat-content .chat-input {
+    margin-top: 20px;
+    padding: 0px;
+    border-radius: 15px; }
+    .chat-content .chat-input textarea {
+      padding: 15px;
+      width: 100%;
+      border-radius: 15px; }

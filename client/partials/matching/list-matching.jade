@@ -1,4 +1,5 @@
 script.
+  var $listMatching = $("#listMatching");
   var sugRequest = userSuggestionUri.replace("{id}", userId);
   api(sugRequest, {
     data: {
@@ -6,7 +7,6 @@ script.
       lng: userInfo.location.lng
     },
     success: function (response) {
-      console.log(response);
       /*
        * [
        {
@@ -21,16 +21,45 @@ script.
        }
        ]
        * */
-
+      $listMatching.empty().append('<li class="row item first"><div class="col-sm-12 item-info"><div class="mark-point"><div class="title">Khoảng cách</div><div class="line"></div></div></div></li>');
       for (var i = 0; i < 5; i++) {
         //  get each user detail
         api('/api/users/'+i+'/identities', {
           success: function (response) {
             console.log(response);
             //  append to list
-
+            if(response.length > 0){
+              var userProfile = response[0].profile,
+                name = userProfile.name.familyName + " " +userProfile.name.givenName;
+              if(response[0].userId != userInfo.id){
+                var className = "row item";
+                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="mark-point"><div class="title"><div class="point"></div></div><div class="line"></div></div><div class="row"><div class="col-sm-4 col-md-3 col-lg-2"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-sm-8 col-md-9 col-lg-10"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
+                $listMatching.append(itemHtml);
+              }
+            }
           }
         }).get();
       }
     }
   }).get();
+
+  function invite(event){
+    event.preventDefault();
+    var _this = $(event.target),
+      userId = _this.attr("data-id");
+
+    //  send invite
+    api("/api/events", {
+      data: JSON.stringify({
+        from: userInfo.id,
+        to: userId
+      }),
+      beforeSend: function(){
+        _this.empty().append('...');
+      },
+      success: function(res){
+        console.log(res);
+        _this.empty().append(res.status);
+      }
+    }).post()
+  }
