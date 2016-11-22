@@ -47,6 +47,64 @@ describe('User select API', () => {
     });
   });
 
+  it('should allow user to delete the selected field prefer', done => {
+    // first, create field model
+    var fieldModel = app.models.field;
+    fieldModel.updateOrCreate({
+      name: faker.lorem.words(),
+    }, (err, fieldInstance) => {
+      should.ifError(err);
+      // then, select this field
+      req('post',
+      `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
+      .send({
+        type: 'field',
+        ref: fieldInstance.id,
+      })
+      .expect(200, (err, res) => {
+        // then, remove the field
+        should.ifError(err);
+        var fieldId = res.body.id;
+        req('del',
+        `/api/users/${user1User.userId}/prefers/${fieldId}` +
+        `?access_token=${user1User.id}`)
+        .expect(204, (err, _res) => {
+          should.ifError(err);
+          done();
+        });
+      });
+    });
+  });
+
+  it('should allow user to delete the selected topic prefer', done => {
+    // first, create field model
+    var topicModel = app.models.topic;
+    topicModel.updateOrCreate({
+      name: faker.lorem.words(),
+    }, (err, topicInstance) => {
+      should.ifError(err);
+      // then, select this field
+      req('post',
+      `/api/users/${user1User.userId}/prefers?access_token=${user1User.id}`)
+      .send({
+        type: 'topic',
+        ref: topicInstance.id,
+      })
+      .expect(200, (err, res) => {
+        // then, remove the field
+        should.ifError(err);
+        var fieldId = res.body.id;
+        req('del',
+        `/api/users/${user1User.userId}/prefers/${fieldId}` +
+        `?access_token=${user1User.id}`)
+        .expect(204, (err, _res) => {
+          should.ifError(err);
+          done();
+        });
+      });
+    });
+  });
+
   it('should not allow user to select interesting field when missing the type',
   done => {
     var fieldModel = app.models.field;
