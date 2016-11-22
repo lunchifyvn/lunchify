@@ -1,0 +1,61 @@
+.user-dialog {
+  .modal-content {
+    .modal-header {
+      position: relative;
+      border-bottom: 0px;
+      .avatar {
+        width: 110px;
+        height: 110px;
+        position: absolute;
+        left: 50%;
+        top: -20px;
+        margin-left: -55px;
+        border: 10px solid #fff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+      }
+    }
+    .modal-body {
+      padding: 20px;
+      .name {
+        margin: 50px 0 20px;
+        a {
+          color: $mainBlue;
+        }
+      }
+      .list-tag {
+        a.tag {
+          color: $mainBlue;
+          display: inline-block;
+          margin-top: 10px;
+          margin-right:5px;
+          padding: 5px 10px;
+          border: 1px solid $mainBlue;
+          -webkit-border-radius: 15px;
+          -moz-border-radius: 15px;
+          border-radius: 15px;
+          &:hover{
+            background: $mainBlue;
+            color: #fff;
+          }
+        }
+      }
+      .button-group{
+        margin-top:20px;
+        .btn-wrapper{
+          padding: 20px 60px;
+          a{
+            display: block;
+            background: $mainBlue;
+            padding: 10px 60px;
+            color: #fff;
+            -webkit-border-radius:15px;
+            -moz-border-radius:15px;
+            border-radius:15px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -96,6 +96,53 @@ body .navbar {
     .login-modal .modal-dialog .modal-content .modal-footer {
       text-align: left; }
 
+.user-dialog .modal-content .modal-header {
+  position: relative;
+  border-bottom: 0px; }
+  .user-dialog .modal-content .modal-header .avatar {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    left: 50%;
+    top: -20px;
+    margin-left: -55px;
+    border: 10px solid #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%; }
+
+.user-dialog .modal-content .modal-body {
+  padding: 20px; }
+  .user-dialog .modal-content .modal-body .name {
+    margin: 50px 0 20px; }
+    .user-dialog .modal-content .modal-body .name a {
+      color: #2196F3; }
+  .user-dialog .modal-content .modal-body .list-tag a.tag {
+    color: #2196F3;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: 1px solid #2196F3;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px; }
+    .user-dialog .modal-content .modal-body .list-tag a.tag:hover {
+      background: #2196F3;
+      color: #fff; }
+  .user-dialog .modal-content .modal-body .button-group {
+    margin-top: 20px; }
+    .user-dialog .modal-content .modal-body .button-group .btn-wrapper {
+      padding: 20px 60px; }
+      .user-dialog .modal-content .modal-body .button-group .btn-wrapper a {
+        display: block;
+        background: #2196F3;
+        padding: 10px 60px;
+        color: #fff;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px; }
+
 .wrapper .banner {
   position: relative; }
   .wrapper .banner img.banner-bg {
