@@ -91,6 +91,7 @@ block content
                   a.btn.btn-default.btn-block(href='#') Xem thông tin
 block scripts
   script.
+    var userId = "#{user.id}";
     $(document).ready(function(){
       //  add class to body and header
       $("body").addClass("grey");
@@ -109,18 +110,21 @@ block scripts
         }
       });
 
-      //  get list matching
-      var sugRequest = userSuggestionUri.replace("{id}", 1);
-      $.ajax({
-        url: sugRequest,
-        data: {
-
-        },
-        beforeSend: function () {
-
-        },
+      //  get list topics
+      var topicsRequest = userTopicsUri.replace("{id}", userId);
+      console.log(topicsRequest);
+      Api(topicsRequest, {
         success: function(response){
           console.log(response);
         }
-      })
+      }).get();
+
+      //  get list matching
+      var sugRequest = userSuggestionUri.replace("{id}", userId);
+      console.log(sugRequest);
+      Api(sugRequest, {
+        success: function (response) {
+          console.log(response);
+        }
+      }).get();
     })

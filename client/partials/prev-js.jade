@@ -4,10 +4,12 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.co
 script.
   var base_url = '/';
   var userInfoUri = '/api/users/{id}/identities';
+  var userTopicsUri = '/api/users/{id}/prefers';
   var userSuggestionUri = '/api/users/{id}/suggestion';
+
   var userInfo = {
-    id: #{user ? user.id : ""},
-    access_token: $.cookie("access_token"),
+    id: "#{user ? user.id: ''}",
+    access_token: $.cookie("access-token"),
     name: "",
     avatar: "",
     location : {lat: "", lng: ""}
@@ -35,12 +37,6 @@ script.
   /**
    * Check login
    */
-    if(typeof $.cookie("access_token") != "undefined"){
-      userInfo.access_token = $.cookie("access_token");
-    }
-    if (typeof $.cookie("user_id") != "undefined") {
-      userInfo.id = $.cookie("user_id");
-    }
     if (typeof $.cookie("user_name") != "undefined") {
       userInfo.name = $.cookie("user_name");
     }
@@ -56,11 +52,19 @@ script.
           headers: {
             'X-Access-Token': userInfo.access_token
           },
-          beforeSend: function () {
-
-          },
           success: function (response) {
-            console.log(response);
+            var userProfile = response[0].profile;
+            //  assign to userInfo variable
+            userInfo.avatar = 'https://graph.facebook.com/'+userProfile.id+'/picture?width=60&height=60';
+            userInfo.name = userProfile.name.familyName+' '+userProfile.name.givenName;
+
+            //  remove login button on header
+            $("#accountLink").empty();
+            var html = '<a href="#"><img class="avatar" src="'+userInfo.avatar+'"/>'+userInfo.name+'</a>' +
+              '<div class="dropdown-content">' +
+              '<a href="#">Thông tin</a><a href="/auth/logout">Đăng xuất</a></div>';
+
+            $("#accountLink").append(html);
           },
           error: function (jqXHR, textStatus, errorThrown) {
 
@@ -68,5 +72,61 @@ script.
         })
       }
     }
+    /**
+     * End check login
+     */
 
-    console.log(userInfo);
+    /**
+     * Api object
+     */
+    var Api = function(url, options){
+      //  set header
+      var dataRequest = {
+        url: url,
+        data: typeof options.data != "undefined" ? options.data : {},
+        contentType: 'application/json',
+        dataType: 'json',
+        beforeSend: typeof options.beforeSend != "undefined" ? options.beforeSend : function(){},
+        success: options.success,
+        error: error
+      };
+
+      console.log(userInfo);
+      if(userInfo.access_token){
+        dataRequest.headers = {
+          'X-Access-Token': userInfo.access_token
+        };
+      }
+
+      var Post = function(){
+        dataRequest.method = "POST";
+        $.ajax(dataRequest)
+      }
+
+      var Get = function () {
+        dataRequest.method = "GET";
+        $.ajax(dataRequest)
+      }
+
+      var Put = function () {
+        dataRequest.method = "PUT";
+        $.ajax(dataRequest)
+      }
+
+      var Delete = function () {
+        dataRequest.method = "DELETE";
+        $.ajax(dataRequest)
+      }
+
+      function error(jqXHR, textStatus, errorThrown){
+        console.log("error");
+        console.log(jqXHR);
+      }
+
+      return {
+        post: Post,
+        get:  Get,
+        put: Put,
+        delete: Delete
+      };
+    };

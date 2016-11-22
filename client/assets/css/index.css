@@ -42,8 +42,29 @@ body .navbar {
   body .navbar .main-menu .page-scroll a:hover {
     background: transparent;
     color: #2196F3; }
+  body .navbar .main-menu .page-scroll a .avatar {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 5px; }
   body .navbar .main-menu .last a {
     padding-right: 0px; }
+  body .navbar .main-menu .dropdown-hover .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9; }
+    body .navbar .main-menu .dropdown-hover .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left; }
+      body .navbar .main-menu .dropdown-hover .dropdown-content a:hover {
+        background-color: #f1f1f1; }
+  body .navbar .main-menu .dropdown-hover:hover .dropdown-content {
+    display: block; }
 
 .login-modal .modal-dialog {
   width: 500px; }
