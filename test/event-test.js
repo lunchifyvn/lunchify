@@ -42,7 +42,7 @@ describe('Event API', () => {
     });
   });
 
-  it('should not allow annonymous user to create event', (done) => {
+  it('should not allow annonymous user to create event', done => {
     req('post',
     '/api/events?access_token=faketoken')
     .send({
@@ -55,7 +55,7 @@ describe('Event API', () => {
     });
   });
 
-  it('should allow user1 to create event with user2', (done) => {
+  it('should allow user1 to create event with user2', done => {
     req('post',
     `/api/events?access_token=${user1User.id}`)
     .send({
@@ -65,6 +65,16 @@ describe('Event API', () => {
     .expect(200, (err, res) => {
       should.ifError(err);
       res.body.should.have.property('status').equal('pending');
+      done();
+    });
+  });
+
+  it('should allow user2 to get the list of pending event', done => {
+    req('get',
+    `/api/events?access_token=${user1User.id}`)
+    .expect(200, (err, res) => {
+      should.ifError(err);
+      res.body.should.be.an.Array();
       done();
     });
   });
