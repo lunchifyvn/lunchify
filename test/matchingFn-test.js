@@ -11,9 +11,18 @@ var distanceBetween2Users =
 
 var compareUsers = matchingFn.__get__('compareUsers');
 var compareEvents = matchingFn.__get__('compareEvents');
+var compareListOfEvents = matchingFn.__get__('compareListOfEvents');
 var compareMetadata = matchingFn.__get__('compareMetadata');
 
 describe('Compare 2 events', () => {
+  it('should return 0 if two events are empty', () => {
+    compareEvents(null, undefined).should.deepEqual(0);
+  });
+
+  it('should any thing is greater than nothing', () => {
+    compareEvents({}, undefined).should.above(0);
+  });
+
   it('should return 0 if two events are the same', () => {
     var event1 = {
       from: {},
@@ -31,7 +40,7 @@ describe('Compare 2 events', () => {
   });
 
 
-  it('the order of status should be pending > archive > accept > cancel', () => {
+  it('with the order of status should be pending > archive > accept > cancel', () => {
     var pending = {
       from: {},
       to: {},
@@ -81,6 +90,127 @@ describe('Compare 2 events', () => {
     };
 
     compareEvents(event1, event2).should.below(0);
+  });
+});
+
+describe('Compare 2 list of events', () => {
+  it('should compare by greatest event first', () => {
+    var events1 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+    var events2 = [
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+
+    compareListOfEvents(events1, events2).should.above(0);
+  });
+
+  it('should compare events length if greatest events are the same', () => {
+    var events1 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+      {
+        status: 'cancel',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+    var events2 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+
+    compareListOfEvents(events1, events2).should.above(0);
+  });
+
+  it('If 2 events have the same max events and size more archive events will win', () => {
+    var events1 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+      {
+        status: 'archive',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+    var events2 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+      {
+        status: 'cancel',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+
+    compareListOfEvents(events1, events2).should.above(0);
+  });
+  it('Two lists are the same should be equal', () => {
+    var events1 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+      {
+        status: 'archive',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+    var events2 = [
+      {
+        status: 'pending',
+        updatedAt: new Date(2016, 11, 18),
+      },
+      {
+        status: 'active',
+        updatedAt: new Date(2016, 11, 19),
+      },
+      {
+        status: 'archive',
+        updatedAt: new Date(2016, 11, 19),
+      },
+    ];
+
+    compareListOfEvents(events1, events2).should.deepEqual(0);
   });
 });
 
@@ -156,6 +286,180 @@ describe('Compare 2 users', () => {
       }
     };
     compareUsers(user1, user2).should.deepEqual(0);
+  });
+
+  it('should let user1 > user2 by events', () => {
+    var user1 = {
+      events: [
+        {
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 300,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    var user2 = {
+      metadata: {
+        distance: 300,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    compareUsers(user1, user2).should.above(0);
+  });
+
+  it('should let user1 > user2 by distance', () => {
+    var user1 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    var user2 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 300,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    compareUsers(user1, user2).should.above(0);
+  });
+
+  it('should let user1 > user2 by prefers', () => {
+    var user1 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}, {type: 'field', ref: 7}],
+      }
+    };
+    var user2 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    compareUsers(user1, user2).should.above(0);
+  });
+
+  it('should let user1 > user2 by events', () => {
+    var user1 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'cancel',
+          updatedAt: new Date(2016, 11, 16),
+        },
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    var user2 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    compareUsers(user1, user2).should.above(0);
+  });
+
+  it('should let user1 > user2 by events', () => {
+    var user1 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'cancel',
+          updatedAt: new Date(2016, 11, 16),
+        },
+        {
+          from: {},
+          to: {},
+          status: 'pending',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    var user2 = {
+      events: [
+        {
+          from: {},
+          to: {},
+          status: 'cancel',
+          updatedAt: new Date(2016, 11, 16),
+        },
+        {
+          from: {},
+          to: {},
+          status: 'cancel',
+          updatedAt: new Date(2016, 11, 16),
+        },
+        {
+          from: {},
+          to: {},
+          status: 'archive',
+          updatedAt: new Date(2016, 11, 18),
+        },
+      ],
+      metadata: {
+        distance: 400,
+        prefers: [{type: 'field', ref: 7}],
+      }
+    };
+    compareUsers(user1, user2).should.above(0);
   });
 });
 
