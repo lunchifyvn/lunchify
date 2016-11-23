@@ -19,3 +19,17 @@
         p
           | Khi click vào đăng nhập nghĩa là bạn đã đồng ý với các điều khoản và chình sách của Lunchify
         p Nếu bạn có câu hỏi, hãy tìm câu trả lời trong phần FAQ
+
+#userModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .modal-dialog.user-dialog(style='z-index: 9999;')
+    .modal-content(role='document')
+      .modal-header
+        img.avatar(src='')
+      .modal-body.text-center
+        h3.name
+          a(href='#')
+        p.topic-title Lĩnh vực quan tâm
+        .list-tag
+        .button-group.row
+          .col-sm-12.btn-wrapper
+            a.btn(href='#') Gửi lời mời

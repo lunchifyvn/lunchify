@@ -26,14 +26,13 @@ script.
         //  get each user detail
         api('/api/users/'+i+'/identities', {
           success: function (response) {
-            console.log(response);
             //  append to list
             if(response.length > 0){
               var userProfile = response[0].profile,
                 name = userProfile.name.familyName + " " +userProfile.name.givenName;
               if(response[0].userId != userInfo.id){
                 var className = "row item";
-                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="mark-point"><div class="title"><div class="point"></div></div><div class="line"></div></div><div class="row"><div class="col-sm-4 col-md-3 col-lg-2"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-sm-8 col-md-9 col-lg-10"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
+                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="mark-point"><div class="title"><div class="point"></div></div><div class="line"></div></div><div class="row"><div class="col-sm-4 col-md-3 col-lg-2"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-sm-8 col-md-9 col-lg-10"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a onClick="viewDetail(event)"  data-id="' + response[0].userId + '" href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
                 $listMatching.append(itemHtml);
               }
             }
@@ -58,8 +57,60 @@ script.
         _this.empty().append('...');
       },
       success: function(res){
-        console.log(res);
         _this.empty().append(res.status);
       }
     }).post()
+  }
+
+  function viewDetail(event){
+    event.preventDefault();
+    var _this = $(event.target),
+      userId = _this.attr("data-id");
+
+    //  get user detail
+    api('/api/users/' + userId + '/identities', {
+      success: function (response) {
+        var userProfile = response[0].profile,
+          name = userProfile.name.familyName + " " + userProfile.name.givenName;
+
+        //  append avatar
+        $("#userModal .avatar").attr("src", 'https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100');
+        //  append name
+        $("#userModal .name").empty().append(name);
+
+        var $userTags = $("#userModal .list-tag").empty();
+        var topicsRequest = userTopicsUri.replace("{id}", userId);
+
+        //  request user topics
+        api(topicsRequest, {
+          success: function (response) {
+            $userTags.empty();
+
+            //  loop to append to filter and get topic detail
+            for (var i = 0, l = response.length; i < l; i++) {
+
+              //  create and append first
+                let topicTag = $(document.createElement("a")).addClass("tag")
+                  .attr("data-id", response[i].id)
+                  .addClass('text-center');
+
+              $userTags.append(topicTag);
+
+              //  get topic detail
+              var topicRequestUri = '/api/topics/' + response[i].ref;
+              api(topicRequestUri, {
+                beforeSend: function () {
+                  topicTag.empty().append('<img src="img/icon/tag_loading.svg"/>');
+                },
+                success: function (response) {
+                  topicTag.empty().append(response.name);
+                }
+              }).get();
+            }
+          }
+        }).get();
+        //  show modal
+        $("#userModal").modal('show');
+      }
+    }).get();
   }
