@@ -11,7 +11,7 @@
           | Đăng nhập vào Lunchify để kết nối với hàng trăm người có cùng sở thích xung quanh bạn
         .btn-login
           a.social-btn.fb-btn.text-center(href='/auth/facebook')
-            img.icon(src='img/icon/fb.png')
+            img.hidden-xs.icon(src='img/icon/fb.png')
             // react-text: 16
             | Đăng nhập bằng Facebook
             // /react-text
@@ -24,6 +24,8 @@
   .modal-dialog.user-dialog(style='z-index: 9999;')
     .modal-content(role='document')
       .modal-header
+        button.close(type="button" class="" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times
         img.avatar(src='')
       .modal-body.text-center
         h3.name

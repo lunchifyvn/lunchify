@@ -137,3 +137,35 @@
     }
   }
 }
+//  mobile
+@media (max-width: 768px) {
+  .filter-bar .inner ul li.tag a{
+    font-size: 11px;
+  }
+  .content-block{
+    .content{
+      .inner{
+        .list-item{
+          .item{
+            .item-info{
+              min-height: 50px;
+              padding-left:15px;
+              .mark-point{
+                left: 10px;
+                font-size: 12px;
+                width: 98px;
+                .title{
+                  padding:10px;
+                  margin-top:0px;
+                }
+                .line{
+                  margin-left:44%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
