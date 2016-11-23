@@ -766,16 +766,6 @@ describe('Matching Profile Fn', () => {
         ],
         userId: 2,
       },
-      {
-        prefers: [
-          {type: 'field', ref: 7, userId: 3, id: 13},
-        ],
-        userId: 3,
-        location: {
-          lat: 10.4,
-          long: 108.4,
-        },
-      },
     ];
 
     var matchedProfile = matchingFn.matchProfile(origin, group, 1000);
