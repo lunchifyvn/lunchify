@@ -19,3 +19,4 @@ node_modules
 npm-debug.log
 .env
 client/lunchify.js
+client/assets/css/index.css
