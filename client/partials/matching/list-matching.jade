@@ -54,10 +54,10 @@ script.
         to: userId
       }),
       beforeSend: function(){
-        _this.empty().append('...');
+        _this.empty().append('<img src="img/icon/invite_loading.svg"/>');
       },
       success: function(res){
-        _this.empty().append(res.status);
+        _this.empty().append('Đã gửi lời mời').attr("disabled", "disabled");
       }
     }).post()
   }
