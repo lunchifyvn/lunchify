@@ -477,6 +477,20 @@ describe('Distance between two locations Calculation Fn', () => {
 
     distance.should.deepEqual(distanceFromLatLonInMeters(0, 0, 100, 20));
   });
+
+  it('should return Number.POSITIVE_INFINITY if location is null', () => {
+    var from = null;
+    var to = {lat: 100, long: 20};
+    var distance = distanceBetween2Locations(from, to);
+    distance.should.deepEqual(Number.POSITIVE_INFINITY);
+  });
+
+  it('should return Number.POSITIVE_INFINITY if location is undefined', () => {
+    var from = undefined;
+    var to = {lat: 100, long: 20};
+    var distance = distanceBetween2Locations(from, to);
+    distance.should.deepEqual(Number.POSITIVE_INFINITY);
+  });
 });
 
 describe('Distance between two user Fn', () => {
