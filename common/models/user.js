@@ -6,15 +6,19 @@ module.exports = function(User) {
     this.prefers((err, instances) => {
       var userProfile = {
         prefers: instances,
-        userId: this.id,
+        id: this.id,
         location: {long: 0, lat: 0},
       };
 
       // get the profile of other users
       User.find({
-        where: {id: {inq: userProfile.id}}, // except the user himself
-        include: 'prefers', // include the prefers
-        fields: {id: true, prefers: true}, // select id and prefer and location
+        where: {id: {neq: userProfile.id}}, // except the user himself
+        include: ['prefers', 'locations'], // include the prefers
+        fields: {
+          id: true,
+          prefers: true,
+          locations: true,
+        }, // select id and prefer and location
       }, (err, users) => {
         if (err) {
           return cb(err);
