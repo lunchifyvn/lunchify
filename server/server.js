@@ -80,23 +80,31 @@ app.get('/auth/account', ensureLoggedIn('/login'), function(req, res) {
   console.log(req.signedCookies);
   res.cookie('access-token', req.signedCookies.access_token);
   res.cookie('userId', req.user.id);
-  res.redirect('/select-topics');
-});
-
-app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   var User = app.models.user;
   User.findById(req.user.id, {
     include: ['prefers', 'identities'],
-  }, () => {
-    if (!req.query.isEditing) {
-      console.log('HAVE');
-      return res.redirect('/list-matching');
+  }, (err, user) => {
+    if (user.prefers().length === 0) {
+      res.redirect('/select-topics');
     } else {
-      res.render('pages/select-topics', {
-        user: req.user,
-        url: req.url,
-      });
+      res.redirect('/list-matching');
     }
+  });
+});
+
+app.get('/select-topics', ensureLoggedIn('/login'), function(req, res, next) {
+  var User = app.models.user;
+  User.findById(req.user.id, {
+    include: ['prefers', 'identities'],
+  }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    res.render('pages/select-topics', {
+      user: req.user,
+      url: req.url,
+      prefers: JSON.stringify(user.prefers()),
+    });
   });
 });
 
