@@ -87,7 +87,7 @@ app.get('/select-topics', ensureLoggedIn('/login'), function(req, res) {
   var User = app.models.user;
   User.findById(req.user.id, {
     include: ['prefers', 'identities'],
-  }, (err, user) => {
+  }, () => {
     if (!req.query.isEditing) {
       console.log('HAVE');
       return res.redirect('/list-matching');
