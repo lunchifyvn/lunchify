@@ -41,3 +41,37 @@
     }
   }
 }
+/**
+  * responsive
+ */
+//  mobile
+@media (max-width: 768px) {
+  .wrapper {
+    .banner {
+      .cta-content {
+        width: 210px;
+        height: 210px;
+        top: 0%;
+        margin-left: -105px;
+        .inner{
+          .logo{
+            padding-top: 5px;
+            width: 90px;
+          }
+          h1{
+            font-size: 18px;
+            margin: 7px auto;
+          }
+          .cta-btn{
+            font-size: 12px;
+            padding: 7px;
+          }
+        }
+      }
+    }
+  }
+}
+//  tablet
+@media (max-width: 970px) {
+
+}

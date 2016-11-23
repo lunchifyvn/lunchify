@@ -41,3 +41,11 @@
     }
   }
 }
+//  mobile
+@media (max-width: 768px) {
+  .login-modal {
+    .modal-dialog {
+      width: auto;
+    }
+  }
+}

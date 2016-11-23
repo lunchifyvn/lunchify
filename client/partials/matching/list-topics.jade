@@ -24,7 +24,7 @@ block scripts
               tagLink.empty().append('<img src="img/icon/tag_loading.svg"/>');
             },
             success: function (response) {
-              tagLink.empty().append(response.name + '<i class="ion-android-close"></i>');
+              tagLink.empty().append(response.name);
             }
           }).get();
         }
