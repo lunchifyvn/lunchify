@@ -23,24 +23,7 @@ describe('Compare 2 events', () => {
     compareEvents({}, undefined).should.above(0);
   });
 
-  it('should return 0 if two events are the same', () => {
-    var event1 = {
-      from: {},
-      to: {},
-      status: 'pending',
-    };
-
-    var event2 = {
-      from: {},
-      to: {},
-      status: 'pending',
-    };
-
-    compareEvents(event1, event2).should.deepEqual(0);
-  });
-
-
-  it('with the order of status should be pending > archive > accept > cancel', () => {
+  it('the order of status should be pending > archive > accept > cancel', () => {
     var pending = {
       from: {},
       to: {},
@@ -52,7 +35,7 @@ describe('Compare 2 events', () => {
       to: {},
       status: 'archive',
     };
-    
+
     var cancel = {
       from: {},
       to: {},
@@ -91,9 +74,31 @@ describe('Compare 2 events', () => {
 
     compareEvents(event1, event2).should.below(0);
   });
+
+  it('should return 0 if two events are the same', () => {
+    var event1 = {
+      from: {},
+      to: {},
+      status: 'pending',
+      updatedAt: new Date(2016, 11, 18),
+    };
+
+    var event2 = {
+      from: {},
+      to: {},
+      status: 'pending',
+      updatedAt: new Date(2016, 11, 18),
+    };
+
+    compareEvents(event1, event2).should.deepEqual(0);
+  });
 });
 
 describe('Compare 2 list of events', () => {
+  it('should return 0 when compare 2 undefined', () => {
+    compareListOfEvents(undefined, undefined).should.deepEqual(0);
+  });
+
   it('should compare by greatest event first', () => {
     var events1 = [
       {
@@ -148,7 +153,8 @@ describe('Compare 2 list of events', () => {
     compareListOfEvents(events1, events2).should.above(0);
   });
 
-  it('If 2 events have the same max events and size more archive events will win', () => {
+  it('If 2 events have the same max events and size,' +
+    'which has more archive events will win', () => {
     var events1 = [
       {
         status: 'pending',
@@ -269,7 +275,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 300,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       events: [
@@ -283,7 +289,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 300,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.deepEqual(0);
   });
@@ -299,13 +305,13 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 300,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       metadata: {
         distance: 300,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.above(0);
   });
@@ -323,7 +329,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       events: [
@@ -337,7 +343,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 300,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.above(0);
   });
@@ -355,7 +361,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}, {type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       events: [
@@ -369,7 +375,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.above(0);
   });
@@ -393,7 +399,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       events: [
@@ -407,7 +413,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.above(0);
   });
@@ -431,7 +437,7 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     var user2 = {
       events: [
@@ -457,12 +463,11 @@ describe('Compare 2 users', () => {
       metadata: {
         distance: 400,
         prefers: [{type: 'field', ref: 7}],
-      }
+      },
     };
     compareUsers(user1, user2).should.above(0);
   });
 });
-
 
 describe('Distance between two locations Calculation Fn', () => {
   it('Shoul be equal to lat and long calculation', () => {
@@ -558,6 +563,7 @@ describe('Matching Profile Fn', () => {
     }];
 
     var matchedProfile = matchingFn.matchProfile(origin, group);
+    console.log(matchedProfile);
     matchedProfile.should.be.an.Array();
     matchedProfile.should.deepEqual(group);
   });
