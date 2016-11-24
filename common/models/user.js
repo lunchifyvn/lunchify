@@ -29,6 +29,7 @@ module.exports = function(User) {
           if (err) {
             return cb(err);
           }
+          
           // finally, find the suggestion
           var suggestion = matching.matchProfile(userProfile, users);
           cb(null, suggestion);
@@ -36,6 +37,18 @@ module.exports = function(User) {
       });
     });
   };
+
+  function getRecentLocation(locations) {
+    return _.reduce(locations, (max, location) => {
+      if(max === undefined) {
+        return location;
+      } else if (max.getTime() < location.createAt.getTime()) {
+        return event;
+      } else {
+        return max;
+      }
+    }, undefined);
+  }
 
   User.remoteMethod('suggestion',
     {
