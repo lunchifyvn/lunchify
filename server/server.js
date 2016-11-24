@@ -152,6 +152,10 @@ app.get('/auth/logout', function(req, res) {
   res.redirect('/');
 });
 
+app.get('/chat', (req, res) => {
+  res.render('pages/chat');
+});
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -167,5 +171,32 @@ app.start = function() {
 
 // start the server if `$ node server.js`
 if (require.main === module) {
-  app.start();
+  app.io = require('socket.io')(app.start());
+  require('socketio-auth')(app.io, {
+    authenticate: function(socket, value, callback) {
+      var AccessToken = app.models.AccessToken;
+      //get credentials sent by the client
+      AccessToken.find({
+        where: {
+          and: [{userId: value.userId}, {id: value.id}],
+        },
+      }, function(err, tokenDetail) {
+        if (err) {
+          throw err;
+        }
+        if (tokenDetail.length) {
+          callback(null, true);
+        } else {
+          callback(null, false);
+        }
+      }); //find function ..
+    }, //authenticate function ..
+  });
+
+  app.io.on('connection', function(socket) {
+    console.log('a user connected');
+    socket.on('disconnect', function() {
+      console.log('user disconnected');
+    });
+  });
 }
