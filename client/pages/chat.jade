@@ -1,0 +1,50 @@
+extends ../layouts/layout
+block content
+  .container
+    .row(style='margin: 20px 0px')
+      .col-sm-12.chat-content
+        // chat box content
+        .chat-box.col-sm-12
+          // item chat
+          .col-sm-12.send
+            .item
+              .avatar
+                img.img-responsive(src='https://graph.facebook.com/1175611229133280/picture?width=100&height=100')
+              .text-info
+                strong Tuấn Nguyễn
+                p Hello, go out for lunch ?
+          // item chat
+          .col-sm-12.receive
+            .item
+              .text-info
+                strong Hoàng Trần
+                p Noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+              .avatar
+                img.img-responsive(src='https://graph.facebook.com/1003643559724447/picture?width=100&height=100')
+          // item chat
+          // item chat
+          .col-sm-12.send
+            .item
+              .avatar
+                img.img-responsive(src='https://graph.facebook.com/1175611229133280/picture?width=100&height=100')
+              .text-info
+                strong Tuấn Nguyễn
+                p Hello, go out for lunch ?
+          // item chat
+          .col-sm-12.receive
+            .item
+              .text-info
+                strong Hoàng Trần
+                p Noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+              .avatar
+                img.img-responsive(src='https://graph.facebook.com/1003643559724447/picture?width=100&height=100')
+          // item chat
+        // end chat box content
+        .chat-input.col-sm-12
+          .col-sm-10
+            textarea(rows='4', placeholder='Input your text here')
+          .col-sm-2
+            a.btn.btn-default(style='padding: 50px 30px;') Send
+
+        script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+        script(src='/js/socket.js')
