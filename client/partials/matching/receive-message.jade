@@ -1,0 +1,17 @@
+block scripts
+  script.
+    //  assume get invitation
+    setTimeout(function () {
+      var listMatching = $("#contentMatching .content");
+      var listReceiveMessage = $(document.createElement('div')).addClass("col-md-4");
+
+      //  add message item
+
+
+      //  change class list matching
+      listMatching.addClass('col-md-8');
+
+      //  append list receive to block
+      $("#contentMatching").empty().append(listMatching).append(listReceiveMessage);
+    }, 2000);
+

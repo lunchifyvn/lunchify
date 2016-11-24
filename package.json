@@ -5,7 +5,7 @@
   "scripts": {
     "watch": "gulp watch",
     "lint": "eslint .",
-    "start": "node .",
+    "start": "gulp && node .",
     "test": "mocha test/*-test.js",
     "posttest": "npm run lint"
   },
@@ -39,6 +39,7 @@
     "faker": "^3.1.0",
     "gulp": "^3.9.1",
     "gulp-mocha": "^3.0.1",
+    "gulp-sass": "^2.3.2",
     "mocha": "^3.1.2",
     "nsp": "^2.1.0",
     "rewire": "^2.5.2",
