@@ -152,8 +152,10 @@ app.get('/auth/logout', function(req, res) {
   res.redirect('/');
 });
 
-app.get('/chat', (req, res) => {
-  res.render('pages/chat');
+app.get('/chat', ensureLoggedIn('/login'), (req, res) => {
+  res.render('pages/chat', {
+    user: req.user,
+  });
 });
 
 app.start = function() {

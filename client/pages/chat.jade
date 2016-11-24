@@ -41,7 +41,10 @@ block content
           // item chat
         // end chat box content
         .chat-input.col-sm-12
-          textarea(rows='4', placeholder='Input your text here')
+          .col-sm-10
+            textarea(rows='4', placeholder='Input your text here')
+          .col-sm-2
+            a.btn.btn-default(style='padding: 50px 30px;') Send
 
         script(src='https://cdn.socket.io/socket.io-1.4.5.js')
         script(src='/js/socket.js')
