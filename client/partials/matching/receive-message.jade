@@ -6,10 +6,22 @@ block scripts
       var listReceiveMessage = $(document.createElement('div')).addClass("col-md-4");
 
       //  add message item
+      var messageItem = $(document.createElement('div')).addClass('row message-item');
+      //  append avatar
+      messageItem.append('<div class="col-sm-4"><img src="https://graph.facebook.com/506988549476253/picture?width=100&height=100" class="avatar img-responsive"/></div>');
+      //  append name
+      messageItem.append('<div class="col-sm-8 info"><strong class="name">Tuấn Nguyễn</strong></div>');
+      //  append button control
+      messageItem.append('<div class="col-sm-12 btn-control"><div class="col-xs-6"><a class="btn btn-default" href="">Từ chối</a></div><div class="col-xs-6"><a class="btn btn-success" href="">Chấp nhận</a></div></div>');
 
+      listReceiveMessage.append(messageItem);
 
       //  change class list matching
       listMatching.addClass('col-md-8');
+      //  change padding of button
+      $(".content-block .content .inner .list-item .action-btn .inner").css({"padding": 0});
+      //  remove padding
+      $(".content-block .content .inner .list-item .item .img").css({'padding':0})
 
       //  append list receive to block
       $("#contentMatching").empty().append(listMatching).append(listReceiveMessage);
