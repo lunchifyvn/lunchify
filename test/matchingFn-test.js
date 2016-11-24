@@ -23,7 +23,7 @@ describe('Compare 2 events', () => {
     compareEvents({}, undefined).should.above(0);
   });
 
-  it('the order of status should be pending > archive > accept > cancel', () => {
+  it('order of status should be pending > archive > accept > cancel', () => {
     var pending = {
       from: {},
       to: {},
@@ -477,6 +477,20 @@ describe('Distance between two locations Calculation Fn', () => {
 
     distance.should.deepEqual(distanceFromLatLonInMeters(0, 0, 100, 20));
   });
+
+  it('should return Number.POSITIVE_INFINITY if location is null', () => {
+    var from = null;
+    var to = {lat: 100, long: 20};
+    var distance = distanceBetween2Locations(from, to);
+    distance.should.deepEqual(Number.POSITIVE_INFINITY);
+  });
+
+  it('should return Number.POSITIVE_INFINITY if location is undefined', () => {
+    var from = undefined;
+    var to = {lat: 100, long: 20};
+    var distance = distanceBetween2Locations(from, to);
+    distance.should.deepEqual(Number.POSITIVE_INFINITY);
+  });
 });
 
 describe('Distance between two user Fn', () => {
@@ -693,5 +707,69 @@ describe('Matching Profile Fn', () => {
     metadata.distance.should.deepEqual(23.525988391724074);
     metadata.prefers.length.should.deepEqual(1);
     metadata.prefers[0].should.deepEqual({type: 'field', ref: 7});
+  });
+
+  it('should return empty if user location is null', () => {
+    var origin = {
+      prefers: [
+        {type: 'field', ref: 7, userId: 1, id: 1},
+        {type: 'field', ref: 112, userId: 1, id: 36},
+      ],
+      userId: 1,
+    };
+
+    var group = [
+      {
+        prefers: [
+          {type: 'field', ref: 7, userId: 3, id: 13},
+        ],
+        userId: 2,
+        location: {
+          lat: 10.830795,
+          long: 106.680532,
+        },
+      },
+      {
+        prefers: [
+          {type: 'field', ref: 7, userId: 3, id: 13},
+        ],
+        userId: 3,
+        location: {
+          lat: 10.4,
+          long: 108.4,
+        },
+      },
+    ];
+
+    var matchedProfile = matchingFn.matchProfile(origin, group, 1000);
+    matchedProfile.should.be.an.Array();
+    matchedProfile.should.be.empty();
+  });
+
+  it('should not match other user with empty location', () => {
+    var origin = {
+      prefers: [
+        {type: 'field', ref: 7, userId: 1, id: 1},
+        {type: 'field', ref: 112, userId: 1, id: 36},
+      ],
+      userId: 1,
+      location: {
+        lat: 10.830795,
+        long: 106.680532,
+      },
+    };
+
+    var group = [
+      {
+        prefers: [
+          {type: 'field', ref: 7, userId: 3, id: 13},
+        ],
+        userId: 2,
+      },
+    ];
+
+    var matchedProfile = matchingFn.matchProfile(origin, group, 1000);
+    matchedProfile.should.be.an.Array();
+    matchedProfile.should.be.empty();
   });
 });
