@@ -19,7 +19,7 @@ gulp.task('test', () => {
   });
 });
 
-gulp.task('default', function () {
+gulp.task('default', function() {
   return gulp.src('./client/src/scss/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('./client/assets/css'));
