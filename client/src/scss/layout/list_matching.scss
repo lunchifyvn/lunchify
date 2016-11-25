@@ -136,6 +136,29 @@
       }
     }
   }
+  .message-item{
+    background: #fff;
+    padding: 15px 0;
+    margin-right: 0px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    margin-bottom:15px;
+    .avatar{
+      border-radius: 50%;
+    }
+    .info{
+      padding-top:15px;
+      .name{
+        padding-top:15px;
+      }
+    }
+    .btn-control{
+      padding-top:15px;
+      a{
+        display: block;
+      }
+    }
+  }
 }
 //  mobile
 @media (max-width: 768px) {
