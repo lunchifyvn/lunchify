@@ -20,10 +20,13 @@
 @import "layout/footer";
 
 // topics listing
-@import "layout/topics.scss";
+@import "layout/topics";
 
 // login page
-@import "layout/login.scss";
+@import "layout/login";
 
 // chat page
-@import "layout/chat.scss";
+@import "layout/chat";
+
+//  loading style
+@import "layout/loading";

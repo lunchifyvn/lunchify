@@ -1,5 +1,5 @@
 $size : 120px;
-$color1 : #3A60DB;
+$color1 : #2196F3;
 $color2 : #FFFFFF;
 @mixin keyframes($name) {
   @-o-keyframes #{$name} { @content };
@@ -31,6 +31,8 @@ $color2 : #FFFFFF;
 
 
 .load{
+  display: none;
+  background: rgba(33, 150, 243, 0.9);
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -212,8 +214,6 @@ $color2 : #FFFFFF;
 }
 
 
-
-
 *,
 *:after,
 *::before {
@@ -223,4 +223,85 @@ $color2 : #FFFFFF;
   box-sizing: border-box;
   margin:0;
   padding:0;
+}
+
+.after-load{
+  display: none;
+  position: fixed;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100vh;
+  z-index: 2;
+  background: rgba(33, 150, 243, 0.9);
+  .inner{
+    display: block;
+    padding: 20px;
+    width:100%;
+    height: 100%;
+    margin-top: 50%;
+    text-align: center;
+    color: #fff;
+    .message{
+      font-size: 16px;
+      span{
+        display: block;
+      }
+    }
+    .confirm{
+      display: block;
+      margin: 15px auto;
+      width: 50%;
+      background: #E91E63;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+    }
+  }
+}
+//  income call
+.income-call{
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background: rgba(33, 150, 243, 1);
+  .inner{
+    display: block;
+    padding: 20% 15px;
+    .avatar{
+      margin:auto;
+      width: 100px;
+      height:100px;
+      -webkit-border-radius:50%;
+      -moz-border-radius:50%;
+      border-radius:50%;
+      border:5px solid #fff;
+      overflow: hidden;
+    }
+    .income-label{
+      margin: 30px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: normal;
+    }
+    .control{
+      margin-top:15px;
+      .btn{
+        margin-right:15px;
+        color: #ffffff;
+        i{
+          margin-right:5px;
+        }
+        &.chat{
+          background: #9C27B0;
+        }
+        &.call{
+          background: #FF9800;
+        }
+      }
+    }
+  }
 }

@@ -31,3 +31,9 @@ body {
     width: 1024px;
   }
 }
+//  mobile
+@media (max-width: 768px) {
+  body{
+    font-size: 12px;
+  }
+}
