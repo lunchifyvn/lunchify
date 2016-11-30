@@ -270,7 +270,7 @@ $color2 : #FFFFFF;
   background: rgba(33, 150, 243, 1);
   .inner{
     display: block;
-    padding: 20% 15px;
+    padding: 10% 15px;
     .avatar{
       margin:auto;
       width: 100px;
@@ -312,6 +312,11 @@ $color2 : #FFFFFF;
       .confirm{
         width: 50%;
       }
+    }
+  }
+  .income-call{
+    .inner{
+      padding: 20% 15px;
     }
   }
 }
