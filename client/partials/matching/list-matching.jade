@@ -1,4 +1,5 @@
 script.
+  var $loading = $("#globalLoading");
   var $listMatching = $("#listMatching");
   var sugRequest = userSuggestionUri.replace("{id}", userId);
   api(sugRequest, {
@@ -21,7 +22,7 @@ script.
        }
        ]
        * */
-      return false;
+      //return false;
       $listMatching.empty().append('<li class="row item first"><div class="col-xs-12 item-info"><div class="mark-point"><div class="title">Khoảng cách</div><div class="line"></div></div></div></li>');
       for (var i = 0; i < 5; i++) {
         //  get each user detail
@@ -55,10 +56,13 @@ script.
         to: userId
       }),
       beforeSend: function(){
-        _this.empty().append('<img src="img/icon/invite_loading.svg"/>');
+        $loading.show();
       },
       success: function(res){
-        _this.empty().append('Đã gửi lời mời').attr("disabled", "disabled");
+        $("#afterLoading").fadeIn("slow");
+        $loading.hide();
+        _this.empty().append('<img src="img/icon/invite_loading.svg"/>');
+        _this.css({"background": "transparent", "border":"0px"})
       }
     }).post()
   }
@@ -116,10 +120,15 @@ script.
     }).get();
   }
 
+  //  close after loading
+  $("#afterLoading .confirm").click(function (event) {
+    event.preventDefault();
+    $("#afterLoading").hide();
+  })
+
   var $demoUserModal = $("#demoUserModal");
   var $demoClick = $("#demoClick");
   var $demoInvite = $("#demoInvite");
-  var $loading = $("#globalLoading");
   $demoClick.click(function(event){
     event.preventDefault();
     $demoUserModal.modal('show');
@@ -132,17 +141,5 @@ script.
     setTimeout(function(){
       $("#afterLoading").fadeIn("slow");
       $loading.hide();
-
-      //  close after loading
-      $("#afterLoading .confirm").click(function (event) {
-        event.preventDefault();
-        $("#afterLoading").hide();
-        $("#demoStatus").empty().append('<img src="img/icon/invite_loading.svg"/>');
-
-        //  user accept
-        setTimeout(function(){
-          $("#incomeCall").show();
-        },5000)
-      })
     },2000)
   });

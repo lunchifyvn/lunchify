@@ -239,7 +239,7 @@ $color2 : #FFFFFF;
     padding: 20px;
     width:100%;
     height: 100%;
-    margin-top: 50%;
+    margin-top: 5%;
     text-align: center;
     color: #fff;
     .message{
@@ -251,7 +251,7 @@ $color2 : #FFFFFF;
     .confirm{
       display: block;
       margin: 15px auto;
-      width: 50%;
+      width: 160px;
       background: #E91E63;
       padding: 10px;
       border-radius: 10px;
@@ -301,6 +301,16 @@ $color2 : #FFFFFF;
         &.call{
           background: #FF9800;
         }
+      }
+    }
+  }
+}
+@media (max-width: 768px){
+  .after-load{
+    .inner{
+      margin-top:10%;
+      .confirm{
+        width: 50%;
       }
     }
   }
