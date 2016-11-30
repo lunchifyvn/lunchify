@@ -36,7 +36,7 @@ block scripts
 
     let prefers = !{prefers}
     let topic_ids = getSelectedTopicIds(prefers)
-    var user_id = #{user ? user.id : ""}
+    var user_id = "#{user ? user.id : ""}"
 
     function topicClicked(event) {
       var target = $(event.target)
