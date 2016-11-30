@@ -60,5 +60,9 @@
   "event": {
     "dataSource": "db",
     "public": true
+  },
+  "chat": {
+    "dataSource": "db",
+    "public": false
   }
 }

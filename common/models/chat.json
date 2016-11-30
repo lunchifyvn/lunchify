@@ -1,16 +1,13 @@
 {
-  "name": "event",
-  "plural": "events",
+  "name": "chat",
+  "plural": "chats",
   "base": "PersistedModel",
   "properties": {
     "from": {
       "type": "Object"
     },
-    "to": {
+    "text": {
       "type": "Object"
-    },
-    "status": {
-      "type": "String"
     },
     "createdAt": {
       "type": "date",
@@ -22,9 +19,10 @@
   },
   "validations": [],
   "relations": {
-    "chats": {
-      "type": "hasMany",
-      "model": "chat"
+    "events": {
+      "type": "belongsTo",
+      "model": "event",
+      "foreignKey": "eventId"
     }
   },
   "acls": [],
