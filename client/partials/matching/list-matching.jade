@@ -1,4 +1,5 @@
 script.
+  var $loading = $("#globalLoading");
   var $listMatching = $("#listMatching");
   var sugRequest = userSuggestionUri.replace("{id}", userId);
   api(sugRequest, {
@@ -21,7 +22,8 @@ script.
        }
        ]
        * */
-      $listMatching.empty().append('<li class="row item first"><div class="col-sm-12 item-info"><div class="mark-point"><div class="title">Khoảng cách</div><div class="line"></div></div></div></li>');
+      //return false;
+      $listMatching.empty().append('<li class="row item first"><div class="col-xs-12 item-info"><div class="mark-point"><div class="title">Khoảng cách</div><div class="line"></div></div></div></li>');
       for (var i = 0; i < 5; i++) {
         //  get each user detail
         api('/api/users/'+i+'/identities', {
@@ -32,7 +34,7 @@ script.
                 name = userProfile.name.familyName + " " +userProfile.name.givenName;
               if(response[0].userId != userInfo.id){
                 var className = "row item";
-                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="hidden-xs mark-point"><div class="title"><div class="point"></div></div><div class="line"></div></div><div class="row"><div class="col-xs-4 col-md-3 col-lg-2"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-xs-8 col-sm-8 col-md-9 col-lg-10"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3 col-md-3 col-xs-8 col-xs-offset-4 col-md-offset-0"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a onClick="viewDetail(event)"  data-id="' + response[0].userId + '" href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
+                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="hidden-xs mark-point"><div class="title"><div class="point"></div></div><div class="line"></div></div><div class="row"><div class="col-xs-4 col-md-3 col-lg-2"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-xs-8 col-md-9 col-lg-10"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3 col-md-3 col-xs-8 col-xs-offset-4 col-md-offset-0"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a onClick="viewDetail(event)"  data-id="' + response[0].userId + '" href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
                 $listMatching.append(itemHtml);
               }
             }
@@ -54,10 +56,13 @@ script.
         to: userId
       }),
       beforeSend: function(){
-        _this.empty().append('<img src="img/icon/invite_loading.svg"/>');
+        $loading.show();
       },
       success: function(res){
-        _this.empty().append('Đã gửi lời mời').attr("disabled", "disabled");
+        $("#afterLoading").fadeIn("slow");
+        $loading.hide();
+        _this.empty().append('<img src="img/icon/invite_loading.svg"/>');
+        _this.css({"background": "transparent", "border":"0px"})
       }
     }).post()
   }
@@ -114,3 +119,27 @@ script.
       }
     }).get();
   }
+
+  //  close after loading
+  $("#afterLoading .confirm").click(function (event) {
+    event.preventDefault();
+    $("#afterLoading").hide();
+  })
+
+  var $demoUserModal = $("#demoUserModal");
+  var $demoClick = $("#demoClick");
+  var $demoInvite = $("#demoInvite");
+  $demoClick.click(function(event){
+    event.preventDefault();
+    $demoUserModal.modal('show');
+  });
+  $demoInvite.click(function (event) {
+    event.preventDefault();
+    //  show loading
+    $loading.show();
+    $demoUserModal.modal('hide');
+    setTimeout(function(){
+      $("#afterLoading").fadeIn("slow");
+      $loading.hide();
+    },2000)
+  });

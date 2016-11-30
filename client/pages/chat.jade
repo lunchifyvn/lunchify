@@ -1,50 +1,27 @@
 extends ../layouts/layout
 block content
   .container
-    .row(style='margin: 20px 0px')
-      .col-sm-12.chat-content
-        // chat box content
-        .chat-box.col-sm-12
-          // item chat
-          .col-sm-12.send
-            .item
-              .avatar
-                img.img-responsive(src='https://graph.facebook.com/1175611229133280/picture?width=100&height=100')
-              .text-info
-                strong Tuấn Nguyễn
-                p Hello, go out for lunch ?
-          // item chat
-          .col-sm-12.receive
-            .item
-              .text-info
-                strong Hoàng Trần
-                p Noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-              .avatar
-                img.img-responsive(src='https://graph.facebook.com/1003643559724447/picture?width=100&height=100')
-          // item chat
-          // item chat
-          .col-sm-12.send
-            .item
-              .avatar
-                img.img-responsive(src='https://graph.facebook.com/1175611229133280/picture?width=100&height=100')
-              .text-info
-                strong Tuấn Nguyễn
-                p Hello, go out for lunch ?
-          // item chat
-          .col-sm-12.receive
-            .item
-              .text-info
-                strong Hoàng Trần
-                p Noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-              .avatar
-                img.img-responsive(src='https://graph.facebook.com/1003643559724447/picture?width=100&height=100')
-          // item chat
-        // end chat box content
-        .chat-input.col-sm-12
-          .col-sm-10
-            textarea(rows='4', placeholder='Input your text here')
-          .col-sm-2
-            a.btn.btn-default(style='padding: 50px 30px;') Send
+    .row
+      .col-md-12.col-lg-6
+        .panel
+          // Heading
+          .panel-heading
+            h3.panel-title Chat
+          // Widget body
+          #demoChatBody.collapse.in
+            .nano.has-scrollbar(style='height:380px')
+              .nano-content.pad-all(tabindex='0')
+                ul.list-unstyled.media-block
+              .nano-pane
+                .nano-slider(style='height: 141px; transform: translate(0px, 0px);')
+            // Widget footer
+            .panel-footer
+              .row
+                .col-xs-9
+                  input#chatInput.form-control.chat-input(type='text', placeholder='Enter your text')
+                .col-xs-3
+                  button.btn.btn-primary.btn-block(type='submit') Send
 
-        script(src='https://cdn.socket.io/socket.io-1.4.5.js')
-        script(src='/js/socket.js')
+  script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+  script(src="http://www.datejs.com/build/date.js")
+  script(src='./js/socket.js')

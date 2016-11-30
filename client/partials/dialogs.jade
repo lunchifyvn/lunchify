@@ -35,3 +35,25 @@
         .button-group.row
           .col-sm-12.btn-wrapper
             a.btn(href='#', onclick="invite(event)") Gửi lời mời
+
+#demoUserModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .modal-dialog.user-dialog(style='z-index: 9999;')
+    .modal-content(role='document')
+      .modal-header
+        button.close(type="button" class="" data-dismiss="modal" aria-label="Close")
+          span(aria-hidden="true") &times
+        img.avatar(src='https://fb-s-d-a.akamaihd.net/h-ak-xft1/v/t1.0-1/p160x160/996693_2116007291873744_1764555311648855641_n.jpg?oh=846b9c00fc80808b6f505c685c84d8c1&oe=58B81462&__gda__=1489197048_f191b063da43b1f5d8118edcf45ed92e')
+      .modal-body.text-center
+        h3.name
+          a(href='#') Vi Trần
+        p.topic-title Lĩnh vực quan tâm
+        .list-tag
+          a.tag Phượt
+          a.tag Du lịch
+          a.tag Nodejs
+          a.tag Bơi lội
+          a.tag Ruby on rails
+          a.tag Android
+        .button-group.row
+          .col-sm-12.btn-wrapper
+            a#demoInvite.btn(href='#') Gửi lời mời

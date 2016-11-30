@@ -3,12 +3,13 @@ extends ../layouts/layout
 block content
   .container
     .row
-      .col-lg-12
+      .col-xs-12
         h1.page-header Select your favorite topics
   br
   .container
     #topics.flex-row.row
-    a.btn.btn-default(href="/list-matching") Next
+    hr
+    a.btn.btn-primary(href="/list-matching") Next
 
 block scripts
   script.
@@ -16,8 +17,8 @@ block scripts
       var selectedTopicIds = []
       $.each(prefers, function(key, value) {
         selectedTopicIds.push(value.ref)
-      })
-      return selectedTopicIds
+      });
+      return selectedTopicIds;
     }
 
     var getPreferId = (prefers, topic_id) => {
@@ -27,7 +28,6 @@ block scripts
         console.log('VALUE.REF: ' + value.ref)
         if (value.ref == topic_id) {
           result = value.id
-          console.log('RESULT: ' + result)
           return false
         }
       })
@@ -93,10 +93,10 @@ block scripts
           var field = value.name
           var topics = value.topics
           var divObj = document.createElement('div')
-          $(divObj).append('<h3>' + field + '</h3>')
+          $(divObj).addClass("col-xs-12").append('<h3>' + field + '</h3>')
           $.each(topics, function(key, value) {
             let is_selected = jQuery.inArray(value.id, topic_ids) !== -1 ? 'topic-selected' : ''
-            $(divObj).append('<a onClick="topicClicked(event)" class="badge topic-label ' 
+            $(divObj).append('<a onClick="topicClicked(event)" class="badge topic-label '
             + is_selected + '" data-id="' + value.id +'" + ">' + value.name + '</a>')
           })
           $('#topics').append($(divObj))

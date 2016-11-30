@@ -40,6 +40,42 @@
       }
     }
   }
+  .topics{
+    margin-top:45px;
+    h3{
+      font-size:22px;
+      margin-bottom:20px;
+    }
+    .topic-item{
+      margin-bottom: 15px;
+      .inner{
+        display: block;
+        position: relative;
+        img{
+          -webkit-border-radius:10px;
+          -moz-border-radius:10px;
+          border-radius:10px;
+        }
+        .label{
+          position: absolute;
+          width: 100%;
+          top: 0px;
+          left: 0px;
+          height: 100%;
+          background: rgba(0,0,0,.4);
+          border-radius: 10px;
+          padding-top: 15%;
+          font-size:16px;
+          span{
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight:normal;
+          }
+        }
+      }
+    }
+  }
 }
 /**
   * responsive
@@ -49,22 +85,38 @@
   .wrapper {
     .banner {
       .cta-content {
-        width: 210px;
-        height: 210px;
-        top: 0%;
-        margin-left: -105px;
+        width: 180px;
+        height: 180px;
+        top: 1%;
+        margin-left: -90px;
         .inner{
           .logo{
             padding-top: 5px;
             width: 90px;
           }
           h1{
-            font-size: 18px;
+            font-size: 15px;
             margin: 7px auto;
           }
           .cta-btn{
-            font-size: 12px;
-            padding: 7px;
+            font-size: 11px;
+            padding: 5px;
+            margin-top:13px;
+          }
+        }
+      }
+    }
+    .topics{
+      h3{
+        font-size:18px;
+      }
+      .topic-item{
+        .inner{
+          .label{
+            font-size:14px;
+            span{
+              font-size: 12px;
+            }
           }
         }
       }

@@ -170,6 +170,7 @@
       .inner{
         .list-item{
           .item{
+            margin-top: 20px;
             .item-info{
               min-height: 50px;
               padding-left:15px;
@@ -184,6 +185,23 @@
                 .line{
                   margin-left:44%;
                 }
+              }
+              .info{
+                padding-left:0px;
+                .mobile-control{
+                  a{
+                    font-size: 12px;
+                    text-align: center;
+                    padding:6px 5px;
+                  }
+                }
+              }
+              .name{
+                font-size: 16px;
+              }
+              .status{
+                font-size:13px;
+                margin-top: 5px;
               }
             }
           }
