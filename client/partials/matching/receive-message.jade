@@ -1,19 +1,70 @@
 block scripts
   script.
-    //  assume get invitation
-    setTimeout(function () {
-      return false;
+    var listInvite = [];
+    var listAccept = [];
+    (function poll() {
+      var eventUri = "/api/events?filter[where][to]="+userInfo.id;
+
+      setTimeout(function () {
+        $.ajax({
+          url: eventUri , success: function (response) {
+            //  check valid
+            var length = response.length;
+            for(let i=0; i<length; i++){
+              var data = response[i];
+              if (data.status === "pending") {
+                if(listInvite.indexOf(data.from) == -1){
+                  listInvite.push(data.from);
+                  //  get user detail
+                  api('/api/users/' + data.from + '/identities', {
+                    success: function (response) {
+                      //  append to list
+                      if (response.length > 0) {
+                        var userDetail = response[0];
+                        //  add to layout
+                        addInviteMessage(userDetail, data.id);
+                      }
+                    }
+                  }).get();
+                }
+              }else{
+                if(listAccept.indexOf(data.from) == -1){
+                  //  show accept status
+                  api('/api/users/' + data.from + '/identities', {
+                    success: function (response) {
+                      if (response.length > 0) {
+                        var userDetail = response[0];
+
+                        // show income call
+                        addToIncome(userDetail)
+                      }
+                    }
+                  }).get();
+                }
+              }
+            }
+          }, dataType: "json", complete: poll
+        });
+      }, 5000);
+    })();
+
+
+
+
+    function addInviteMessage(userDetail, eventId) {
+      var profile = userDetail.profile;
+
       var listMatching = $("#contentMatching .content");
       var listReceiveMessage = $(document.createElement('div')).addClass("col-md-4");
 
       //  add message item
       var messageItem = $(document.createElement('div')).addClass('row message-item');
       //  append avatar
-      messageItem.append('<div class="col-sm-4"><img src="https://graph.facebook.com/506988549476253/picture?width=100&height=100" class="avatar img-responsive"/></div>');
+      messageItem.append('<div class="col-sm-4"><img src="https://graph.facebook.com/'+profile.id+'/picture?width=100&height=100" class="avatar img-responsive"/></div>');
       //  append name
-      messageItem.append('<div class="col-sm-8 info"><strong class="name">Tuấn Nguyễn</strong></div>');
+      messageItem.append('<div class="col-sm-8 info"><strong class="name">'+profile.name.familyName+' '+profile.name.givenName+'</strong></div>');
       //  append button control
-      messageItem.append('<div class="col-sm-12 btn-control"><div class="col-xs-6"><a class="btn btn-default" href="">Từ chối</a></div><div class="col-xs-6"><a class="btn btn-success" href="">Chấp nhận</a></div></div>');
+      messageItem.append('<div class="col-sm-12 btn-control"><div class="col-xs-6"><a data-event="'+eventId+'" class="btn btn-default" href="#">Từ chối</a></div><div class="col-xs-6"><a onclick="acceptInvite(event)" data-event="'+eventId+'" class="btn btn-success" href="#">Chấp nhận</a></div></div>');
 
       listReceiveMessage.append(messageItem);
 
@@ -22,9 +73,26 @@ block scripts
       //  change padding of button
       $(".content-block .content .inner .list-item .action-btn .inner").css({"padding": 0});
       //  remove padding
-      $(".content-block .content .inner .list-item .item .img").css({'padding':0})
+      $(".content-block .content .inner .list-item .item .img").css({'padding': 0})
 
       //  append list receive to block
       $("#contentMatching").empty().append(listMatching).append(listReceiveMessage);
-    }, 2000);
+    }
 
+    function acceptInvite(event){
+      var $target = $(event.target);
+      var eventId = $target.attr("data-event");
+      api('/api/events/' + eventId , {
+        data: JSON.stringify({status: "accept"}),
+        success: function (response) {
+          console.log(response);
+        }
+      }).put();
+    }
+
+    function addToIncome(userDetail){
+      var profile = userDetail.profile;
+      $("#incomeCall .avatar img").attr("src", 'https://graph.facebook.com/' + profile.id + '/picture?width=100&amp;height=100')
+      $("#incomeCall .income-label strong").empty().append(profile.name.familyName+" "+profile.name.givenName+" đã đồng ý lời mời của bạn")
+      $("#incomeCall").show();
+    }

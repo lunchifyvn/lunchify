@@ -49,6 +49,10 @@
       border: 1px solid #e5e5e5;
       background: #fff;
       border-radius: 10px;
+      h1{
+        font-size:1.5em;
+        padding: 30px 20px;
+      }
       .list-item{
         overflow: hidden;
         margin-bottom: 15px;
@@ -56,8 +60,8 @@
           padding: 15px;
           .item-info{
             position: relative;
-            padding-left:160px;
             min-height: 100px;
+            padding-left:30px;
             //  timeline point
             .mark-point{
               position: absolute;
