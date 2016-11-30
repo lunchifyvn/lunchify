@@ -13,7 +13,7 @@ block content
 
 block scripts
   script.
-    var getSelectedTopicIds = (prefers) => {
+    var getSelectedTopicIds = function prefers(){
       var selectedTopicIds = []
       $.each(prefers, function(key, value) {
         selectedTopicIds.push(value.ref)
@@ -21,8 +21,7 @@ block scripts
       return selectedTopicIds;
     }
 
-    var getPreferId = (prefers, topic_id) => {
-      console.log('TOPIC_ID: ' + topic_id)
+    var getPreferId =  function(prefers, topic_id){
       let result
       $.each(prefers, function(key, value) {
         console.log('VALUE.REF: ' + value.ref)
@@ -31,11 +30,11 @@ block scripts
           return false
         }
       })
-      return result
+      return result;
     }
 
-    let prefers = !{prefers}
-    let topic_ids = getSelectedTopicIds(prefers)
+    var prefers = !{prefers}
+    var topic_ids = getSelectedTopicIds(prefers)
     var user_id = #{user ? user.id : ""}
 
     function topicClicked(event) {

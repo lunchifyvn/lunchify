@@ -2,6 +2,11 @@ $(document).ready(function() {
   //  demo
   var $chatInput = $("#chatInput");
 
+  //  get event id from url
+  var eventId = getParameterByName("event");
+  var chatRequestUri = '/api/events/'+eventId+'/chats';
+  console.log(eventId);
+
   $chatInput.keyup(function(event){
     var _this = $(this);
     if(event.which == 13){
@@ -31,33 +36,13 @@ $(document).ready(function() {
       //  remove text
       _this.val("");
 
-      //  reply
-      if(message.length < 10){
-        return false;
-      }else{
-        setTimeout(function(){
-          var newTime = new Date().toString("hh:mm tt");
-          var newMessage = 'good for me also, how about The Journal Coffee, I am a member with 30% discount';
-
-          if(message.indexOf("see you") != -1){
-            newMessage = 'ok, see you there :)';
-          }
-
-          var replyContent = '<li class="mar-btm">'
-            +'<div class="media-left"><img src="https://fb-s-d-a.akamaihd.net/h-ak-xft1/v/t1.0-1/p160x160/996693_2116007291873744_1764555311648855641_n.jpg?oh=846b9c00fc80808b6f505c685c84d8c1&oe=58B81462&__gda__=1489197048_f191b063da43b1f5d8118edcf45ed92e" class="img-circle img-sm"></div>'
-            +'<div class="media-body pad-hor speech-left">'
-            +'<div class="speech"><a href="#" class="media-heading">Vi Trần</a>'
-            +'<p>'+newMessage+'</p>'
-            +'<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i> '+newTime+'</p>'
-            +'</div>'
-            +'</div>'
-            +'</li>';
-
-          $("#demoChatBody .media-block").append(replyContent);
-          $("#demoChatBody .nano-content").scrollTop(10000);
-        },3000);
-        $("#demoChatBody .nano-content").scrollTop(10000);
-      }
+      //  post api
+      api(chatRequestUri,{
+        data: JSON.stringify({from:userInfo.id, text: message}),
+        success: function(response){
+          console.log(response);
+        }
+      }).post()
     }
 
   });
@@ -77,3 +62,15 @@ $(document).ready(function() {
     });
   }
 });
+
+function getParameterByName(name, url) {
+  if (!url) {
+    url = window.location.href;
+  }
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+}

@@ -36,7 +36,7 @@ block scripts
                         var userDetail = response[0];
 
                         // show income call
-                        addToIncome(userDetail)
+                        addToIncome(userDetail, data.id)
                       }
                     }
                   }).get();
@@ -90,9 +90,10 @@ block scripts
       }).put();
     }
 
-    function addToIncome(userDetail){
+    function addToIncome(userDetail, eventId){
       var profile = userDetail.profile;
-      $("#incomeCall .avatar img").attr("src", 'https://graph.facebook.com/' + profile.id + '/picture?width=100&amp;height=100')
-      $("#incomeCall .income-label strong").empty().append(profile.name.familyName+" "+profile.name.givenName+" đã đồng ý lời mời của bạn")
+      $("#incomeCall .avatar img").attr("src", 'https://graph.facebook.com/' + profile.id + '/picture?width=100&amp;height=100');
+      $("#incomeCall .income-label strong").empty().append(profile.name.familyName+" "+profile.name.givenName+" đã đồng ý lời mời của bạn");
+      $("#incomeCall .chat").attr("href", "/chat?event="+eventId);
       $("#incomeCall").show();
     }
