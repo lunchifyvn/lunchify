@@ -64,11 +64,40 @@ describe('Event API', () => {
     `/api/events/${event1.id}/chats?access_token=${user1User.id}`)
     .send({
       from: user1User.userId,
-      text: 'user 1 message'
+      text: 'user 1 message',
     })
-    .expect(200, (err, res) => {
+    .expect(200, (err, _res) => {
       should.ifError(err);
       done();
+    });
+  });
+  it('should allow user2 to update the chat', done => {
+    req('post',
+    `/api/events/${event1.id}/chats?access_token=${user1User.id}`)
+    .send({
+      from: user2User.userId,
+      text: 'user 2 message',
     })
+    .expect(200, (err, _res) => {
+      should.ifError(err);
+      done();
+    });
+  });
+  it('should allow user1 to the chat session', done => {
+    req('get',
+    `/api/events/${event1.id}/chats?access_token=${user1User.id}`)
+    .expect(200, (err, _res) => {
+      should.ifError(err);
+      done();
+    });
+  });
+
+  it('should allow user1 to the chat session', done => {
+    req('get',
+    `/api/events/${event1.id}/chats?access_token=${user2User.id}`)
+    .expect(200, (err, _res) => {
+      should.ifError(err);
+      done();
+    });
   });
 });
