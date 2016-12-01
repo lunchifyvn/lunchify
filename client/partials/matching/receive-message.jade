@@ -93,7 +93,7 @@ block scripts
     function addToIncome(userDetail, eventId){
       var profile = userDetail.profile;
       $("#incomeCall .avatar img").attr("src", 'https://graph.facebook.com/' + profile.id + '/picture?width=100&amp;height=100');
-      $("#incomeCall .income-label strong").empty().append(profile.name.familyName+" "+profile.name.givenName+" đã đồng ý lời mời của bạn");
+      $("#incomeCall .income-label strong").empty().append(profile.name.familyName+" "+profile.name.givenName+" accepted your invitation");
       $("#incomeCall .chat").attr("href", "/chat?event="+eventId);
       $("#incomeCall").show();
     }
