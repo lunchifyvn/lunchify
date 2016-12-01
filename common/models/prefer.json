@@ -8,7 +8,7 @@
       "required": "true"
     },
     "ref": {
-      "type": "object",
+      "type": "String",
       "required": "true"
     },
     "createdAt": {
