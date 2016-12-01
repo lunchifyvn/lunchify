@@ -5,8 +5,6 @@ $(document).ready(function() {
     right: {}
   };
 
-  console.debug(usersChat);
-
   //  input
   var $chatInput = $("#chatInput");
 
@@ -17,7 +15,33 @@ $(document).ready(function() {
 
   //  get all chat history to fill in chatbox
   var localChatData = [];
-  (function pollChat(){
+
+  api(chatRequestUri, {
+    success: function (response) {
+      if(response.length > 0){
+        for(var i=0, l=response.length; i<l; i++){
+          var firstItem = response[i];
+          if(firstItem.from == userInfo.id){
+            usersChat.right = {name: userInfo.name, avatar: userInfo.avatar};
+          }else{
+            api('/api/users/' + firstItem.from + '/identities', {
+              success: function (response) {
+                if (response.length > 0) {
+                  var userDetail = response[0];
+                  var profile = userDetail.profile;
+                  usersChat.left = {name: profile.name.familyName + " " + profile.name.givenName, avatar: "https://graph.facebook.com/"+profile.id+"/picture?width=100&height=100"};
+                  pollChat();
+                }
+              }
+            }).get();
+          }
+        }
+      }
+    }
+  }).get();
+
+
+  function pollChat(){
     setTimeout(function(){
       api(chatRequestUri, {
         success: function (response) {
@@ -29,7 +53,6 @@ $(document).ready(function() {
 
               var position = 'right';
               if(response[j].from != userInfo.id){
-                console.log(userInfo);
                 position = 'left';
               }
 
@@ -78,6 +101,7 @@ $(document).ready(function() {
 
               $listBoxChat.append(chatItem)
             }
+            $("#demoChatBody .nano-content").scrollTop(10000);
             //  update local chat data
             localChatData = response;
           }
@@ -85,32 +109,39 @@ $(document).ready(function() {
         complete: pollChat
       }).get();
     },1000)
-  })()
+  }
 
   $chatInput.keyup(function(event){
     var _this = $(this);
     if(event.which == 13){
-
-      var message = _this.val(),
-        removeWhitespace = message.replace(/ /g,''),
-        currentTime = new Date().toString("hh:mm tt");
-
-      //  check empty
-      if(removeWhitespace == ""){
-        return false;
-      }
-      //  remove text
+      submitChat(_this.val());
       _this.val("");
-
-      //  post api
-      api(chatRequestUri,{
-        data: JSON.stringify({from:userInfo.id, text: message}),
-        success: function(response){
-          return false;
-        }
-      }).post()
     }
   });
+
+  $("#submitChat").click(function(){
+    submitChat($chatInput.val());
+    $chatInput.val("")
+  });
+
+  function submitChat(message){
+      var removeWhitespace = message.replace(/ /g,''),
+      currentTime = new Date().toString("hh:mm tt");
+
+    //  check empty
+    if(removeWhitespace == ""){
+      return false;
+    }
+
+    //  post api
+    api(chatRequestUri,{
+      data: JSON.stringify({from:userInfo.id, text: message}),
+      success: function(response){
+        //  scroll bottom
+        $("#demoChatBody .nano-content").scrollTop(10000);
+      }
+    }).post()
+  }
 });
 
 function getParameterByName(name, url) {
