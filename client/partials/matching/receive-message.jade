@@ -3,7 +3,7 @@ block scripts
     var listInvite = [];
     var listAccept = [];
     (function poll() {
-      var eventUri = "/api/events?filter[where][to]="+userInfo.id;
+      var eventUri = "/api/events?filter[where][or][0][from]="+userInfo.id+"&filter[where][or][1][to]="+userInfo.id;
 
       setTimeout(function () {
         $.ajax({
