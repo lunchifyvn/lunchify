@@ -14,6 +14,7 @@ block content
 block scripts
   script.
     var getSelectedTopicIds = function(prefers) {
+
       var selectedTopicIds = []
       $.each(prefers, function(key, value) {
         selectedTopicIds.push(value.ref)

@@ -84,7 +84,7 @@ script.
             $("#accountLink").empty();
             var html = '<a href="#"><img class="avatar" src="'+userInfo.avatar+'"/>'+userInfo.name+'</a>' +
               '<div class="dropdown-content">' +
-              '<a href="#">Thông tin</a><a href="/auth/logout">Đăng xuất</a><a href="/select-topics">Select topics</a></div>';
+              '<a href="#">Profile</a><a href="/auth/logout">Logout</a><a href="/select-topics">Select topics</a></div>';
 
             $("#accountLink").append(html);
           },
@@ -110,7 +110,8 @@ script.
         dataType: 'json',
         beforeSend: typeof options.beforeSend != "undefined" ? options.beforeSend : function(){},
         success: options.success,
-        error: error
+        error: error,
+        complete: options.complete
       };
 
       if(userInfo.access_token){
