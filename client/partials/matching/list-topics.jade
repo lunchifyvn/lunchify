@@ -18,7 +18,7 @@ block scripts
           $listTag.append(topicTag);
 
           //  get topic detail
-          var topicRequestUri = '/api/topics/' + response[i].ref;
+          var topicRequestUri = '/api/topics/' + String(response[i].ref);
           api(topicRequestUri, {
             beforeSend: function () {
               tagLink.empty().append('<img src="img/icon/tag_loading.svg"/>');
