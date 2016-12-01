@@ -37,6 +37,7 @@ block scripts
     var topic_ids = getSelectedTopicIds(prefers)
     var user_id = #{user ? user.id : ""}
 
+
     function topicClicked(event) {
       var target = $(event.target)
       if (target.hasClass('topic-selected')) {
