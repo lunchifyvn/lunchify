@@ -23,9 +23,10 @@ script.
        ]
        * */
       $listMatching.empty();
-      for (var i = 0; i < 5; i++) {
+
+      for (var i = 0, l=response.length; i < l; i++) {
         //  get each user detail
-        api('/api/users/'+i+'/identities', {
+        api('/api/users/'+response[i].id+'/identities', {
           success: function (response) {
             //  append to list
             if(response.length > 0){
