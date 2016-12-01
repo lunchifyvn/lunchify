@@ -110,7 +110,8 @@ script.
         dataType: 'json',
         beforeSend: typeof options.beforeSend != "undefined" ? options.beforeSend : function(){},
         success: options.success,
-        error: error
+        error: error,
+        complete: options.complete
       };
 
       if(userInfo.access_token){

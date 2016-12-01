@@ -1,11 +1,91 @@
 $(document).ready(function() {
-  //  demo
+  //  user info
+  var usersChat = {
+    left: {},
+    right: {}
+  };
+
+  console.debug(usersChat);
+
+  //  input
   var $chatInput = $("#chatInput");
 
   //  get event id from url
   var eventId = getParameterByName("event");
   var chatRequestUri = '/api/events/'+eventId+'/chats';
-  console.log(eventId);
+  var $listBoxChat = $("#demoChatBody .media-block").empty();
+
+  //  get all chat history to fill in chatbox
+  var localChatData = [];
+  (function pollChat(){
+    setTimeout(function(){
+      api(chatRequestUri, {
+        success: function (response) {
+          var length = response.length;
+          if(length > 0 && length > localChatData.length){
+            //  check new item
+            for(var j=localChatData.length; j<length; j++){
+              var currentTime = new Date(response[j].createdAt).toString("hh:mm tt");
+
+              var position = 'right';
+              if(response[j].from != userInfo.id){
+                console.log(userInfo);
+                position = 'left';
+              }
+
+              //  check user exist
+              if($.isEmptyObject(usersChat[position])){
+                //  get user info
+                api('/api/users/' + response[j].from+ '/identities', {
+                  success: function (response) {
+                    if (response.length > 0) {
+                      var userDetail = response[0];
+
+                      //  add to user chat para
+                      usersChat[position] = {
+                        name: userDetail.profile.name.familyName + " " + userDetail.profile.name.givenName,
+                        avatar: 'https://graph.facebook.com/'+userDetail.id+'/picture?width=100&height=100'
+                      }
+                      //  update to all item
+                      $("#demoChatBody .mar-btm .media-"+position+ " img").each(function(){
+                        $(this).attr("src", usersChat[position].avatar)
+                      });
+                      $("#demoChatBody .mar-btm .speech-"+position+ " .media-heading").each(function(){
+                        $(this).html(usersChat[position].name);
+                      })
+                    }
+                  }
+                }).get();
+              }else{
+                //  update to all item
+                $("#demoChatBody .mar-btm .media-"+position+ " img").each(function(){
+                  $(this).attr("src", usersChat[position].avatar)
+                });
+                $("#demoChatBody .mar-btm .speech-"+position+ " .media-heading").each(function(){
+                  $(this).html(usersChat[position].name);
+                })
+              }
+
+              var chatItem = '<li class="mar-btm">'
+                +'<div class="media-'+position+'"><img src="'+usersChat[position].avatar+'" alt="Profile Picture" class="img-circle img-sm"></div>'
+                +'<div class="media-body pad-hor speech-'+position+'">'
+                +'<div class="speech"><a href="#" class="media-heading">'+usersChat[position].name+'</a>'
+                +'<p>'+response[j].text+'</p>'
+                +'<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i> '+currentTime+'</p>'
+                +'</div>'
+                +'</div>'
+                +'</li>';
+
+              $listBoxChat.append(chatItem)
+            }
+            //  update local chat data
+            localChatData = response;
+          }
+        },
+        complete: pollChat
+      }).get();
+    },1000)
+  })()
 
   $chatInput.keyup(function(event){
     var _this = $(this);
@@ -19,20 +99,6 @@ $(document).ready(function() {
       if(removeWhitespace == ""){
         return false;
       }
-
-      //  submit and input to chat box
-      var chatItem = '<li class="mar-btm">'
-        +'<div class="media-right"><img src="https://fb-s-c-a.akamaihd.net/h-ak-xpt1/v/t1.0-1/p160x160/14102579_1430088513673052_7144869259414944101_n.jpg?oh=d1de2b94ac3268db6d90e82dfa0bcd5c&amp;oe=58B7A6B1&amp;__gda__=1488922554_40747e6d2436052a754a5611f9e51477" alt="Profile Picture" class="img-circle img-sm"></div>'
-        +'<div class="media-body pad-hor speech-right">'
-        +'<div class="speech"><a href="#" class="media-heading">Tuan Nguyen</a>'
-        +'<p>'+message+'</p>'
-        +'<p class="speech-time"><i class="fa fa-clock-o fa-fw"></i> '+currentTime+'</p>'
-        +'</div>'
-        +'</div>'
-        +'</li>';
-
-      //  add to chat box
-      $("#demoChatBody .media-block").append(chatItem);
       //  remove text
       _this.val("");
 
@@ -40,27 +106,11 @@ $(document).ready(function() {
       api(chatRequestUri,{
         data: JSON.stringify({from:userInfo.id, text: message}),
         success: function(response){
-          console.log(response);
+          return false;
         }
       }).post()
     }
-
   });
-
-
-  if($chatInput.length) {
-    var socket = io.connect('http://localhost:3000');
-    socket.on('connect', function(){
-      socket.emit('authentication', {
-        id: userInfo.access_token,
-        userId: userInfo.id
-      });
-      socket.on('authenticated', function() {
-          // use the socket as usual
-          console.log('User is authenticated');
-      });
-    });
-  }
 });
 
 function getParameterByName(name, url) {
