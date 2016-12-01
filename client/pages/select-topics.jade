@@ -13,7 +13,7 @@ block content
 
 block scripts
   script.
-    var getSelectedTopicIds = (prefers) => {
+    var getSelectedTopicIds = function(prefers) {
       var selectedTopicIds = []
       $.each(prefers, function(key, value) {
         selectedTopicIds.push(value.ref)
@@ -21,7 +21,7 @@ block scripts
       return selectedTopicIds;
     }
 
-    var getPreferId = (prefers, topic_id) => {
+    var getPreferId = function(prefers, topic_id) {
       console.log('TOPIC_ID: ' + topic_id)
       let result
       $.each(prefers, function(key, value) {
@@ -31,12 +31,12 @@ block scripts
           return false
         }
       })
-      return result
+      return result;
     }
 
-    let prefers = !{prefers}
-    let topic_ids = getSelectedTopicIds(prefers)
-    var user_id = "#{user ? user.id : ""}"
+    var prefers = !{prefers};
+    var topic_ids = getSelectedTopicIds(prefers);
+    var user_id = "#{user ? user.id : ""}";
 
     function topicClicked(event) {
       var target = $(event.target)
@@ -46,13 +46,13 @@ block scripts
         $.ajax({
           url: base_url + 'api/users/' + user_id + '/prefers/' + getPreferId(prefers, parseInt(target.attr('data-id'))),
           headers: {
-            'X-Access-Token': $.cookie('access-token'),
+            'X-Access-Token': $.cookie('access-token')
           },
           contentType: 'application/json',
           method: 'DELETE',
           success: function(response) {
             console.log(response)
-          },
+          }
         })
       }
       else {
@@ -60,7 +60,7 @@ block scripts
         $.ajax({
           url: base_url + 'api/users/' + user_id + '/prefers',
           headers: {
-            'X-Access-Token': $.cookie('access-token'),
+            'X-Access-Token': $.cookie('access-token')
           },
           contentType: 'application/json',
           dataType: 'json',
