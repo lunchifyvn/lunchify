@@ -12,15 +12,18 @@ module.exports = function(User) {
 
       // get the profile of other users
       User.find({
-        where: {id: {inq: userProfile.id}}, // except the user himself
+        where: {id: {neq: userProfile.userId}}, // except the user himself
         include: 'prefers', // include the prefers
         fields: {id: true, prefers: true}, // select id and prefer and location
       }, (err, users) => {
-        if (err) {
-          return cb(err);
-        }
-        var suggestion = matching.matchProfile(userProfile, users);
-        cb(null, suggestion);
+        // console.log(users);
+        // if (err) {
+        //   return cb(err);
+        // }
+        // var suggestion = matching.matchProfile(userProfile, users);
+        // console.log(suggestion);
+        // cb(null, suggestion);
+        cb(null, users);
       });
     });
   };
