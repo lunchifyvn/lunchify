@@ -4,10 +4,10 @@
   "base": "PersistedModel",
   "properties": {
     "from": {
-      "type": "Object"
+      "type": "String"
     },
     "text": {
-      "type": "Object"
+      "type": "String"
     },
     "createdAt": {
       "type": "date",

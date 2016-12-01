@@ -4,10 +4,10 @@
   "base": "PersistedModel",
   "properties": {
     "from": {
-      "type": "Object"
+      "type": "String"
     },
     "to": {
-      "type": "Object"
+      "type": "String"
     },
     "status": {
       "type": "String"
