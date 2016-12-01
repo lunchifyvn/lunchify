@@ -24,6 +24,15 @@ script.
        * */
       $listMatching.empty();
 
+      var listStatus = [
+        "Politics is my passion",
+        "Travelling without planning is my goal",
+        "I love talking about the latest mobile phones",
+        "Web Design is my favorite topic",
+        "I always catch up the latest trend in web programming",
+        "Vietnamese deserve a better education system",
+        "I am always be the first to get the most luxury dresses",
+        "Bring fresh vegetable to Vietnamese is my ultimate goal"];
       for (var i = 0, l=response.length; i < l; i++) {
         //  get each user detail
         api('/api/users/'+response[i].id+'/identities', {
@@ -34,7 +43,7 @@ script.
                 name = userProfile.name.familyName + " " +userProfile.name.givenName;
               if(response[0].userId != userInfo.id){
                 var className = "row item";
-                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="row"><div class="col-xs-4 col-md-3"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-xs-8 col-md-9"><strong class="name">' + name + '</strong><p class="status">Bàn về chính trị là đam mê của tui</p></div></div></div><div class="action-btn col-sm-3 col-md-3 col-xs-8 col-xs-offset-4 col-md-offset-0"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a onClick="viewDetail(event)"  data-id="' + response[0].userId + '" href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
+                var itemHtml = '<li class="' + className + '"><div class="col-sm-9 item-info"><div class="row"><div class="col-xs-4 col-md-3"><a href="#" class="avatar"><img src="https://graph.facebook.com/' + userProfile.id + '/picture?width=100&amp;height=100" class="img-responsive"></a></div><div class="info col-xs-8 col-md-9"><strong class="name">' + name + '</strong><p class="status">'+listStatus[i]+'</p></div></div></div><div class="action-btn col-sm-3 col-md-3 col-xs-8 col-xs-offset-4 col-md-offset-0"><div class="inner"><a onClick="invite(event)" data-id="' + response[0].userId + '" href="#" class="btn btn-primary btn-block">Gửi lời mời</a><a onClick="viewDetail(event)"  data-id="' + response[0].userId + '" href="#" class="btn btn-default btn-block">Xem thông tin</a></div></div></li>';
                 $listMatching.append(itemHtml);
               }
             }
