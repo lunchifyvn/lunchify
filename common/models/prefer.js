@@ -18,7 +18,7 @@ module.exports = function(Prefer) {
     }
 
     var preferModel = Prefer.app.models[type];
-    preferModel.findById(ref, (error, instance) => {
+    preferModel.findById(ref.toString(), (error, instance) => {
       if (error) {
         console.log(error);
         return next(error);
